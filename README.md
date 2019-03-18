@@ -8,3 +8,4 @@ Terminal visualization via termcaps
 - Clear window
 - file descriptors
 - dprintf
+- 0 / 1 file descriptors
