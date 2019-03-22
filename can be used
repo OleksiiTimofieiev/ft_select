@@ -1,0 +1,41 @@
+◦ isatty, 
+◦ ttyname, 
+◦ ttyslot 
+◦ ioctl
+◦ getenv
+◦ tcsetattr, 
+◦ tcgetattr
+◦ tgetent,
+◦ getflag, 
+◦ tgetnum, 
+◦ tgetstr,
+◦ tgoto, 
+◦ tputs 
+◦ open, close, write
+◦ malloc, free
+◦ read, exit
+◦ signal
+
+int tgetnum (char *name);
+int tgetflag (char *name);
+char *tgetstr (char *name, char **area);
+
+tgetnum
+Use tgetnum to get a capability value that is numeric. The argument name is the two-letter code name of the capability. 
+If the capability is present, tgetnum returns the numeric value (which is nonnegative). 
+If the capability is not mentioned in the terminal description, tgetnum returns -1.
+
+tgetflag
+Use tgetflag to get a boolean value. If the capability name is present in the terminal description, tgetflag returns 1; otherwise, it returns 0.
+
+tgetstr
+Use tgetstr to get a string value. It returns a pointer to a string which is the capability value, or a null pointer if the capability is not present in the terminal description. 
+There are two ways tgetstr can find space to store the string value:
+You can ask tgetstr to allocate the space. Pass a null pointer for the argument area, and tgetstr will use malloc to allocate storage big enough for the value. 
+Termcap will never free this storage or refer to it again; you should free it when you are finished with it. This method is more robust, since there is no need to guess how much space is needed.
+ But it is supported only by the GNU termcap library.
+You can provide the space. Provide for the argument area the address of a pointer variable of type char *. Before calling tgetstr, initialize the variable to point at available space.
+Then tgetstr will store the string value in that space and will increment the pointer variable to point after the space that has been used.
+You can use the same pointer variable for many calls to tgetstr. There is no way to determine how much space is needed for a single string, and no way for you to prevent or handle overflow of the area you have provided. 
+However, you can be sure that the total size of all the string values you will obtain from the terminal description is no greater than the size of the description (unless you get the same capability twice).
+You can determine that size with strlen on the buffer you provided to tgetent. See below for an example. Providing the space yourself is the only method supported by the Unix version of termcap.

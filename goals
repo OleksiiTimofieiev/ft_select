@@ -1,0 +1,6 @@
+Write an “ft_select” program that will get a series of arguments. The list of argu- ments is displayed in your terminal.
+• The user can move through the list of arguments using arrows (the list is circular).
+• One or more choices can be selected or un-selected with the the space key. With
+each selection, the cursor must automatically position itself on the next element.
+• When the user validates the selection with the return key, the list of choices will be sent back to shell. The latter (i.e. list of choices sent back) will be separated by a space. 
+This will allow you to use your program ft_select inside a shell script (to create a “set” for example).

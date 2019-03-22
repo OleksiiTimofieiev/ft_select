@@ -1,0 +1,34 @@
+Core:
+- This project is meant to make you code a small program using termcaps which will allow you to pick from a list of choices and return it to your shell.
+
+
+- how many columns wide it is
+- what string to send to move the cursor to an arbitrary position (including how to encode the row and column numbers), 
+- how to scroll the screen up one or several lines, and how much padding is needed for such a scrolling operation.
+
+The termcap library is the application programmer's interface to the termcap data base. It contains functions for the following purposes::
+- Finding the description of the user's terminal type (tgetent).
+- Interrogating the description for information on various topics (tgetnum, tgetflag, tgetstr).
+- Computing and performing padding (tputs).
+- Encoding numeric parameters such as cursor positions into the terminal-specific form required for display commands (tparam, tgoto).
+
+Compilation:
+- `-ltermcap' or `-ltermlib'
+
+Find the terminal in use:
+ - tgetent
+
+ Each piece of information recorded in a terminal description is called a capability. Each defined terminal capability has a two-letter code name and a specific meaning. 
+ For example, the number of columns is named `co'.
+  See section Definitions of the Terminal Capabilities, for definitions of all the standard capability names.
+
+
+
+
+
+
+
+ Links:
+ - main: https://www.gnu.org/software/termutils/manual/termcap-1.3/html_mono/termcap.html#SEC320
+ - http://loiclefloch.fr/877-les-termcaps/
+ - https://zestedesavoir.com/tutoriels/1733/termcap-et-terminfo/
