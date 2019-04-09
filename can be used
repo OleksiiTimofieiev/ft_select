@@ -1,20 +1,20 @@
-◦ isatty, 
-◦ ttyname, 
-◦ ttyslot 
-◦ ioctl
-◦ getenv
-◦ tcsetattr, 
-◦ tcgetattr
-◦ tgetent,
-◦ getflag, 
-◦ tgetnum, 
-◦ tgetstr,
-◦ tgoto, 
-◦ tputs 
-◦ open, close, write
-◦ malloc, free
-◦ read, exit
-◦ signal
+- isatty, 
+- ttyname, 
+- ttyslot 
+- ioctl
++ getenv
+- tcsetattr, 
+- tcgetattr
++ tgetent,
+- getflag, 
++ tgetnum, 
++ tgetstr,
+- tgoto, 
+- tputs 
++ open, close, write
++ malloc, free
++ read, exit
++ signal
 
 int tgetnum (char *name);
 int tgetflag (char *name);
@@ -33,9 +33,23 @@ Use tgetstr to get a string value. It returns a pointer to a string which is the
 There are two ways tgetstr can find space to store the string value:
 You can ask tgetstr to allocate the space. Pass a null pointer for the argument area, and tgetstr will use malloc to allocate storage big enough for the value. 
 Termcap will never free this storage or refer to it again; you should free it when you are finished with it. This method is more robust, since there is no need to guess how much space is needed.
- But it is supported only by the GNU termcap library.
+But it is supported only by the GNU termcap library.
 You can provide the space. Provide for the argument area the address of a pointer variable of type char *. Before calling tgetstr, initialize the variable to point at available space.
 Then tgetstr will store the string value in that space and will increment the pointer variable to point after the space that has been used.
 You can use the same pointer variable for many calls to tgetstr. There is no way to determine how much space is needed for a single string, and no way for you to prevent or handle overflow of the area you have provided. 
 However, you can be sure that the total size of all the string values you will obtain from the terminal description is no greater than the size of the description (unless you get the same capability twice).
 You can determine that size with strlen on the buffer you provided to tgetent. See below for an example. Providing the space yourself is the only method supported by the Unix version of termcap.
+
+tgetent
+Finding the description of the user's terminal type;
+
+getenv
+get the str of the env path;
+
+tcsetattr, 
+tcgetattr
+
+ The tcgetattr() function copies the parameters associated with the terminal referenced by fildes in the termios structure referenced by termios_p.  This function is allowed from a background process; however, the terminal attributes may be subsequently changed by a fore-
+     ground process.
+
+     The tcsetattr() function sets the parameters associated with the terminal from the termios structure referenced by termios_p.  The optional_actions field is created by or'ing the following values, as specified in the include file <termios.h>.
