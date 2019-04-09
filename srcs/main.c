@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:36:29 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/09 19:52:33 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/09 20:13:01 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,7 +203,7 @@ int j = 50;
 
 while(--j)
 {
-	ft_printf("Cool ! Maintenant j'ecris en vert !\n");
+	ft_printf("Cool ! Maintenant j'ecris en vert !");
 
 }
 	int i = 1000000000;
