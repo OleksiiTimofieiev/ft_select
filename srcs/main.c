@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:36:29 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/10 12:12:59 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/10 12:38:51 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -225,7 +225,7 @@ int main(void)
 	// char *color_cap = tgetstr("AF", NULL);
 	// tputs(tparm(color_cap, COLOR_GREEN), 1, putchar);
 
-	ft_putstr_fd(tgoto(tgetstr("cm", NULL), 5, 7), 0);
+	ft_putstr_fd(tgoto(tgetstr("cm", NULL), 0, 0), 0);
 	ft_putstr("Cool ! Maintenant j'ecris en vert !");
 	ft_putstr_fd(tgoto(tgetstr("cm", NULL), 5, 7), 0);
 
