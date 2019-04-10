@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 15:03:19 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/10 11:46:18 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/10 13:13:06 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ int		ft_printf(const char *format, ...)
 			if (*g_v.p == 'n')
 				get_current_n_chars(ap);
 			else if (*g_v.p == '%')
-				g_v.quantity += write(0, &(*g_v.p++), 1);
+				g_v.quantity += write(1, &(*g_v.p++), 1);
 			else
 				ft_parsing(ap);
 		}
 		else
-			g_v.quantity += write(0, &(*g_v.p++), 1);
+			g_v.quantity += write(1, &(*g_v.p++), 1);
 	}
 	va_end(ap);
 	return (g_v.quantity);

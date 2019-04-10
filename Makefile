@@ -6,7 +6,7 @@
 #    By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/22 12:27:52 by otimofie          #+#    #+#              #
-#    Updated: 2019/03/22 14:39:13 by otimofie         ###   ########.fr        #
+#    Updated: 2019/04/10 13:21:20 by otimofie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRCS        	= $(addprefix srcs/, $(CORE))
 CFLAGS			= -Wall -Wextra -Werror
 OBJECTS 		= $(SRCS:.c=.o)
 LIB				= ./libft.a
-INC				= ./includes/ft_select.h
+INC				= ./includes/
 
 #colors
 RESET			= \033[m
@@ -34,7 +34,7 @@ WHITE       	= \033[01;38;05;15m
 all: $(NAME)
 
 $(NAME): $(LIB) $(OBJECTS) $(INC)
-	@ gcc    $(CFLAGS) -I $(INC) $(SRCS) -L ./libft -lft -ltermcap -o $(NAME)
+	@ gcc    $(CFLAGS) -I$(INC) $(SRCS) -L ./libft -lft -ltermcap -o $(NAME)
 	@ echo  "$(YELLOW) : OK$(RESET)"
 
 $(LIB):
@@ -43,7 +43,7 @@ $(LIB):
 	@ echo  "$(GREEN)Compiling: $(WHITE)$(NAME)$(RESET)$(YELLOW) : $(RESET)\c)"
 
 $(OBJECTS): %.o: %.c
-	@ gcc -c $(CFLAGS) $< -o $@
+	@ gcc -c $(CFLAGS) -I$(INC) $< -o $@
 	@ echo  "$(YELLOW)█$(RESET)\c)"
 
 clean:

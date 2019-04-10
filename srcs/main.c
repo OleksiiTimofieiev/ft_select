@@ -6,13 +6,13 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:36:29 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/10 12:59:00 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/10 13:20:55 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_select.h"
+#include "ft_select.h"
 
-#include <stdio.h>
+// #include <stdio.h>
 
 // TODO: circular selection;
 // TODO: resize of the window => cursor behavioiur
@@ -234,6 +234,8 @@ int main(void)
 	ft_putstr_fd(tgoto(tgetstr("cm", NULL), 40, 2), 0);
 	ft_putstr("Cool ! Maintenant j'ecris en vert !");
 
+	ft_printf("asdfasdfasdfasdfas");
+
 	// clear();
 
 	// ft_putstr("C12345");
@@ -255,7 +257,8 @@ int main(void)
 		/* code */;
 	}
 
-		tputs(tc_cmd.ve, 1, putchar); // activate cursor;
+	tputs(tc_cmd.ve, 1, putchar); // activate cursor;
+
 	if (tcsetattr(0, 0, &s_termios_backup) == -1)
 		return (-1);
 

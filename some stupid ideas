@@ -37,6 +37,7 @@ Links:
  - https://volibear.cs.nthu.edu.tw/wp-content/uploads/2011/09/images_courses_CS5432_2016_18-termio.pdf
 
  Fomulas:
- - width to be divided by the most length of the word => quantity of word per line
+ - width to be divided by the most (length of the word + SPACES) => quantity of word per line
  - columns are simply to be procssed with y;
+ - need to init the coordinates for each line during after the initialization of the linked list;
 
