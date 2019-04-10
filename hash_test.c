@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define SIZE_OF_STRING	256
-#define QUANTITYOFNODES	1000
-#define HASHTABLESIZE 	10
+#define SIZE_OF_STRING		256
+#define QUANTITY_OF_NODES	1000
+#define HASH_TABLE_SIZE 	10
 
 typedef struct 	el
 {
@@ -12,8 +12,8 @@ typedef struct 	el
 	struct el 	*next;
 }				node;
 
-node *hashTable[QUANTITYOFNODES];
-int hashTableSize = HASHTABLESIZE;
+node *hashTable[QUANTITY_OF_NODES];
+int hashTableSize = HASH_TABLE_SIZE;
 
 int 	stringToKey(char str[])
 {

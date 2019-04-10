@@ -6,13 +6,36 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:36:29 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/09 20:13:01 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/10 12:12:59 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_select.h"
 
 #include <stdio.h>
+
+// TODO: circular selection;
+// TODO: resize of the window => cursor behavioiur
+// TODO: large vs small window;
+// TODO: esc handler;
+// TODO: If the user presses either delete or backspace, the element the cursor is pointing to must be erased from the list. 
+// If there are no more elements in the list, the behavior must be exactly the same as if the user had pressed esc.
+// TODO:Choice non selected: normal text.
+// TODO:Selected choice: inverse video text.
+// TODO:Cursor’s position: underlined text.
+// TODO:Selected choice + cursor’s position: inverse video underlined text.
+// TODO:Whichever way your program ends, the default configuration of your terminal MUST be restored. This is true even after it received a signal (except for the signals that we cannot intercept, but this would mean that your program does not work).
+// TODO:We must be able to interrupt your program with ctrl+z and restore it with fg without seeing any changes in its behavior.
+// TODO:If the program is launched in an empty environment, you need to behave reasonably.
+
+// Possible bonuses :
+// • When the window is too small, the columns move from left to right depending on the position of the cursor.
+// • When the program is terminated, what needs to be erased must be, and the prompt as well as the cursor will appear on the line that follows the program’s call. Run tig to see what I mean. Don’t forget about the signals!
+// • A beautiful interface (up to the corrector to decide, not you!)
+// • If the choices are files names, colorize the list according to the extensions (a bit like
+// ls -G on OSX).
+// • Positioning of the cursor when we type a sequence of characters that matches an
+// element in the list (dynamic search).
 
 struct s_termcap_cmd
 {
@@ -187,37 +210,51 @@ int main(void)
 		return (-1);
 
 
-	// clear_term();
+	clear_term();
 
 	s_termios.c_lflag &= ~(ICANON); /* Перевести терминал в канонический режим. Функция чтения будет получать ввод с клавиатуры без ожидания ввода */
 	s_termios.c_lflag &= ~(ECHO);   /* Клавиши, набранные на клавиатуре, больше не будут появляться в терминале */
 
-	tputs(tc_cmd.vi, 1, putchar); /* Masque le curseur */
-	tputs(tc_cmd.cl, 1, putchar);
 
+	tputs(tc_cmd.vi, 1, putchar); /* Masque le curseur */
+	// tputs(tc_cmd.cl, 1, putchar);
+
+	// char *cm_cap = tgetstr("cm", NULL);
+
+	// tputs(tgoto(cm_cap, 5, 7), 1, putchar);
 	// char *color_cap = tgetstr("AF", NULL);
 	// tputs(tparm(color_cap, COLOR_GREEN), 1, putchar);
 
-	// tputs(tgoto(tc_cmd.cm, 20, 20), 1, putchar);
-int j = 50;
+	ft_putstr_fd(tgoto(tgetstr("cm", NULL), 5, 7), 0);
+	ft_putstr("Cool ! Maintenant j'ecris en vert !");
+	ft_putstr_fd(tgoto(tgetstr("cm", NULL), 5, 7), 0);
 
-while(--j)
-{
-	ft_printf("Cool ! Maintenant j'ecris en vert !");
+	ft_putstr("                                   ");
 
-}
+	ft_putstr_fd(tgoto(tgetstr("cm", NULL), 5, 7), 0);
+
+// clear();
+
+	ft_putstr("C12345");
+    ft_putstr("\n");
+
+	// tputs(tgoto(tc_cmd.cm, 10, 20), 1, putchar);
+// int j = 50;
+
+// while(--j)
+// {
+
+// }
 	int i = 1000000000;
 
-
-
+	// ft_putstr_fd(tc_cmd.ve, 0);
+	fflush(stdout);
 	while(--i)
 	{
 		/* code */;
 	}
 
-	tputs(tc_cmd.ve, 1, putchar); // activate cursor;
-	// fflush(stdout);
-
+		tputs(tc_cmd.ve, 1, putchar); // activate cursor;
 	if (tcsetattr(0, 0, &s_termios_backup) == -1)
 		return (-1);
 
