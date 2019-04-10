@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:36:29 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/10 14:23:51 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/10 14:25:03 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 
 /* 2 */
 
-// TODO:Cursor’s position: underlined text.
+// TODO: Cursor’s position: underlined text.
 // TODO: circular selection;
 // TODO: large vs small window;
 // TODO: resize of the window => cursor behavioiur
