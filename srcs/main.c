@@ -6,11 +6,17 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:36:29 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/10 14:15:32 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/10 14:22:47 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
+
+// void	catch_function(int signo)
+// {
+// 	if (signo == SIGWINCH)
+// 		ft_printf("------ got it --------");
+// }
 
 /* 1 */
 
@@ -37,6 +43,7 @@
 
 /* 3 */
 
+// TODO: check how the change size signal works; on every move = +;
 // TODO: esc handler;
 // TODO: We must be able to interrupt your program with ctrl+z and restore it with fg without seeing any changes in its behavior.
 // TODO: If the program is launched in an empty environment, you need to behave reasonably.
@@ -204,11 +211,13 @@ void interrogate_terminal(void)
 void clear_term()
 {
 	tputs(tc_cmd.cl, 1, putchar);
-	fflush(stdout);
+	// fflush(stdout);
 }
 
 int main(int argc, char **argv)
 {
+	// signal(SIGWINCH, catch_function);
+
 	init_terminal_data();
 	interrogate_terminal();
 
@@ -268,10 +277,10 @@ argc--;
 		/* code */;
 	}
 
-	tputs(tc_cmd.ve, 1, putchar); // activate cursor;
 
 	if (tcsetattr(0, 0, &s_termios_backup) == -1)
 		return (-1);
-
+	clear_term();
+	tputs(tc_cmd.ve, 1, putchar); // activate cursor;
 	return (0);
 }
