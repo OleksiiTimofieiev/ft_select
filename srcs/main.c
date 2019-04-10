@@ -6,27 +6,37 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:36:29 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/10 13:20:55 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/10 14:01:08 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
 
-// #include <stdio.h>
+/* 1 */
 
+// TODO: save the data to the linked list;
+// TODO: get the longest word during the addition to the linked list;
+// TODO: calculate the coordinates for printing => (width + spaces) => x for the next row;
+// TODO: set the coordinates to the elements of the linked list according to the calculations during printing;
+
+/* 2 */
+
+// TODO:Cursor’s position: underlined text.
 // TODO: circular selection;
-// TODO: resize of the window => cursor behavioiur
 // TODO: large vs small window;
-// TODO: esc handler;
+// TODO: resize of the window => cursor behavioiur
+// TODO:Selected choice: inverse video text.
+// TODO:Choice non selected: normal text.
+// TODO:Selected choice + cursor’s position: inverse video underlined text.
+// TODO: Whichever way your program ends, the default configuration of your terminal MUST be restored. This is true even after it received a signal (except for the signals that we cannot intercept, but this would mean that your program does not work).
 // TODO: If the user presses either delete or backspace, the element the cursor is pointing to must be erased from the list. 
 // If there are no more elements in the list, the behavior must be exactly the same as if the user had pressed esc.
-// TODO:Choice non selected: normal text.
-// TODO:Selected choice: inverse video text.
-// TODO:Cursor’s position: underlined text.
-// TODO:Selected choice + cursor’s position: inverse video underlined text.
-// TODO:Whichever way your program ends, the default configuration of your terminal MUST be restored. This is true even after it received a signal (except for the signals that we cannot intercept, but this would mean that your program does not work).
-// TODO:We must be able to interrupt your program with ctrl+z and restore it with fg without seeing any changes in its behavior.
-// TODO:If the program is launched in an empty environment, you need to behave reasonably.
+
+/* 3 */
+
+// TODO: esc handler;
+// TODO: We must be able to interrupt your program with ctrl+z and restore it with fg without seeing any changes in its behavior.
+// TODO: If the program is launched in an empty environment, you need to behave reasonably.
 
 // Possible bonuses :
 // • When the window is too small, the columns move from left to right depending on the position of the cursor.
@@ -195,7 +205,7 @@ void clear_term()
 	fflush(stdout);
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
 	init_terminal_data();
 	interrogate_terminal();
@@ -211,21 +221,29 @@ int main(void)
 	if (tcgetattr(0, &s_termios_backup) == -1)
 		return (-1);
 
+	while(argc!= 0)
+	{
+		ft_printf("%s\n",argv[argc]);
+argc--;
+	}
+	
 
 
 	s_termios.c_lflag &= ~(ICANON); /* Перевести терминал в канонический режим. Функция чтения будет получать ввод с клавиатуры без ожидания ввода */
 	s_termios.c_lflag &= ~(ECHO);   /* Клавиши, набранные на клавиатуре, больше не будут появляться в терминале */
 
+	// tputs(tc_cmd.vi, 1, ft_putstr_fd); /* Masque le curseur */
+	ft_putstr_fd(tc_cmd.vi, 0);
+		// clear_term();
+		// tputs(tc_cmd.cl, 1, putchar);
 
-	tputs(tc_cmd.vi, 1, putchar); /* Masque le curseur */
-	// clear_term();
-	// tputs(tc_cmd.cl, 1, putchar);
+		// char *cm_cap = tgetstr("cm", NULL);
 
-	// char *cm_cap = tgetstr("cm", NULL);
-
-	// tputs(tgoto(cm_cap, 5, 7), 1, putchar);
-	// char *color_cap = tgetstr("AF", NULL);
-	// tputs(tparm(color_cap, COLOR_GREEN), 1, putchar);
+		// tputs(tgoto(cm_cap, 5, 7), 1, putchar);
+		// char *color_cap = tgetstr("AF", NULL);
+		// tputs(tparm(color_cap, COLOR_GREEN), 1, putchar);
+	ft_putstr_fd(tgoto(tgetstr("cm", NULL), 0, 0), 0);
+	ft_putstr("Cool ! Maintenant j'ecris en vert !");
 
 	ft_putstr_fd(tgoto(tgetstr("cm", NULL), 0, 2), 0);
 	ft_putstr("Cool ! Maintenant j'ecris en vert !");
@@ -234,20 +252,11 @@ int main(void)
 	ft_putstr_fd(tgoto(tgetstr("cm", NULL), 40, 2), 0);
 	ft_putstr("Cool ! Maintenant j'ecris en vert !");
 
+	ft_putstr_fd(tgoto(tgetstr("cm", NULL), 80, 4), 0);
 	ft_printf("asdfasdfasdfasdfas");
 
-	// clear();
 
-	// ft_putstr("C12345");
-    // ft_putstr("\n");
-
-	// tputs(tgoto(tc_cmd.cm, 10, 20), 1, putchar);
-// int j = 50;
-
-// while(--j)
-// {
-
-// }
+	
 	int i = 1000000000;
 
 	// ft_putstr_fd(tc_cmd.ve, 0);
