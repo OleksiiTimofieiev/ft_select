@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:36:29 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/10 12:38:51 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/10 12:59:00 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@
 // ls -G on OSX).
 // • Positioning of the cursor when we type a sequence of characters that matches an
 // element in the list (dynamic search).
+
+//TODO: sorting of the input;
 
 struct s_termcap_cmd
 {
@@ -167,18 +169,18 @@ void interrogate_terminal(void)
 	ft_printf(cl_string);
 	printf("\n");
 	cm_string = tgetstr("cm", BUFFADDR);
-	printf("cursor: \n");
+	// printf("cursor: \n");
 
-	ft_printf(cm_string);
+	// ft_printf(cm_string);
 
-	printf("cursor: \n");
+	// printf("cursor: \n");
 
 	auto_wrap = tgetflag("am");
 
 	height = tgetnum("li");
-	ft_printf("height -> %d\n", height);
+	// ft_printf("height -> %d\n", height);
 	width = tgetnum("co");
-	ft_printf("width -> %d\n", width);
+	// ft_printf("width -> %d\n", width);
 
 	/* Extract information that termcap functions use.  */
 	temp = tgetstr("pc", BUFFADDR);
@@ -210,13 +212,13 @@ int main(void)
 		return (-1);
 
 
-	clear_term();
 
 	s_termios.c_lflag &= ~(ICANON); /* Перевести терминал в канонический режим. Функция чтения будет получать ввод с клавиатуры без ожидания ввода */
 	s_termios.c_lflag &= ~(ECHO);   /* Клавиши, набранные на клавиатуре, больше не будут появляться в терминале */
 
 
 	tputs(tc_cmd.vi, 1, putchar); /* Masque le curseur */
+	// clear_term();
 	// tputs(tc_cmd.cl, 1, putchar);
 
 	// char *cm_cap = tgetstr("cm", NULL);
@@ -225,18 +227,17 @@ int main(void)
 	// char *color_cap = tgetstr("AF", NULL);
 	// tputs(tparm(color_cap, COLOR_GREEN), 1, putchar);
 
-	ft_putstr_fd(tgoto(tgetstr("cm", NULL), 0, 0), 0);
+	ft_putstr_fd(tgoto(tgetstr("cm", NULL), 0, 2), 0);
 	ft_putstr("Cool ! Maintenant j'ecris en vert !");
-	ft_putstr_fd(tgoto(tgetstr("cm", NULL), 5, 7), 0);
+	ft_putstr_fd(tgoto(tgetstr("cm", NULL), 0, 1), 0);
+	ft_putstr("Cool ! Maintenant j'ecris en vert !");
+	ft_putstr_fd(tgoto(tgetstr("cm", NULL), 40, 2), 0);
+	ft_putstr("Cool ! Maintenant j'ecris en vert !");
 
-	ft_putstr("                                   ");
+	// clear();
 
-	ft_putstr_fd(tgoto(tgetstr("cm", NULL), 5, 7), 0);
-
-// clear();
-
-	ft_putstr("C12345");
-    ft_putstr("\n");
+	// ft_putstr("C12345");
+    // ft_putstr("\n");
 
 	// tputs(tgoto(tc_cmd.cm, 10, 20), 1, putchar);
 // int j = 50;
