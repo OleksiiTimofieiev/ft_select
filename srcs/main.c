@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:36:29 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/10 14:03:01 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/10 14:15:32 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 
 // TODO: save the data to the linked list;
 // TODO: get the longest word during the addition to the linked list;
-// TODO: calculate the coordinates for printing => (width + spaces) => x for the next row;
+// TODO: calculate the coordinates for printing => width / (longest word + (spaces == 2)) => x for the next row 
+// and how much words to print in the line;
 // TODO: set the coordinates to the elements of the linked list according to the calculations during printing;
 
 /* 2 */
