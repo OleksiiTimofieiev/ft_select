@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 19:37:34 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/11 20:11:14 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_input	*g_pointer;
 
 int		main(int argc, char **argv)
 {
-		t_termcap_cmd	tc_cmd;
+		t_termcap_cmd	terminal_state;
 		char			*termtype = NULL;
 		t_input			*input = NULL;
 		int				len;
@@ -40,7 +40,7 @@ int		main(int argc, char **argv)
 		init_terminal(termtype);
 		init_data(--argc, argv, &input, &len);
 		init_coordinates(&input, len);
-		init_termcap(&tc_cmd);
+		init_termcap(&terminal_state);
 
 		if (tcgetattr(0, &s_termios) == -1)
 			return (-1);
@@ -51,8 +51,8 @@ int		main(int argc, char **argv)
 		s_termios.c_lflag &= ~(ICANON); /* Перевести терминал в канонический режим. Функция чтения будет получать ввод с клавиатуры без ожидания ввода */
 		s_termios.c_lflag &= ~(ECHO);   /* Клавиши, набранные на клавиатуре, больше не будут появляться в терминале */
 
-		ft_putstr_fd(tc_cmd.cl, 0); // clear window
-		ft_putstr_fd(tc_cmd.vi, 0); // mask cursor
+		ft_putstr_fd(terminal_state.cl, 0); // clear window
+		ft_putstr_fd(terminal_state.vi, 0); // mask cursor
 
 		int i = 1000000000;
 
@@ -61,7 +61,7 @@ int		main(int argc, char **argv)
 		while (i--)
 			;
 
-		ft_putstr_fd(tc_cmd.cl, 0); // clear window
+		ft_putstr_fd(terminal_state.cl, 0); // clear window
 
 		// t_input *buf = input;
 
@@ -72,7 +72,7 @@ int		main(int argc, char **argv)
 		while (i--)
 			;
 
-		ft_putstr_fd(tc_cmd.ve, 0);
+		ft_putstr_fd(terminal_state.ve, 0);
 
 
 		// while (buf)
