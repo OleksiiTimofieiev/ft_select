@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 14:43:47 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 16:47:00 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/11 18:52:26 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	delete_node(t_input **head_ref, t_input *del, int len)
 
 	// ft_printf("words_per_line -> %d\n", word_per_line);
 	set_coordinates(*head_ref, word_per_line, len);
+	print_to_terminal(*head_ref);
 }
 
 void	add_node(t_input **head_ref, char *data)

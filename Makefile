@@ -6,7 +6,7 @@
 #    By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/22 12:27:52 by otimofie          #+#    #+#              #
-#    Updated: 2019/04/11 15:05:53 by otimofie         ###   ########.fr        #
+#    Updated: 2019/04/11 18:41:28 by otimofie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME			=	ft_select
 
 CORE			=	main.c \
 					linked_list_routines.c \
-					utils.c \
+					init_routines.c \
 			
 SRCS        	= 	$(addprefix srcs/, $(CORE))
 
