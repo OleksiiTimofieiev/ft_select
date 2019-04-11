@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:36:29 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 15:15:15 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/11 16:35:32 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@
 /* 1 */
 
 // TODO: void		sl_init_term(void) prippa;
-// TODO: calculate the coordinates for printing => width / (longest word + (spaces == 2)) => x for the next row
-// and how much words to print in the line;
-// TODO: set the coordinates to the elements of the linked list according to the calculations during printing;
 
 /* 2 */
 
