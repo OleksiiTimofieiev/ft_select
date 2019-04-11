@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 20:14:44 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/11 20:16:34 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,6 @@
 // TODO: norminette;
 // TODO: leaks => delete all data before exit => OS will clean it;
 // TODO: delete smaple_main.cpp
-
-void	print_to_terminal(t_input *input)
-{
-	while (input)
-	{
-		ft_putstr_fd(tgoto(tgetstr("cm", NULL), input->x, input->y), 0 /* file descriptor, define it */);
-		ft_printf("%s", input->data);
-		input = input->next;
-	}
-}
 
 int		main(int argc, char **argv)
 {
