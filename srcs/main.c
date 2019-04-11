@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 20:26:40 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/11 20:27:42 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int		main(int argc, char **argv)
 
 		// t_input *buf = input;
 
-		g_pointer = input->next;
+		g_pointer = input;
 
 		delete_node(&input, g_pointer, len);
 
