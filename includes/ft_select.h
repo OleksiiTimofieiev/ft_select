@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:31:17 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/10 13:10:38 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/11 14:23:47 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,16 @@
 
 # include "../libft/libft.h"
 
-#include <stdlib.h>
-#include <termcap.h>
+# include <stdlib.h>
+# include <termcap.h>
 
-#include <termios.h>
-#include <curses.h>
+# include <termios.h>
+
+typedef struct		s_input
+{
+	char			*data;
+	struct s_input	*next;
+	struct s_input	*prev;
+}					t_input;
 
 #endif
