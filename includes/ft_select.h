@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:31:17 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 19:29:07 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/11 19:34:08 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,10 @@ typedef struct		s_input
 
 typedef struct		s_termcap_cmd
 {
-	char			*cl;
-	char			*cm;
-	char			*vi;
-	char			*ve;
-	char			*ab;
-	char			*reset;
-
-	char			*ku;
-	char			*kd;
-	char			*kl;
-	char			*kr;
+	char			*cl; /* window */
+	char			*cm; /* cursor */
+	char			*vi; /* String of commands to make the cursor invisible */
+	char			*ve; /* String of commands to return the cursor to normal */
 }					t_termcap_cmd;
 
 /*
