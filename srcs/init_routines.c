@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 14:45:27 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 20:05:32 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/11 20:10:05 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ void		init_data(int argc, char **argv, t_input **input, int *output_len)
 	int len;
 
 	if (argc < 1)
-	{
-		ft_printf("%s\n", "Please, enter arguments.\n");
-		exit(0);
-	}
+		print_error("Invalid usage.\nCorrect usage: ./ft_select arg1 ... n ");
 	max = 0;
 	len = 0;
 	while (argc != 0)
