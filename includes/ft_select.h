@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:31:17 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 22:31:21 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/11 22:47:39 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@
 # include <stdlib.h>
 # include <termcap.h>
 # include <termios.h>
-#include <fcntl.h>
 
 # include "../libft/libft.h"
 
 # define SPACES	4
+# define OUTPUT_FD 0
+# define INPUT_FD 1
 
 /*
 ************************ ADT for data **********************************

@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 22:43:35 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/11 22:47:37 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@
 // TODO: We must be able to interrupt your program with ctrl+z and restore it with fg without seeing any changes in its behavior.
 // TODO: If the program is launched in an empty environment, you need to behave reasonably.
 
-// ft_dprintf(STDIN_FILENO, "%s%s%s%~s\n",
+// ft_dprintf(OUTPUT_FD, "%s%s%s%~s\n",
 // 		   (arg->selected ? BACK : EMPTY_STR),
 // 		   (arg->chosen_one ? UNDER_LINE : EMPTY_STR),
 // 		   (arg->chosen_one ? ITALIC : EMPTY_STR),
@@ -69,7 +69,7 @@ int		main(int argc, char **argv)
 		init_coordinates(&input, len);
 		init_termcap(&terminal_state);
 
-		if (tcgetattr(STDIN_FILENO, &s_termios) == -1)
+		if (tcgetattr(OUTPUT_FD, &s_termios) == -1)
 			return (-1);
 
 		// if (tcgetattr(0, &s_termios_backup) == -1)
@@ -78,8 +78,8 @@ int		main(int argc, char **argv)
 		s_termios.c_lflag &= ~(ICANON | ECHO); /* Перевести терминал в канонический режим. Функция чтения будет получать ввод с клавиатуры без ожидания ввода */
 		// s_termios.c_lflag &= ~(ECHO);   /* Клавиши, набранные на клавиатуре, больше не будут появляться в терминале */
 
-		ft_putstr_fd(terminal_state.cl, STDIN_FILENO); // clear window
-		ft_putstr_fd(terminal_state.vi, STDIN_FILENO); // mask cursor
+		ft_putstr_fd(terminal_state.cl, OUTPUT_FD); // clear window
+		ft_putstr_fd(terminal_state.vi, OUTPUT_FD); // mask cursor
 
 		int i = 1000000000;
 
@@ -88,7 +88,7 @@ int		main(int argc, char **argv)
 		while (i--)
 			;
 
-		// ft_putstr_fd(terminal_state.cl, STDIN_FILENO); // clear window
+		// ft_putstr_fd(terminal_state.cl, OUTPUT_FD); // clear window
 
 		// t_input *buf = input;
 
@@ -99,19 +99,20 @@ int		main(int argc, char **argv)
 		// while (i--)
 		// 	;
 
-		ft_putstr_fd(terminal_state.ve, STDIN_FILENO);
-		ft_putstr_fd(terminal_state.cl, STDIN_FILENO); // clear window
+		ft_putstr_fd(terminal_state.ve, OUTPUT_FD);
+		ft_putstr_fd(terminal_state.cl, OUTPUT_FD); // clear window
 
 		// while (buf)
 		// {
 		// 	ft_printf("%s\n", buf->data);
 		// 	buf = buf->next;
 		// }
-		ft_putstr_fd("srcs ", 1);
-		ft_putstr_fd("srcs ", 1);
+		ft_putstr_fd("includes ", INPUT_FD);
+		ft_putstr_fd("srcs ", INPUT_FD);
+		ft_putstr_fd("srcs ", INPUT_FD);
 
 		// ft_printf("\n");
-		// ft_putstr_fd(terminal_state.cl, STDIN_FILENO); // clear window
+		// ft_putstr_fd(terminal_state.cl, OUTPUT_FD); // clear window
 
 		// system("leaks -q ft_select");
 		return (0);
