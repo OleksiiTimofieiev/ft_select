@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 19:27:42 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/11 19:37:34 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int		main(int argc, char **argv)
 		struct 	termios s_termios;
 		struct termios 	s_termios_backup;
 
-		init_data(--argc, argv, &input, &len);
 		init_terminal(termtype);
+		init_data(--argc, argv, &input, &len);
 		init_coordinates(&input, len);
 		init_termcap(&tc_cmd);
 

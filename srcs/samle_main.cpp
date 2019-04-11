@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:36:29 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 19:28:05 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/11 20:06:49 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@
 // }
 
 /* 1 */
-
-// TODO: void		sl_init_term(void) prippa;
-
 /* 2 */
 
 // TODO: Cursor’s position: underlined text.

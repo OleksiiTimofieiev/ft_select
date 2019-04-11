@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 14:45:27 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 18:49:16 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/11 20:05:32 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ void		init_data(int argc, char **argv, t_input **input, int *output_len)
 	int	max;
 	int len;
 
+	if (argc < 1)
+	{
+		ft_printf("%s\n", "Please, enter arguments.\n");
+		exit(0);
+	}
 	max = 0;
 	len = 0;
 	while (argc != 0)
@@ -34,8 +39,15 @@ void	init_terminal(char *termtype)
 {
 	int res;
 	
-	termtype = getenv("TERM");
+	if (!isatty(STDIN_FILENO))
+		print_error("Not a terminal");
+	else if (!(termtype = getenv("TERM")))
+		print_error("TERM var is not available");
 	res = tgetent(0, termtype);
+	if (res < 0)
+		print_error("Can not access to the terminal database");
+	else if (res == 0)
+		print_error("Terminal type is not defined");
 }
 
 void	set_coordinates(t_input *input, int word_per_line, int len)
@@ -73,13 +85,6 @@ void	init_termcap(t_termcap_cmd *tc_cmd)
 	tc_cmd->cm = tgetstr("cm", NULL); // cursor;
 	tc_cmd->vi = tgetstr("vi", NULL);
 	tc_cmd->ve = tgetstr("ve", NULL);
-	tc_cmd->ab = tgetstr("AB", NULL);
-	tc_cmd->reset = tgetstr("me", NULL);
-
-	tc_cmd->ku = tgetstr("ku", NULL);
-	tc_cmd->kd = tgetstr("kd", NULL);
-	tc_cmd->kl = tgetstr("kl", NULL);
-	tc_cmd->kr = tgetstr("kr", NULL);
 }
 
 void init_coordinates(t_input **input, int len)

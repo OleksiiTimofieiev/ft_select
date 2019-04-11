@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:31:17 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 19:34:08 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/11 20:06:02 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 # include "../libft/libft.h"
 
-# define SPACES	2
+# define SPACES	4
 
 /*
 ************************ ADT for data **********************************
@@ -68,5 +68,11 @@ void				add_node(t_input **head_ref, char *data);
 */
 
 void				print_to_terminal(t_input *input);
+
+/*
+************************* error func *************************
+*/
+
+void 				print_error(char *error_type);
 
 #endif
