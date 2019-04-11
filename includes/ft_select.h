@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:31:17 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 14:47:10 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/11 14:54:28 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct		s_input
 	struct s_input	*prev;
 }					t_input;
 
-void				init_data(int argc, char **argv, t_input **input);
+int					init_data(int argc, char **argv, t_input **input);
 void				delete_node(t_input **head_ref, t_input *del);
 void				add_node(t_input **head_ref, char *data);
 

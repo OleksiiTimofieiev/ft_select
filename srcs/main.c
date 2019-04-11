@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 14:45:54 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/11 14:58:47 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ int		main(int argc, char **argv)
 {
 	t_input *input;
 
-	init_data(--argc, argv, &input);
+	ft_printf("len -> %d\n", init_data(--argc, argv, &input));
 
 	t_input *buf = input;
 
 	// t_input *del = input->next;
 
-	// deleteNode(&input, del);
+	// delete_node(&input, del);
 
 	while (buf)
 	{
