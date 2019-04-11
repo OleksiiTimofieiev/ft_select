@@ -6,23 +6,26 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:31:17 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 14:54:28 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/11 15:31:06 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_SELECT_H
 # define FT_SELECT_H
 
-# include "../libft/libft.h"
-
 # include <stdlib.h>
 # include <termcap.h>
-
 # include <termios.h>
+
+# include "../libft/libft.h"
+
+# define SPACES	4
 
 typedef struct		s_input
 {
 	char			*data;
+	int				x;
+	int				y;
 	struct s_input	*next;
 	struct s_input	*prev;
 }					t_input;
