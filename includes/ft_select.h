@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:31:17 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 20:06:02 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/11 20:15:37 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct		s_input
 	struct s_input	*next;
 	struct s_input	*prev;
 }					t_input;
+
+t_input				*g_pointer;
 
 /*
 ************************ termcap settings **********************************
@@ -73,6 +75,6 @@ void				print_to_terminal(t_input *input);
 ************************* error func *************************
 */
 
-void 				print_error(char *error_type);
+void				print_error(char *error_type);
 
 #endif

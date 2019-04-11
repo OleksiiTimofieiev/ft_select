@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 20:11:14 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/11 20:14:44 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ void	print_to_terminal(t_input *input)
 		input = input->next;
 	}
 }
-
-t_input	*g_pointer;
 
 int		main(int argc, char **argv)
 {

@@ -1,4 +1,4 @@
-- isatty, 
++ isatty, 
 - ttyname, 
 - ttyslot 
 - ioctl

@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:36:29 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 20:06:49 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/11 20:13:00 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,6 @@
 // TODO: esc handler;
 // TODO: We must be able to interrupt your program with ctrl+z and restore it with fg without seeing any changes in its behavior.
 // TODO: If the program is launched in an empty environment, you need to behave reasonably.
-
-/* 4 */
-// Possible bonuses :
-// • When the window is too small, the columns move from left to right depending on the position of the cursor.
-// • When the program is terminated, what needs to be erased must be, and the prompt as well as the cursor will appear on the line that follows the program’s call. Run tig to see what I mean. Don’t forget about the signals!
-// • A beautiful interface (up to the corrector to decide, not you!)
-// • Positioning of the cursor when we type a sequence of characters that matches an
-// element in the list (dynamic search).
-// TODO: sorting of the input;
 
 
 struct s_termcap_cmd
