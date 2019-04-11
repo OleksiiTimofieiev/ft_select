@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:31:17 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 20:15:37 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/11 20:34:23 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,17 @@ void				print_to_terminal(t_input *input);
 */
 
 void				print_error(char *error_type);
+
+// #define ESC 27
+// #define UP 4283163
+// #define DOWN 4348699
+// #define RIGHT 4414235
+// #define LEFT 4479771
+// #define RETURN 10
+// #define SPACE 32
+// #define BACK_SPACE 127
+// #define DEL 2117294875
+// #define CTRL_A 1
+// #define CTRL_W 23
 
 #endif
