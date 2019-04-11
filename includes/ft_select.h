@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:31:17 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 15:31:06 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/11 16:47:42 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdlib.h>
 # include <termcap.h>
-# include <termios.h>
+# include <termios.h>	
 
 # include "../libft/libft.h"
 
@@ -31,7 +31,8 @@ typedef struct		s_input
 }					t_input;
 
 int					init_data(int argc, char **argv, t_input **input);
-void				delete_node(t_input **head_ref, t_input *del);
+void				delete_node(t_input **head_ref, t_input *del, int len);
 void				add_node(t_input **head_ref, char *data);
+void set_coordinates(t_input *input, int word_per_line, int len);
 
 #endif

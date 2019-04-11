@@ -6,13 +6,13 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 14:43:47 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 15:23:51 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/11 16:47:00 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
 
-void	delete_node(t_input **head_ref, t_input *del)
+void	delete_node(t_input **head_ref, t_input *del, int len)
 {
 	if (*head_ref == NULL || del == NULL)
 		return ;
@@ -24,6 +24,10 @@ void	delete_node(t_input **head_ref, t_input *del)
 		del->prev->next = del->next;
 	free(del->data);
 	free(del);
+	int word_per_line = tgetnum("co") / (len + SPACES);
+
+	// ft_printf("words_per_line -> %d\n", word_per_line);
+	set_coordinates(*head_ref, word_per_line, len);
 }
 
 void	add_node(t_input **head_ref, char *data)

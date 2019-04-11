@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 16:42:14 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/11 16:47:17 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,8 @@ void	set_coordinates(t_input *input, int word_per_line, int len)
 	}
 }
 
-void	init_coordinates(int argc, char **argv, t_input **input)
+void	init_coordinates(t_input **input, int len)
 {
-	int len = init_data(--argc, argv, input);
 	// ft_printf("len -> %d\n", len);
 
 	// int height = tgetnum("li");
@@ -95,11 +94,6 @@ struct s_termcap_cmd tc_cmd;
 
 void init_termcap(struct s_termcap_cmd *tc_cmd)
 {
-	// #ifdef USE_TERMCAP
-
-
-
-
 	tc_cmd->cl = tgetstr("cl", NULL); // window
 	tc_cmd->cm = tgetstr("cm", NULL); // cursor;
 	tc_cmd->vi = tgetstr("vi", NULL);
@@ -128,8 +122,10 @@ int main(int argc, char **argv)
 		char *termtype = NULL;
 		t_input *input = NULL;
 
+		int len = init_data(--argc, argv, &input);
+
 		init_terminal(termtype);
-		init_coordinates(argc, argv, &input);
+		init_coordinates(&input, len);
 		init_termcap(&tc_cmd);
 
 		struct termios s_termios;
@@ -161,7 +157,9 @@ int main(int argc, char **argv)
 
 		t_input *del = input->next;
 
-		delete_node(&input, del);
+		delete_node(&input, del, len);
+
+		
 
 		print_to_terminal(input);
 
