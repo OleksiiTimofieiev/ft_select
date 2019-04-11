@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 20:56:54 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/11 22:43:35 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,24 +62,24 @@ int		main(int argc, char **argv)
 		t_input			*input = NULL;
 		int				len;
 		struct 	termios s_termios;
-		struct termios 	s_termios_backup;
+		// struct termios 	s_termios_backup;
 
 		init_terminal(termtype);
 		init_data(--argc, argv, &input, &len);
 		init_coordinates(&input, len);
 		init_termcap(&terminal_state);
 
-		if (tcgetattr(0, &s_termios) == -1)
+		if (tcgetattr(STDIN_FILENO, &s_termios) == -1)
 			return (-1);
 
-		if (tcgetattr(0, &s_termios_backup) == -1)
-			return (-1);
+		// if (tcgetattr(0, &s_termios_backup) == -1)
+		// 	return (-1);
 
-		s_termios.c_lflag &= ~(ICANON); /* Перевести терминал в канонический режим. Функция чтения будет получать ввод с клавиатуры без ожидания ввода */
-		s_termios.c_lflag &= ~(ECHO);   /* Клавиши, набранные на клавиатуре, больше не будут появляться в терминале */
+		s_termios.c_lflag &= ~(ICANON | ECHO); /* Перевести терминал в канонический режим. Функция чтения будет получать ввод с клавиатуры без ожидания ввода */
+		// s_termios.c_lflag &= ~(ECHO);   /* Клавиши, набранные на клавиатуре, больше не будут появляться в терминале */
 
-		ft_putstr_fd(terminal_state.cl, 0); // clear window
-		ft_putstr_fd(terminal_state.vi, 0); // mask cursor
+		ft_putstr_fd(terminal_state.cl, STDIN_FILENO); // clear window
+		ft_putstr_fd(terminal_state.vi, STDIN_FILENO); // mask cursor
 
 		int i = 1000000000;
 
@@ -88,27 +88,31 @@ int		main(int argc, char **argv)
 		while (i--)
 			;
 
-		ft_putstr_fd(terminal_state.cl, 0); // clear window
+		// ft_putstr_fd(terminal_state.cl, STDIN_FILENO); // clear window
 
 		// t_input *buf = input;
 
-		g_pointer = input;
+		// g_pointer = input;
 
-		delete_node(&input, g_pointer, len);
+		// delete_node(&input, g_pointer, len);
 
-		while (i--)
-			;
+		// while (i--)
+		// 	;
 
-		ft_putstr_fd(terminal_state.ve, 0);
-
+		ft_putstr_fd(terminal_state.ve, STDIN_FILENO);
+		ft_putstr_fd(terminal_state.cl, STDIN_FILENO); // clear window
 
 		// while (buf)
 		// {
 		// 	ft_printf("%s\n", buf->data);
 		// 	buf = buf->next;
 		// }
+		ft_putstr_fd("srcs ", 1);
+		ft_putstr_fd("srcs ", 1);
 
-		ft_printf("\n");
-		system("leaks -q ft_select");
+		// ft_printf("\n");
+		// ft_putstr_fd(terminal_state.cl, STDIN_FILENO); // clear window
+
+		// system("leaks -q ft_select");
 		return (0);
 }
