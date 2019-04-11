@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 18:58:14 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/11 19:00:14 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 // TODO: norminette;
 // TODO: leaks => delete all data before exit => OS will clean it;
+// TODO: delete smaple_main.cpp
 
 void	print_to_terminal(t_input *input)
 {
