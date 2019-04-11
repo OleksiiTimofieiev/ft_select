@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:36:29 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 16:35:32 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/11 16:38:51 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 /* 1 */
 
 // TODO: void		sl_init_term(void) prippa;
+// TODO: external poiter;
 
 /* 2 */
 

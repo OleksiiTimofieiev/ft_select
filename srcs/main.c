@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 16:37:12 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/11 16:42:14 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ struct s_termcap_cmd
 	char *kl;
 	char *kr;
 };
+
 struct s_termcap_cmd tc_cmd;
 
 void init_termcap(struct s_termcap_cmd *tc_cmd)
@@ -114,13 +115,12 @@ void init_termcap(struct s_termcap_cmd *tc_cmd)
 
 void	print_to_terminal(t_input *input)
 {
-	while(input)
+	while (input)
 	{
 		ft_putstr_fd(tgoto(tgetstr("cm", NULL), input->x, input->y), 0 /* file descriptor, define it */);
 		ft_printf("%s", input->data);
 		input = input->next;
 	}
-
 }
 
 int main(int argc, char **argv)
@@ -153,18 +153,23 @@ int main(int argc, char **argv)
 
 
 		while (i--)
-				;
+			;
 
-
-
-		
-		ft_putstr_fd(tc_cmd.ve, 0);
+		ft_putstr_fd(tc_cmd.cl, 0); // clear window
 
 		// t_input *buf = input;
 
-		// t_input *del = input->next;
+		t_input *del = input->next;
 
-		// delete_node(&input, del);
+		delete_node(&input, del);
+
+		print_to_terminal(input);
+
+		while (i--)
+			;
+
+		ft_putstr_fd(tc_cmd.ve, 0);
+
 
 		// while (buf)
 		// {
