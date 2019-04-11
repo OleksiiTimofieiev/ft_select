@@ -6,13 +6,13 @@
 #    By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/22 12:27:52 by otimofie          #+#    #+#              #
-#    Updated: 2019/04/10 13:21:20 by otimofie         ###   ########.fr        #
+#    Updated: 2019/04/11 14:42:12 by otimofie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= ft_select
 
-CORE			= main.c \
+CORE			= *.c
 			
 SRCS        	= $(addprefix srcs/, $(CORE))
 
