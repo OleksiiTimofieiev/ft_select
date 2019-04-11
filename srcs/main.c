@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 19:00:14 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/11 19:27:42 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,21 @@ void	print_to_terminal(t_input *input)
 	}
 }
 
-int main(int argc, char **argv)
+t_input	*g_pointer;
+
+int		main(int argc, char **argv)
 {
 		t_termcap_cmd	tc_cmd;
 		char			*termtype = NULL;
 		t_input			*input = NULL;
 		int				len;
-		struct termios s_termios;
-		struct termios s_termios_backup;
+		struct 	termios s_termios;
+		struct termios 	s_termios_backup;
 
 		init_data(--argc, argv, &input, &len);
 		init_terminal(termtype);
 		init_coordinates(&input, len);
 		init_termcap(&tc_cmd);
-
 
 		if (tcgetattr(0, &s_termios) == -1)
 			return (-1);
@@ -64,9 +65,9 @@ int main(int argc, char **argv)
 
 		// t_input *buf = input;
 
-		t_input *del = input->next;
+		g_pointer = input->next;
 
-		delete_node(&input, del, len);
+		delete_node(&input, g_pointer, len);
 
 		while (i--)
 			;
