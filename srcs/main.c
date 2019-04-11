@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 20:16:34 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/11 20:26:40 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,37 @@
 
 // TODO: norminette;
 // TODO: leaks => delete all data before exit => OS will clean it;
-// TODO: delete smaple_main.cpp
+
+/* 1 */
+/* 2 */
+
+// TODO: # define NO_ROOM "Not enough space! Resize window."
+// TODO: circular selection with arrows ;
+// TODO: One or more choices can be selected or un-selected with the the space key. With
+// each selection, the cursor must automatically position itself on the next element.
+// TODO: Cursor’s position: underlined text.
+// TODO: large vs small window;
+// TODO: resize of the window => cursor behavioiur
+// TODO: Selected choice: inverse video text.
+// TODO: Choice non selected: normal text.
+// • If the choices are files names, colorize the list according to the extensions (a bit like
+// ls -G on OSX).
+// TODO: Selected choice + cursor’s position: inverse video underlined text.
+// TODO: Whichever way your program ends, the default configuration of your terminal MUST be restored. This is true even after it received a signal (except for the signals that we cannot intercept, but this would mean that your program does not work).
+// TODO: If the user presses either delete or backspace, the element the cursor is pointing to must be erased from the list.
+// If there are no more elements in the list, the behavior must be exactly the same as if the user had pressed esc.
+// TODO: When the user validates the selection with the return key, the list of choices will be sent back to shell.
+// The latter (i.e. list of choices sent back) will be separated by a space. This will allow you to use your program ft_select inside a shell script (to create a “set” for example).
+// TODO: sample of commands as in the subject;
+// TODO: not possible to show everithing; if size is ok -> show everithing;
+// TODO: If the user presses either delete or backspaceIf there are no more elements in the list, the behavior must be exactly the same as if the user had pressed esc.
+
+/* 3 */
+
+// TODO: check how the change size signal works; on every move = +;
+// TODO: esc handler;
+// TODO: We must be able to interrupt your program with ctrl+z and restore it with fg without seeing any changes in its behavior.
+// TODO: If the program is launched in an empty environment, you need to behave reasonably.
 
 int		main(int argc, char **argv)
 {
