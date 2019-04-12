@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/12 16:41:10 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/12 17:08:40 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,12 @@
 /* 1 */
 /* 2 */
 
-// tODO: struct with start and end as a pointer;
-// TODO: circular selection with arrows ;
-// TODO: One or more choices can be selected or un-selected with the the space key. With
-// each selection, the cursor must automatically position itself on the next element.
-// TODO: Cursor’s position: underlined text.
 // TODO: large vs small window;
 // TODO: resize of the window => cursor behavioiur
 // TODO: Selected choice: inverse video text.
 // TODO: Choice non selected: normal text.
 // • If the choices are files names, colorize the list according to the extensions (a bit like
 // ls -G on OSX).
-// TODO: Selected choice + cursor’s position: inverse video underlined text.
 // TODO: # define NO_ROOM "Not enough space! Resize window."
 // TODO: Whichever way your program ends, the default configuration of your terminal MUST be restored. This is true even after it received a signal (except for the signals that we cannot intercept, but this would mean that your program does not work).
 // TODO: If the user presses either delete or backspace, the element the cursor is pointing to must be erased from the list.
@@ -44,17 +38,8 @@
 /* 3 */
 
 // TODO: check how the change size signal works; on every move = +;
-// TODO: esc handler;
 // TODO: We must be able to interrupt your program with ctrl+z and restore it with fg without seeing any changes in its behavior.
 // TODO: If the program is launched in an empty environment, you need to behave reasonably.
-
-// ft_dprintf(OUTPUT_FD, "%s%s%s%~s\n",
-// 		   (arg->selected ? BACK : EMPTY_STR),
-// 		   (arg->chosen_one ? UNDER_LINE : EMPTY_STR),
-// 		   (arg->chosen_one ? ITALIC : EMPTY_STR),
-// 		   arg->color_type,
-// 		   arg->color,
-// 		   arg->name);
 
 // void sl_sig_hendler(int sig)
 // {
