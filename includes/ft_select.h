@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:31:17 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/12 16:51:02 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/12 17:13:22 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,12 +99,9 @@ void				esc_key_handler(t_global *input);
 void				down_key_handler(t_global *global);
 void				up_key_handler(t_global *global);
 void	space_key_handler(t_global *global);
+void select_all(t_global *global);
 
-
-
-
-
-void				key_selection(int key, t_global *input);
+	void key_selection(int key, t_global *input);
 void				restore_terminal(t_global *global);
 
 #endif

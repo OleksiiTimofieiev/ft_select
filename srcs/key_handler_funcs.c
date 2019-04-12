@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:32:11 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/12 17:08:05 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/12 17:16:39 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,18 @@ void	space_key_handler(t_global *global)
 		ft_printf_fd("%s%s%s%s%s", EMPTY_COLOR,
 			UNDERLINED, ITALIC, global->current->data, RESET);
 	}
+	down_key_handler(global);
+}
 
-down_key_handler(global);
+void	select_all(t_global *global)
+{
+	t_input *buf;
+	
+	buf = global->head;
+	while (buf)
+	{
+		buf->selection = 1;
+		down_key_handler(global);
+		buf = buf->next;
+	}
 }
