@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 22:54:12 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/12 16:31:02 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 // TODO: norminette;
 // TODO: leaks => delete all data before exit => OS will clean it;
+// TOOO: logic when deleting global end;
 
 /* 1 */
 /* 2 */
@@ -55,58 +56,94 @@
 // 		   arg->color,
 // 		   arg->name);
 
+// void sl_sig_hendler(int sig)
+// {
+// 	// if (sig == SIGWINCH)
+// 	// 	sl_print_all();
+// 	// else if (sig == SIGTSTP)
+// 	// 	sl_ctrl_z();
+// 	else if (sig == SIGCONT)
+// 	{
+// 		// sl_init_term();
+// 		// sl_init_signals();
+// 		// if (sl()->music)
+// 		// 	sl_music_on();
+// 		// sl_print_all();
+// 	}
+// 	else
+// 		exit(0);
+// }
+
+void 	restore_terminal(t_global *global)
+{
+	tcsetattr(OUTPUT_FD, TCSANOW, &global->initial_terminal_state);
+	ft_putstr_fd(global->terminal_state.ve, OUTPUT_FD);
+	ft_putstr_fd(global->terminal_state.te, OUTPUT_FD);
+}
+
+// t_some_struct *ss(void)
+// {
+// 	static t_some_struct ss;
+
+// 	return (&ss);
+// }
+
+// t_some_struct *ss;
+
+// ss = ss(ksdjfhg);
+// ss->
+// ss()->
+// 	->asdads
+	t_global global;
+
 int		main(int argc, char **argv)
 {
-		t_termcap_cmd	terminal_state;
+		
 		char			*termtype = NULL;
 		t_input			*input = NULL;
 		int				len;
-		struct 	termios s_termios;
-		// struct termios 	s_termios_backup;
 
 		init_terminal(termtype);
 		init_data(--argc, argv, &input, &len);
 		init_coordinates(&input, len);
-		init_termcap(&terminal_state);
+		init_termcap(&global.terminal_state);
 
-		if (tcgetattr(OUTPUT_FD, &s_termios) == -1)
+		global.head = input;
+		global.current = input;
+
+
+		if (tcgetattr(OUTPUT_FD, &global.initial_terminal_state) == -1)
+			return (-1);
+		if (tcgetattr(OUTPUT_FD, &global.new_terminal_state) == -1)
 			return (-1);
 
-		// if (tcgetattr(0, &s_termios_backup) == -1)
+		// if (tcgetattr(0, &global.new_terminal_state) == -1)
 		// 	return (-1);
 
-		s_termios.c_lflag &= ~(ICANON | ECHO); /* Перевести терминал в канонический режим. Функция чтения будет получать ввод с клавиатуры без ожидания ввода */
-		// s_termios.c_lflag &= ~(ECHO);   /* Клавиши, набранные на клавиатуре, больше не будут появляться в терминале */
+		global.new_terminal_state.c_lflag &= ~(ICANON | ECHO); /* Перевести терминал в канонический режим. Функция чтения будет получать ввод с клавиатуры без ожидания ввода */
+		// global.initial_terminal_state.c_lflag &= ~(ECHO);   /* Клавиши, набранные на клавиатуре, больше не будут появляться в терминале */
+		// global.initial_terminal_state.c_cc[VMIN] = 1;
+		// global.initial_terminal_state.c_cc[VTIME] = 0;
 
-		ft_putstr_fd(terminal_state.cl, OUTPUT_FD); // clear window
-		ft_putstr_fd(terminal_state.vi, OUTPUT_FD); // mask cursor
+		tcsetattr(OUTPUT_FD, TCSANOW, &global.new_terminal_state);
 
-		int i = 1000000000;
+		ft_putstr_fd(global.terminal_state.ti, OUTPUT_FD); // mask cursor
+		ft_putstr_fd(global.terminal_state.vi, OUTPUT_FD); // mask cursor
+		ft_putstr_fd(global.terminal_state.cl, OUTPUT_FD); // clear window
 
 		print_to_terminal(input);
 
-		while (i--)
-			;
+		int key;
 
-		// ft_putstr_fd(terminal_state.cl, OUTPUT_FD); // clear window
+		while (42)
+		{
+			key = 0;
+			if ((read(0, &key, 8) == -1))
+				exit(0);
+			key_selection(key, &global);
+		}
 
-		// t_input *buf = input;
-
-		// g_pointer = input;
-
-		// delete_node(&input, g_pointer, len);
-
-		// while (i--)
-		// 	;
-
-		ft_putstr_fd(terminal_state.ve, OUTPUT_FD);
-		ft_putstr_fd(terminal_state.cl, OUTPUT_FD); // clear window
-
-		// while (buf)
-		// {
-		// 	ft_printf("%s\n", buf->data);
-		// 	buf = buf->next;
-		// }
+		
 		ft_putstr_fd("includes ", INPUT_FD);
 		ft_putstr_fd("srcs ", INPUT_FD);
 		ft_putstr_fd("srcs ", INPUT_FD);
@@ -114,6 +151,6 @@ int		main(int argc, char **argv)
 		// ft_printf("\n");
 		// ft_putstr_fd(terminal_state.cl, OUTPUT_FD); // clear window
 
-		// system("leaks -q ft_select");
+
 		return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:31:17 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 22:47:39 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/12 16:34:37 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <termios.h>
 
 # include "../libft/libft.h"
+# include "keys.h"
 
 # define SPACES	4
 # define OUTPUT_FD 0
@@ -32,11 +33,10 @@ typedef struct		s_input
 	char			*data;
 	int				x;
 	int				y;
+	int				selection;
 	struct s_input	*next;
 	struct s_input	*prev;
 }					t_input;
-
-t_input				*g_pointer;
 
 /*
 ************************ termcap settings **********************************
@@ -48,7 +48,21 @@ typedef struct		s_termcap_cmd
 	char			*cm; /* cursor */
 	char			*vi; /* String of commands to make the cursor invisible */
 	char			*ve; /* String of commands to return the cursor to normal */
+	char 			*ti;
+	char 			*te;
+
 }					t_termcap_cmd;
+
+typedef struct 		s_global
+{
+	t_input 			*head;
+	t_input				*current;
+	t_input 			*end;
+
+	struct termios 		initial_terminal_state;
+	struct termios 		new_terminal_state;
+	t_termcap_cmd 		terminal_state;
+}					t_global;
 
 /*
 ************************* initialization routines *************************
@@ -79,16 +93,17 @@ void				print_to_terminal(t_input *input);
 
 void				print_error(char *error_type);
 
-// #define ESC 27
-// #define UP 4283163
-// #define DOWN 4348699
-// #define RIGHT 4414235
-// #define LEFT 4479771
-// #define RETURN 10
-// #define SPACE 32
-// #define BACK_SPACE 127
-// #define DEL 2117294875
-// #define CTRL_A 1
-// #define CTRL_W 23
+typedef void (*t_events)(t_global *current);
+
+void				esc_key_handler(t_global *input);
+void				down_key_handler(t_global *global);
+void				up_key_handler(t_global *global);
+
+
+
+
+
+void				key_selection(int key, t_global *input);
+void				restore_terminal(t_global *global);
 
 #endif

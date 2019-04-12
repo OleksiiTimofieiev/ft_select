@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 14:45:27 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 22:46:23 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/12 14:30:25 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ void	init_termcap(t_termcap_cmd *tc_cmd)
 	tc_cmd->cm = tgetstr("cm", NULL); // cursor;
 	tc_cmd->vi = tgetstr("vi", NULL);
 	tc_cmd->ve = tgetstr("ve", NULL);
+	tc_cmd->ti = tgetstr("ti", NULL);
+	tc_cmd->ti = tgetstr("te", NULL);
 }
 
 void init_coordinates(t_input **input, int len)

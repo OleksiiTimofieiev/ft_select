@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 14:43:47 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/11 18:59:29 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/12 16:31:38 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	add_node(t_input **head_ref, char *data)
 	new_node->data = ft_strdup(data);
 	new_node->x = 0;
 	new_node->y = 0;
+	new_node->selection = 0;
 	new_node->next = (*head_ref);
 	new_node->prev = NULL;
 	if ((*head_ref) != NULL)

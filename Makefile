@@ -6,7 +6,7 @@
 #    By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/22 12:27:52 by otimofie          #+#    #+#              #
-#    Updated: 2019/04/11 20:16:56 by otimofie         ###   ########.fr        #
+#    Updated: 2019/04/12 15:33:30 by otimofie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,8 @@ CORE			=	main.c \
 					init_routines.c \
 					error_management.c \
 					output_routines.c \
+					key_selection.c \
+					key_handler_funcs.c \
 			
 SRCS        	= 	$(addprefix srcs/, $(CORE))
 

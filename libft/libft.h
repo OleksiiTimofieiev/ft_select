@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 18:22:41 by otimofie          #+#    #+#             */
-/*   Updated: 2018/12/22 15:09:47 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/12 15:58:31 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,12 @@ union				u_t
 **-------------------------   colors   -------------------------
 */
 
+# define BOLD "\e[1m"
+# define DIM "\e[2m"
+# define ITALIC "\e[3m"
+# define UNDERLINED "\e[4m"
+# define BACK "\e[7m"
+
 # define GREY   "\x1b[90m"
 # define RED     "\x1b[31m"
 # define GREEN   "\x1b[32m"
@@ -146,6 +152,7 @@ void				ft_parsing(va_list ap);
 */
 
 int					ft_printf(const char *format, ...);
+int					ft_printf_fd(const char *format, ...);
 void				ft_select_printing_conversion(va_list ap);
 void				display_bits(int value);
 void				ft_wchar_print(unsigned int value);
