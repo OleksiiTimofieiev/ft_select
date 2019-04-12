@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:54:46 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/12 17:13:11 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/12 19:12:34 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,27 @@ static const int	keys[KEY_ARRAY_SIZE] =
 };
 
 static const t_events ke[KEY_ARRAY_SIZE] =
-	{
-		esc_key_handler, up_key_handler, down_key_handler,
-		esc_key_handler, esc_key_handler, esc_key_handler,
-		space_key_handler, esc_key_handler, esc_key_handler,
-		select_all, esc_key_handler};
+{
+	esc_key_handler, up_key_handler, down_key_handler,
+	esc_key_handler, esc_key_handler, esc_key_handler,
+	space_key_handler, esc_key_handler, esc_key_handler,
+	select_all, esc_key_handler
+};
 
-void	key_selection(int key, t_global *input)
+int		key_selection(int key, t_global *input)
 {
 	int i;
 
-	i = 0;
-	while (i < KEY_ARRAY_SIZE)
+	i = -1;
+	while (++i < KEY_ARRAY_SIZE)
 	{
 		if (keys[i] == key)
 		{
+			if (key == RETURN)
+				return (0);
 			ke[i](input);
 			break ;
 		}
-		i++;
 	}
+	return (1);
 }

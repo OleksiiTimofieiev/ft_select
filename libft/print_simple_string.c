@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_simple_string.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timofieiev <timofieiev@student.42.fr>      +#+  +:+       +#+        */
+/*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 16:53:03 by otimofie          #+#    #+#             */
-/*   Updated: 2018/10/25 17:21:43 by timofieiev       ###   ########.fr       */
+/*   Updated: 2019/04/12 18:56:31 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

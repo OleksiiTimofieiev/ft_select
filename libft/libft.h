@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 18:22:41 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/12 16:47:04 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/12 18:58:20 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,6 @@ void				ft_parsing(va_list ap);
 */
 
 int					ft_printf(const char *format, ...);
-int					ft_printf_fd(const char *format, ...);
 void				ft_select_printing_conversion(va_list ap);
 void				display_bits(int value);
 void				ft_wchar_print(unsigned int value);

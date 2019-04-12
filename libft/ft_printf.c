@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 15:03:19 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/12 15:56:56 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/12 18:57:54 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,32 +42,6 @@ int		ft_printf(const char *format, ...)
 		}
 		else
 			g_v.quantity += write(1, &(*g_v.p++), 1);
-	}
-	va_end(ap);
-	return (g_v.quantity);
-}
-
-int		ft_printf_fd(const char *format, ...)
-{
-	va_list	ap;
-
-	g_v.quantity = 0;
-	va_start(ap, format);
-	g_v.p = (char *)format;
-	while (*g_v.p != '\0')
-	{
-		if (*g_v.p == '%')
-		{
-			g_v.p++;
-			if (*g_v.p == 'n')
-				get_current_n_chars(ap);
-			else if (*g_v.p == '%')
-				g_v.quantity += write(0, &(*g_v.p++), 1);
-			else
-				ft_parsing(ap);
-		}
-		else
-			g_v.quantity += write(0, &(*g_v.p++), 1);
 	}
 	va_end(ap);
 	return (g_v.quantity);

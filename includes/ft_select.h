@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:31:17 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/12 17:13:22 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/12 19:05:29 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,15 @@ typedef struct		s_termcap_cmd
 	char 			*te;
 
 }					t_termcap_cmd;
+
+typedef struct s_colors
+{
+	char *color1;
+	char *color2;
+	char *color3;
+	char *color4;
+	char *data;
+} t_colors;
 
 typedef struct 		s_global
 {
@@ -101,7 +110,7 @@ void				up_key_handler(t_global *global);
 void	space_key_handler(t_global *global);
 void select_all(t_global *global);
 
-	void key_selection(int key, t_global *input);
+	int key_selection(int key, t_global *input);
 void				restore_terminal(t_global *global);
 
 #endif
