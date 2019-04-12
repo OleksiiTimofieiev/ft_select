@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:32:11 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/12 19:21:29 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/12 19:47:12 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,16 +108,18 @@ void	space_key_handler(t_global *global)
 	t_colors colors;
 
 	init_color_data(&colors);
+	colors.data = global->current->data;
+
 	ft_putstr_fd(tgoto(tgetstr("cm", NULL),
 		global->current->x, global->current->y), OUTPUT_FD);
 	if (global->current->selection == 0)
 	{
 		global->current->selection = 1;
-colors.color1 = BACK;
-colors.color2 = UNDERLINED;
-colors.color3 = ITALIC;
+		colors.color1 = BACK;
+		colors.color2 = UNDERLINED;
+		colors.color3 = ITALIC;
 
-ft_putstr_fd_select(&colors, 0);
+		ft_putstr_fd_select(&colors, 0);
 	}
 	else
 	{
