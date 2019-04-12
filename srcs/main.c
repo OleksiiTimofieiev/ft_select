@@ -6,13 +6,13 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/12 16:31:02 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/12 16:41:10 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
 
-// TODO: norminette;
+// TODO: norminette in all directories;
 // TODO: leaks => delete all data before exit => OS will clean it;
 // TOOO: logic when deleting global end;
 

@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/25 18:22:41 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/12 15:58:31 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/12 16:47:04 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ union				u_t
 # define CYAN    "\x1b[36m"
 # define WHITE   "\x1b[37m"
 # define RESET   "\x1b[0m"
+# define EMPTY_COLOR ""
 
 /*
 **-------------------------   size modifications   -------------
