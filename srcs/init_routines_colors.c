@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 18:35:50 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 21:50:29 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 22:01:53 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void initial_select(t_global *global, int len)
 	global->words_per_line = tgetnum("co") / (len + SPACES);
 }
 
-void init_color(t_input *input)
+void	init_color(t_input *input)
 {
 	struct stat sb;
 
@@ -73,6 +73,7 @@ void init_terminal_state(t_global *g_evil, t_input *input, int len)
 	g_evil->current = input;
 	g_evil->input = input;
 
+	init_termcap(&g_evil->terminal_state);
 	tcgetattr(INPUT_FD, &g_evil->initial_terminal_state);
 	tcgetattr(INPUT_FD, &g_evil->new_terminal_state);
 

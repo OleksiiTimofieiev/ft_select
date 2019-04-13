@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 21:59:48 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 22:04:14 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,23 @@
 // 	signal(SIGQUIT, sl_sig_hendler);
 // }
 
+// void sl_init_term(void)
+// {
+// 	int32_t res;
+
+// 	if (!isatty(STDIN_FILENO))
+// 		sl_init_fatal_err_exit(NOT_A_TERM);
+// 	if (!(sl()->termtype = getenv("TERM")))
+// 		sl_init_fatal_err_exit(MSG(NO_TERM, NULL));
+// 	if ((res = tgetent(NULL, sl()->termtype)) == ERR)
+// 		sl_init_fatal_err_exit(NO_ACCESS_TO_DB);
+// 	else if (res == 0)
+// 		sl_init_fatal_err_exit(MSG(NO_SUCH_ENTRY, sl()->termtype));
+// 	sl_set_new_attr();
+// 	tputs(tgetstr("ti", NULL), 1, sl_print_key);
+// 	tputs(tgetstr("vi", NULL), 1, sl_print_key);
+// }
+
 // void sl_sig_hendler(int sig)
 // {
 // 	// if (sig == SIGWINCH)
@@ -77,7 +94,6 @@ int		main(int argc, char **argv)
 	init_terminal(g_evil.termtype);
 	init_data(--argc, argv, &input, &len);
 	init_coordinates(&input, len);
-	init_termcap(&g_evil.terminal_state);
 	init_color(input);
 	init_terminal_state(&g_evil, input, len);
 	print_to_terminal(input);
