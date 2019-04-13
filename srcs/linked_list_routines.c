@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 14:43:47 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 21:11:57 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 21:18:37 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,9 @@ void	delete_node(t_input **head_ref, t_input *del, int len, t_global *global)
 		del->prev->next = del->next;
 	free(del->data);
 	free(del);
-
-	// char *cl = tgetstr("cl", NULL);
 	word_per_line = tgetnum("co") / (len + SPACES);
 	set_coordinates(*head_ref, word_per_line, len);
-	// ft_putstr_fd(cl, INPUT_FD); // clear window
+	ft_putstr_fd(g_evil.terminal_state.cl, INPUT_FD);
 	print_to_terminal(*head_ref);
 }
 
