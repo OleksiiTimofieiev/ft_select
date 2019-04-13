@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:31:17 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/12 19:05:29 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 17:31:33 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <stdlib.h>
 # include <termcap.h>
 # include <termios.h>
+# include <fcntl.h>
+# include <sys/stat.h>
+# include <sys/xattr.h>
 
 # include "../libft/libft.h"
 # include "keys.h"
@@ -34,6 +37,8 @@ typedef struct		s_input
 	int				x;
 	int				y;
 	int				selection;
+char *color;
+char *color_type;
 	struct s_input	*next;
 	struct s_input	*prev;
 }					t_input;
@@ -117,6 +122,7 @@ void				key_selection(int key, t_global *input);
 void				left_key_handler(t_global *globa);
 void				right_key_handler(t_global *global);
 void				init_color_data(t_colors *colors);
-void				ft_putstr_fd_select(t_colors *colors, int fd);
+
+void				ft_putstr_fd_select(t_colors *colors, int fd, t_global * global);
 
 #endif

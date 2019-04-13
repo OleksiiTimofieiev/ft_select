@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/12 19:45:15 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 17:35:30 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 // TODO: norminette in all directories;
 // TODO: leaks => enter / invalid case / esc;
+// TODO: check static ones;
 
 /* 1 */
 /* 2 */
@@ -21,15 +22,8 @@
 // TODO: arrows to the next // previous column;
 // TODO: finish with keys management: del, backspace
 
-// TODO: + colors ls -G;
-// TODO: If the choices are files names, colorize the list according to the extensions (a bit like
-// ls -G on OSX).
-// https://github.com/prippa/ft_select/blob/master/source/init/sl_init_args.c
 // TODO: If the user presses either delete or backspace, the element the cursor is pointing to must be erased from the list.
 // If there are no more elements in the list, the behavior must be exactly the same as if the user had pressed esc.
-// select -> next element -> mark it;
-// TODO: clear main;
-// TODO: norminette;
 
 /* 3 */
 // TODO: large vs small window;
@@ -87,6 +81,12 @@ void 	restore_terminal(t_global *global)
 
 t_global	global;
 
+void sl_set_default_color(t_input *arg)
+{
+	arg->color_type = EMPTY_COLOR;
+	arg->color = EMPTY_COLOR;
+}
+
 void	initial_select(t_global *global, int len)
 {
 	t_colors colors;
@@ -98,9 +98,42 @@ void	initial_select(t_global *global, int len)
 	ft_putstr_fd(tgoto(tgetstr("cm", NULL), global->current->x,
 					global->current->y), OUTPUT_FD);
 	
-	ft_putstr_fd_select(&colors, 0);
+	ft_putstr_fd_select(&colors, 0, global);
 
 	global->words_per_line = tgetnum("co") / (len + SPACES);
+
+}
+
+void	init_color(t_input *input)
+{
+	struct stat sb;
+
+	while(input)
+	{
+		if (lstat(input->data, &sb) == 0)
+		{
+			if (S_ISLNK(sb.st_mode))
+			{
+				input->color_type = EMPTY_COLOR;
+				input->color = MAGENTA;
+			}
+			else if (S_ISDIR(sb.st_mode))
+			{
+				input->color_type = BOLD;
+				input->color = CYAN;
+			}
+			else if (sb.st_mode & S_IXUSR)
+			{
+				input->color_type = EMPTY_COLOR;
+				input->color = RED;
+			}
+			else
+				sl_set_default_color(input);
+		}
+		else
+			sl_set_default_color(input);
+		input = input->next;
+	}
 
 }
 
@@ -116,8 +149,9 @@ int		main(int argc, char **argv)
 		init_data(--argc, argv, &input, &len);
 		init_coordinates(&input, len);
 		init_termcap(&global.terminal_state); // init_global
+		init_color(input);
 
-		global.head = input;
+			global.head = input;
 		global.current = input;
 
 		if (tcgetattr(OUTPUT_FD, &global.initial_terminal_state) == -1)
