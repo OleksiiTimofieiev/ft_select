@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:32:11 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 21:24:27 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 21:43:40 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -274,5 +274,25 @@ void	left_key_handler(t_global *global)
 void	delete_key_handler(t_global *global)
 {
 	delete_node(&global->head, global->current, global->longest, global);
-	right_key_handler(global);
+	t_colors colors;
+
+	init_color_data(&colors);
+	colors.data = global->current->data;
+	ft_putstr_fd(tgoto(tgetstr("cm", NULL), global->current->x,
+					   global->current->y),
+				 INPUT_FD);
+	if (global->current->selection == 0)
+		ft_putstr_fd_select(&colors, 0, global);
+	else
+	{
+		colors.color1 = BACK;
+		ft_putstr_fd_select(&colors, 0, global);
+	}
+	ft_putstr_fd(tgoto(tgetstr("cm", NULL), global->current->x,
+					   global->current->y), INPUT_FD);
+	colors.color1 = (global->current->selection) ? BACK : EMPTY_COLOR;
+	colors.color2 = UNDERLINED;
+	colors.color3 = ITALIC;
+	colors.data = global->current->data;
+	ft_putstr_fd_select(&colors, 0, global);
 }

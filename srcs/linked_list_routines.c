@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 14:43:47 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 21:24:21 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 21:42:36 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 void	delete_node(t_input **head_ref, t_input *del, int len, t_global *global)
 {
 	int word_per_line;
-	g_evil.current = del->next;
 
+	if (del->next == NULL)
+		g_evil.current = global->head;
+	else
+		g_evil.current = del->next;
 	if (*head_ref == NULL || del == NULL)
 		esc_key_handler(global);
 	if (*head_ref == del)

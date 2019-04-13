@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 20:36:05 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 21:37:11 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 // TODO: arrows to the next // previous column;
 
 /* 3 */
-// TODO: large vs small window;
+// TODO: large vs small window; set_coordinates(*input = g_head, g_word_per_line = tgetnum("co") / (g->longest + SPACES), longets);
 // TODO: The cursor of selection must be repositioned in a reasonable manner after a resizing.
 // TODO: # define NO_ROOM "Not enough space! Resize window."
 // TODO: not possible to show everithing; if size is ok -> show everithing;
@@ -71,19 +71,15 @@
 
 int		main(int argc, char **argv)
 {
-	char			*termtype;
-	t_input			*input;
 	int				len;
 
-	termtype = NULL;
-	input = NULL;
-	init_terminal(termtype);
-	init_data(--argc, argv, &input, &len);
-	init_coordinates(&input, len);
+	init_terminal(g_evil.termtype);
+	init_data(--argc, argv, &g_evil.input, &len);
+	init_coordinates(&g_evil.input, len);
 	init_termcap(&g_evil.terminal_state);
-	init_color(input);
-	init_terminal_state(&g_evil, input, len);
-	print_to_terminal(input);
+	init_color(g_evil.input);
+	init_terminal_state(&g_evil, g_evil.input, len);
+	print_to_terminal(g_evil.input);
 	initial_select(&g_evil, len);
 	main_loop();
 	return (0);

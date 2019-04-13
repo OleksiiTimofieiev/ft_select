@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:31:17 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 21:15:26 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 21:35:10 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ typedef	struct			s_global
 	struct termios		new_terminal_state;
 	t_termcap_cmd		terminal_state;
 	int					longest;
+	char				*termtype;
+	t_input				*input;
 }						t_global;
 
 /*
