@@ -132,7 +132,7 @@ void	space_key_handler(t_global *global)
 	down_key_handler(global);
 }
 
-void	select_all(t_global *global)
+void	select_all_handler(t_global *global)
 {
 	t_input *buf;
 	
@@ -140,6 +140,19 @@ void	select_all(t_global *global)
 	while (buf)
 	{
 		buf->selection = 1;
+		down_key_handler(global);
+		buf = buf->next;
+	}
+}
+
+void	deselect_all_handler(t_global *global)
+{
+	t_input *buf;
+	
+	buf = global->head;
+	while (buf)
+	{
+		buf->selection = 0;
 		down_key_handler(global);
 		buf = buf->next;
 	}
