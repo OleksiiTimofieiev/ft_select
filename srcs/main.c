@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 18:35:14 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 18:41:00 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,6 @@ void 	restore_terminal(t_global *global)
 // ss()->
 // 	->asdads
 
-
-
-
-
-
-
-
 int		main(int argc, char **argv)
 {
 		
@@ -89,30 +82,8 @@ int		main(int argc, char **argv)
 		init_coordinates(&input, len);
 		init_termcap(&g_evil.terminal_state); // init_global
 		init_color(input);
+		init_terminal_state(&g_evil, input, len);
 
-			g_evil.head = input;
-		g_evil.current = input;
-
-		if (tcgetattr(OUTPUT_FD, &g_evil.initial_terminal_state) == -1)
-			return (-1);
-		if (tcgetattr(OUTPUT_FD, &g_evil.new_terminal_state) == -1)
-			return (-1);
-
-		// if (tcgetattr(0, &global.new_terminal_state) == -1)
-		// 	return (-1);
-
-		g_evil.new_terminal_state.c_lflag &= ~(ICANON | ECHO); /* Перевести терминал в канонический режим. Функция чтения будет получать ввод с клавиатуры без ожидания ввода */
-		// g_evil.initial_terminal_state.c_lflag &= ~(ECHO);   /* Клавиши, набранные на клавиатуре, больше не будут появляться в терминале */
-			g_evil.initial_terminal_state.c_cc[VMIN] = 1;
-			g_evil.initial_terminal_state.c_cc[VTIME] = 0;
-
-		tcsetattr(OUTPUT_FD, TCSANOW, &g_evil.new_terminal_state);
-
-		ft_putstr_fd(g_evil.terminal_state.ti, OUTPUT_FD); // 
-		ft_putstr_fd(g_evil.terminal_state.vi, OUTPUT_FD); // mask cursor
-		ft_putstr_fd(g_evil.terminal_state.cl, OUTPUT_FD); // clear window
-
-		g_evil.longest = len;
 		print_to_terminal(input);
 		initial_select(&g_evil, len);
 

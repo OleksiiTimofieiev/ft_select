@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 18:35:50 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 18:36:05 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 18:41:05 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,29 @@ void init_color(t_input *input)
 			sl_set_default_color(input);
 		input = input->next;
 	}
+}
+
+void init_terminal_state(t_global *g_evil, t_input *input, int len)
+{
+	g_evil->head = input;
+	g_evil->current = input;
+
+	tcgetattr(OUTPUT_FD, &g_evil->initial_terminal_state);
+	tcgetattr(OUTPUT_FD, &g_evil->new_terminal_state);
+
+	// if (tcgetattr(0, &global.new_terminal_state) == -1)
+	// 	return (-1);
+
+	g_evil->new_terminal_state.c_lflag &= ~(ICANON | ECHO); /* Перевести терминал в канонический режим. Функция чтения будет получать ввод с клавиатуры без ожидания ввода */
+	// g_evil->initial_terminal_state.c_lflag &= ~(ECHO);   /* Клавиши, набранные на клавиатуре, больше не будут появляться в терминале */
+	g_evil->initial_terminal_state.c_cc[VMIN] = 1;
+	g_evil->initial_terminal_state.c_cc[VTIME] = 0;
+
+	tcsetattr(OUTPUT_FD, TCSANOW, &g_evil->new_terminal_state);
+
+	ft_putstr_fd(g_evil->terminal_state.ti, OUTPUT_FD); //
+	ft_putstr_fd(g_evil->terminal_state.vi, OUTPUT_FD); // mask cursor
+	ft_putstr_fd(g_evil->terminal_state.cl, OUTPUT_FD); // clear window
+
+	g_evil->longest = len;
 }
