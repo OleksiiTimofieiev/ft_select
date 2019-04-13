@@ -13,7 +13,7 @@
 #include "ft_select.h"
 
 // TODO: norminette in all directories;
-// TODO: leaks => delete all data before exit => OS will clean it;
+// TODO: leaks => enter / invalid case / esc;
 // TODO: finish with keys management;
 
 /* 1 */

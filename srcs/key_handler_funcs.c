@@ -20,6 +20,7 @@ void init_color_data(t_colors *colors)
 	colors->color3 = EMPTY_COLOR;
 	colors->color4 = RESET;
 }
+
 void ft_putstr_fd_select(t_colors *colors, int fd)
 {
 	int i;
