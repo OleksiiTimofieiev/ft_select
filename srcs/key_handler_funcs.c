@@ -6,12 +6,11 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:32:11 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 23:35:57 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 23:40:08 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
-
 
 void 	init_color_data(t_colors *colors)
 {
@@ -78,19 +77,13 @@ void	right_key_handler(t_global *global)
 
 void    down_key_handler(t_global *global)
 {
-	
 	int i;
-
-	// i = global->height;
-
 	t_colors colors;
 
 	init_color_data(&colors);
 	colors.data = global->current->data;
-	
 	ft_putstr_fd(tgoto(tgetstr("cm", NULL),
 			global->current->x, global->current->y), INPUT_FD);
-
 	if (global->current->selection == 0)
 		ft_putstr_fd_select(&colors, 0, global);
 	else
@@ -99,27 +92,24 @@ void    down_key_handler(t_global *global)
 		ft_putstr_fd_select(&colors, 0, global);
 	}
 	if (global->current->next == NULL)
-	{
 		global->current = global->head;
-	}
 	else
 	{
-	i = global->words_per_line;
-	int null_detected = 0;
-	t_input *buf = global->current;
-	while (i--) // move backwards;
-	{
-		if (global->current->next == NULL)
+		i = global->words_per_line;
+		int null_detected = 0;
+		t_input *buf = global->current;
+		while (i--)
 		{
-			// right_key_handler(global);
-			null_detected = 1;
-			break;
+			if (global->current->next == NULL)
+			{
+				null_detected = 1;
+				break;
+			}
+			global->current = global->current->next;
 		}
-		global->current = global->current->next;
-	}
 	if (null_detected)
 		global->current = buf;
-}
+	}
 	ft_putstr_fd(tgoto(tgetstr("cm", NULL), global->current->x,
 					global->current->y), INPUT_FD);
 	colors.color1 = (global->current->selection) ? BACK : EMPTY_COLOR;
