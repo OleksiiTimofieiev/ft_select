@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 18:27:59 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 18:32:06 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,34 +138,34 @@ int		main(int argc, char **argv)
 		init_terminal(termtype);
 		init_data(--argc, argv, &input, &len);
 		init_coordinates(&input, len);
-		init_termcap(&global.terminal_state); // init_global
+		init_termcap(&g_evil.terminal_state); // init_global
 		init_color(input);
 
-			global.head = input;
-		global.current = input;
+			g_evil.head = input;
+		g_evil.current = input;
 
-		if (tcgetattr(OUTPUT_FD, &global.initial_terminal_state) == -1)
+		if (tcgetattr(OUTPUT_FD, &g_evil.initial_terminal_state) == -1)
 			return (-1);
-		if (tcgetattr(OUTPUT_FD, &global.new_terminal_state) == -1)
+		if (tcgetattr(OUTPUT_FD, &g_evil.new_terminal_state) == -1)
 			return (-1);
 
 		// if (tcgetattr(0, &global.new_terminal_state) == -1)
 		// 	return (-1);
 
-		global.new_terminal_state.c_lflag &= ~(ICANON | ECHO); /* Перевести терминал в канонический режим. Функция чтения будет получать ввод с клавиатуры без ожидания ввода */
-		// global.initial_terminal_state.c_lflag &= ~(ECHO);   /* Клавиши, набранные на клавиатуре, больше не будут появляться в терминале */
-			global.initial_terminal_state.c_cc[VMIN] = 1;
-			global.initial_terminal_state.c_cc[VTIME] = 0;
+		g_evil.new_terminal_state.c_lflag &= ~(ICANON | ECHO); /* Перевести терминал в канонический режим. Функция чтения будет получать ввод с клавиатуры без ожидания ввода */
+		// g_evil.initial_terminal_state.c_lflag &= ~(ECHO);   /* Клавиши, набранные на клавиатуре, больше не будут появляться в терминале */
+			g_evil.initial_terminal_state.c_cc[VMIN] = 1;
+			g_evil.initial_terminal_state.c_cc[VTIME] = 0;
 
-		tcsetattr(OUTPUT_FD, TCSANOW, &global.new_terminal_state);
+		tcsetattr(OUTPUT_FD, TCSANOW, &g_evil.new_terminal_state);
 
-		ft_putstr_fd(global.terminal_state.ti, OUTPUT_FD); // 
-		ft_putstr_fd(global.terminal_state.vi, OUTPUT_FD); // mask cursor
-		ft_putstr_fd(global.terminal_state.cl, OUTPUT_FD); // clear window
+		ft_putstr_fd(g_evil.terminal_state.ti, OUTPUT_FD); // 
+		ft_putstr_fd(g_evil.terminal_state.vi, OUTPUT_FD); // mask cursor
+		ft_putstr_fd(g_evil.terminal_state.cl, OUTPUT_FD); // clear window
 
-		global.longest = len;
+		g_evil.longest = len;
 		print_to_terminal(input);
-		initial_select(&global, len);
+		initial_select(&g_evil, len);
 
 		int key;
 		while (42)
@@ -177,7 +177,7 @@ int		main(int argc, char **argv)
 				exit(0);
 			// }
 			// ft_putstr_fd(ft_itoa(key), 0);
-			key_selection(key, &global);
+			key_selection(key, &g_evil);
 		}
 
 
