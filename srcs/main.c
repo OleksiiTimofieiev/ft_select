@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 18:46:28 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 18:47:41 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 // TODO: Whichever way your program ends, the default configuration of your terminal MUST be restored. This is true even after it received a signal (except for the signals that we cannot intercept, but this would mean that your program does not work).
 // TODO: We must be able to interrupt your program with ctrl+z and restore it with fg without seeing any changes in its behavior.
 
+
+
 // void sl_sig_hendler(int sig)
 // {
 // 	// if (sig == SIGWINCH)
@@ -47,6 +49,7 @@
 // 	else
 // 		exit(0);
 // }
+
 
 
 // t_some_struct *ss(void)
