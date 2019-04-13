@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:31:17 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 21:35:10 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 21:45:54 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,8 @@ void					init_coordinates(t_input **input, int len);
 void					set_coordinates(t_input *input,
 						int word_per_line, int len);
 void					init_color(t_input *input);
-void initial_select(t_global *global, int len);
-void init_terminal_state(t_global *g_evil, t_input *input, int len);
+void					initial_select(t_global *global, int len);
+void					init_terminal_state(t_global *g_evil, t_input *input, int len);
 
 	/*
 ************************* data modifications *************************

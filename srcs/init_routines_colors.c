@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 18:35:50 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 20:45:42 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 21:50:29 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void init_terminal_state(t_global *g_evil, t_input *input, int len)
 {
 	g_evil->head = input;
 	g_evil->current = input;
+	g_evil->input = input;
 
 	tcgetattr(INPUT_FD, &g_evil->initial_terminal_state);
 	tcgetattr(INPUT_FD, &g_evil->new_terminal_state);
