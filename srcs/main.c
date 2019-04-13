@@ -130,10 +130,7 @@ int		main(int argc, char **argv)
 			key = 0;
 			if (read(0, &key, 8) == -1)
 				exit(0);
-			else
-			{
-				// ft_putstr_fd("asdfadf", 0);
-			}
+			
 			
 			if((key_selection(key, &global)) == 0)
 				break ;
