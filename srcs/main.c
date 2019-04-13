@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 20:26:29 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 20:28:11 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 // TODO: norminette in all directories;
 // TODO: check static ones;
-
-/* 1 */
-/* 2 */
 
 // TODO: arrows to the next // previous column;
 
