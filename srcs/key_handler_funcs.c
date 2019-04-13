@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:32:11 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 23:40:08 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 23:53:33 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -290,7 +290,7 @@ void	delete_key_handler(t_global *global)
 void	find_routine(t_global *global, char c) // separate file;
 {
 	char	read_str[256];
-	char key;
+	int key;
 	int i = 0x0;
 
 	key = 0;
@@ -299,7 +299,7 @@ void	find_routine(t_global *global, char c) // separate file;
 	while (i < 256)
 	{
 		read(INPUT_FD, &key, 8);
-		if (key == RETURN)
+		if (!ft_isalpha(key) || key == RETURN)
 			break ;
 		read_str[i++] = key;
 	}
