@@ -67,7 +67,7 @@ typedef struct 			s_global
 	t_input 			*head;
 	t_input				*current;
 	t_input 			*end;
-	int					height;
+	int					words_per_line;
 	struct termios 		initial_terminal_state;
 	struct termios 		new_terminal_state;
 	t_termcap_cmd 		terminal_state;

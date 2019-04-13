@@ -98,7 +98,7 @@ void	initial_select(t_global *global, int len)
 	
 	ft_putstr_fd_select(&colors, 0);
 
-	global->height = tgetnum("co") / (len + SPACES);
+	global->words_per_line = tgetnum("co") / (len + SPACES);
 
 }
 
