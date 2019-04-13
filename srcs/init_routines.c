@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 14:45:27 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 18:35:40 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 20:45:42 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	init_terminal(char *termtype)
 {
 	int res;
 	
-	if (!isatty(OUTPUT_FD))
+	if (!isatty(INPUT_FD))
 		print_error("Not a terminal");
 	else if (!(termtype = getenv("TERM")))
 		print_error("TERM var is not available");

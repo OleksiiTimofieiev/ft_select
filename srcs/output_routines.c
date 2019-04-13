@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 20:16:14 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 18:11:35 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 20:46:00 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ void	print_to_terminal(t_input *input)
 {
 	while (input)
 	{
-		ft_putstr_fd(tgoto(tgetstr("cm", NULL), input->x, input->y), OUTPUT_FD);
-		ft_putstr_fd(input->color_type, OUTPUT_FD);
-		ft_putstr_fd(input->color, OUTPUT_FD);
-		ft_putstr_fd(input->data, OUTPUT_FD);
-		ft_putstr_fd(RESET, OUTPUT_FD);
+		ft_putstr_fd(tgoto(tgetstr("cm", NULL), input->x, input->y), INPUT_FD);
+		ft_putstr_fd(input->color_type, INPUT_FD);
+		ft_putstr_fd(input->color, INPUT_FD);
+		ft_putstr_fd(input->data, INPUT_FD);
+		ft_putstr_fd(RESET, INPUT_FD);
 		input = input->next;
 	}
 }
@@ -40,7 +40,7 @@ void	print_selection(t_input *input)
 			ft_strcpy(buf, input->data);
 			buf[len] = 32;
 			buf[len + 1] ='\0';
-			ft_putstr_fd(buf, INPUT_FD);
+			ft_putstr_fd(buf, OUTPUT_FD);
 			free(buf);
 			buf = NULL;
 		}

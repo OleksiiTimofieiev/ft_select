@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 18:35:50 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 18:41:05 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 20:45:42 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void initial_select(t_global *global, int len)
 	colors.data = global->current->data;
 	ft_putstr_fd(tgoto(tgetstr("cm", NULL), global->current->x,
 					   global->current->y),
-				 OUTPUT_FD);
+				 INPUT_FD);
 
 	ft_putstr_fd_select(&colors, 0, global);
 
@@ -72,8 +72,8 @@ void init_terminal_state(t_global *g_evil, t_input *input, int len)
 	g_evil->head = input;
 	g_evil->current = input;
 
-	tcgetattr(OUTPUT_FD, &g_evil->initial_terminal_state);
-	tcgetattr(OUTPUT_FD, &g_evil->new_terminal_state);
+	tcgetattr(INPUT_FD, &g_evil->initial_terminal_state);
+	tcgetattr(INPUT_FD, &g_evil->new_terminal_state);
 
 	// if (tcgetattr(0, &global.new_terminal_state) == -1)
 	// 	return (-1);
@@ -83,11 +83,11 @@ void init_terminal_state(t_global *g_evil, t_input *input, int len)
 	g_evil->initial_terminal_state.c_cc[VMIN] = 1;
 	g_evil->initial_terminal_state.c_cc[VTIME] = 0;
 
-	tcsetattr(OUTPUT_FD, TCSANOW, &g_evil->new_terminal_state);
+	tcsetattr(INPUT_FD, TCSANOW, &g_evil->new_terminal_state);
 
-	ft_putstr_fd(g_evil->terminal_state.ti, OUTPUT_FD); //
-	ft_putstr_fd(g_evil->terminal_state.vi, OUTPUT_FD); // mask cursor
-	ft_putstr_fd(g_evil->terminal_state.cl, OUTPUT_FD); // clear window
+	ft_putstr_fd(g_evil->terminal_state.ti, INPUT_FD); //
+	ft_putstr_fd(g_evil->terminal_state.vi, INPUT_FD); // mask cursor
+	ft_putstr_fd(g_evil->terminal_state.cl, INPUT_FD); // clear window
 
 	g_evil->longest = len;
 }

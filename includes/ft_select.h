@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:31:17 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 18:48:32 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 20:45:49 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # include "keys.h"
 
 # define SPACES	4
-# define OUTPUT_FD 0
-# define INPUT_FD 1
+# define INPUT_FD 0
+# define OUTPUT_FD 1
 
 /*
 ************************ ADT for data **********************************

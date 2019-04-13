@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:32:11 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 18:19:03 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 20:45:42 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	right_key_handler(t_global *global)
 	init_color_data(&colors);
 	colors.data = global->current->data;
 	ft_putstr_fd(tgoto(tgetstr("cm", NULL), global->current->x,
-					global->current->y), OUTPUT_FD);
+					global->current->y), INPUT_FD);
 	if (global->current->selection == 0)
 		ft_putstr_fd_select(&colors, 0, global);
 	else
@@ -67,7 +67,7 @@ void	right_key_handler(t_global *global)
 	else
 		global->current = global->current->next;
 	ft_putstr_fd(tgoto(tgetstr("cm", NULL), global->current->x,
-					global->current->y), OUTPUT_FD);
+					global->current->y), INPUT_FD);
 	colors.color1 = (global->current->selection) ? BACK : EMPTY_COLOR;
 	colors.color2 = UNDERLINED;
 	colors.color3 = ITALIC;
@@ -89,7 +89,7 @@ void    down_key_handler(t_global *global)
 	colors.data = global->current->data;
 	
 	ft_putstr_fd(tgoto(tgetstr("cm", NULL),
-			global->current->x, global->current->y), OUTPUT_FD);
+			global->current->x, global->current->y), INPUT_FD);
 
 	if (global->current->selection == 0)
 		ft_putstr_fd_select(&colors, 0, global);
@@ -121,7 +121,7 @@ void    down_key_handler(t_global *global)
 		global->current = buf;
 }
 	ft_putstr_fd(tgoto(tgetstr("cm", NULL), global->current->x,
-					global->current->y), OUTPUT_FD);
+					global->current->y), INPUT_FD);
 	colors.color1 = (global->current->selection) ? BACK : EMPTY_COLOR;
 	colors.color2 = UNDERLINED;
 	colors.color3 = ITALIC;
@@ -144,7 +144,7 @@ void	up_key_handler(t_global *global)
 	colors.data = global->current->data;
 	
 	ft_putstr_fd(tgoto(tgetstr("cm", NULL),
-			global->current->x, global->current->y), OUTPUT_FD);
+			global->current->x, global->current->y), INPUT_FD);
 
 	if (global->current->selection == 0)
 		ft_putstr_fd_select(&colors, 0, global);
@@ -170,7 +170,7 @@ void	up_key_handler(t_global *global)
 	if (buf->prev && null_detected)
 		global->current = buf;	
 	ft_putstr_fd(tgoto(tgetstr("cm", NULL), global->current->x,
-					global->current->y), OUTPUT_FD);
+					global->current->y), INPUT_FD);
 	colors.color1 = (global->current->selection) ? BACK : EMPTY_COLOR;
 	colors.color2 = UNDERLINED;
 	colors.color3 = ITALIC;
@@ -185,7 +185,7 @@ void	space_key_handler(t_global *global)
 	init_color_data(&colors);
 	colors.data = global->current->data;
 	ft_putstr_fd(tgoto(tgetstr("cm", NULL),
-		global->current->x, global->current->y), OUTPUT_FD);
+		global->current->x, global->current->y), INPUT_FD);
 	if (global->current->selection == 0)
 	{
 		global->current->selection = 1;
@@ -250,7 +250,7 @@ void	left_key_handler(t_global *global)
 	while (end->next)
 		end = end->next;
 	ft_putstr_fd(tgoto(tgetstr("cm", NULL),
-			global->current->x, global->current->y), OUTPUT_FD);
+			global->current->x, global->current->y), INPUT_FD);
 	if (global->current->selection == 0)
 		ft_putstr_fd_select(&colors, 0, global);
 	else
@@ -263,7 +263,7 @@ void	left_key_handler(t_global *global)
 	else
 		global->current = global->current->prev;
 	ft_putstr_fd(tgoto(tgetstr("cm", NULL),
-		global->current->x, global->current->y), OUTPUT_FD);
+		global->current->x, global->current->y), INPUT_FD);
 	colors.color1 = (global->current->selection) ? BACK : EMPTY_COLOR;
 	colors.color2 = UNDERLINED;
 	colors.color3 = ITALIC;
