@@ -149,6 +149,7 @@ void	up_key_handler(t_global *global)
 		ft_putstr_fd_select(&colors, 0);
 	}
 	i = 3;
+	t_input *buf = global->current;
 	while (i--)
 	{
 		if (global->current->prev == NULL)
@@ -158,6 +159,8 @@ void	up_key_handler(t_global *global)
 		}
 		global->current = global->current->prev;
 	}
+	if (i > 1)
+		global->current = buf->prev;	
 	ft_putstr_fd(tgoto(tgetstr("cm", NULL), global->current->x,
 					global->current->y), OUTPUT_FD);
 	colors.color1 = (global->current->selection) ? BACK : EMPTY_COLOR;
