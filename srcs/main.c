@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 18:47:41 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 18:47:53 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,19 +65,6 @@
 // ss->
 // ss()->
 // 	->asdads
-
-void main_loop(void)
-{
-	int key;
-
-	while (42)
-	{
-		key = 0;
-		if (read(0, &key, 8) == -1)
-			exit(0);
-		key_selection(key, &g_evil);
-	}
-}
 
 int		main(int argc, char **argv)
 {
