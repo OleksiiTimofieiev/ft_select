@@ -41,6 +41,6 @@ void	print_selection(t_input *input)
 			free(buf);
 			buf = NULL;
 		}
-			input = input->next;
+		input = input->next;
 	}
 }
