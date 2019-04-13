@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 20:20:25 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 20:21:57 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,21 +65,21 @@
 
 int		main(int argc, char **argv)
 {
-		char			*termtype;
-		t_input			*input;
-		int				len;
+	char			*termtype;
+	t_input			*input;
+	int				len;
 
-		termtype = NULL;
-		input = NULL;
-		init_terminal(termtype);
-		init_data(--argc, argv, &input, &len);
-		init_coordinates(&input, len);
-		init_termcap(&g_evil.terminal_state);
-		init_color(input);
-		init_terminal_state(&g_evil, input, len);
-		print_to_terminal(input);
-		initial_select(&g_evil, len);
-		main_loop();
+	termtype = NULL;
+	input = NULL;
+	init_terminal(termtype);
+	init_data(--argc, argv, &input, &len);
+	init_coordinates(&input, len);
+	init_termcap(&g_evil.terminal_state);
+	init_color(input);
+	init_terminal_state(&g_evil, input, len);
+	print_to_terminal(input);
+	initial_select(&g_evil, len);
+	main_loop();
 
-		return (0);
+	return (0);
 }
