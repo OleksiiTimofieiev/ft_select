@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 18:41:00 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 18:44:49 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,47 +70,43 @@ void 	restore_terminal(t_global *global)
 // ss()->
 // 	->asdads
 
+void main_loop(void)
+{
+	int key;
+
+	while (42)
+	{
+		key = 0;
+		if (read(0, &key, 8) == -1)
+			exit(0);
+		key_selection(key, &g_evil);
+	}
+}
+
 int		main(int argc, char **argv)
 {
-		
-		char			*termtype = NULL;
-		t_input			*input = NULL;
+		char			*termtype;
+		t_input			*input;
 		int				len;
 
+		termtype = NULL;
+		input = NULL;
 		init_terminal(termtype);
 		init_data(--argc, argv, &input, &len);
 		init_coordinates(&input, len);
 		init_termcap(&g_evil.terminal_state); // init_global
 		init_color(input);
 		init_terminal_state(&g_evil, input, len);
-
 		print_to_terminal(input);
 		initial_select(&g_evil, len);
+		main_loop();
 
-		int key;
-		while (42)
-		{
-			key = 0;
-			if (read(0, &key, 8) == -1)
-			// {
-				// ft_putstr_fd("asdfasdfasdfadsf", 0);	
-				exit(0);
-			// }
-			// ft_putstr_fd(ft_itoa(key), 0);
-			key_selection(key, &g_evil);
-		}
+			// ft_putstr_fd(global.terminal_state.cl, OUTPUT_FD); // clear window
 
+			// ft_putstr_fd("includes ", INPUT_FD);
 
-
-		// ft_putstr_fd(global.terminal_state.cl, OUTPUT_FD); // clear window
-
-		// ft_putstr_fd("includes ", INPUT_FD);
-		
-
-
-		// ft_printf("\n");
-		// ft_putstr_fd(terminal_state.cl, OUTPUT_FD); // clear window
-
+			// ft_printf("\n");
+			// ft_putstr_fd(terminal_state.cl, OUTPUT_FD); // clear window
 
 		return (0);
 }
