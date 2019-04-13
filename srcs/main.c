@@ -18,7 +18,9 @@
 /* 1 */
 /* 2 */
 
-// TODO: finish with keys management: up, down, del, backspace
+// TODO: arrows to the nex // previous column;
+// TODO: finish with keys management: del, backspace
+
 // TODO: + colors ls -G;
 // TODO: If the choices are files names, colorize the list according to the extensions (a bit like
 // ls -G on OSX).

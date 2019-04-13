@@ -13,7 +13,7 @@
 #include "ft_select.h"
 
 
-void init_color_data(t_colors *colors)
+void 	init_color_data(t_colors *colors)
 {
 	colors->color1 = EMPTY_COLOR;
 	colors->color2 = EMPTY_COLOR;
@@ -21,7 +21,7 @@ void init_color_data(t_colors *colors)
 	colors->color4 = RESET;
 }
 
-void ft_putstr_fd_select(t_colors *colors, int fd)
+void 	ft_putstr_fd_select(t_colors *colors, int fd)
 {
 	int i;
 
