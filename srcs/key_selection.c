@@ -6,18 +6,11 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:54:46 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 23:35:20 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 23:42:39 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
-
-static const int64_t g_keys[KEY_ARRAY_SIZE] =
-{
-	ESC, UP, DOWN, RIGHT, LEFT, RETURN,
-	SPACE, BACK_SPACE, DEL,
-	CTRL_A, CTRL_W
-};
 
 static const t_events g_funcs[KEY_ARRAY_SIZE] =
 {
@@ -26,6 +19,14 @@ static const t_events g_funcs[KEY_ARRAY_SIZE] =
 	space_key_handler, delete_key_handler, delete_key_handler,
 	select_all_handler, deselect_all_handler
 };
+
+static const long int g_keys[KEY_ARRAY_SIZE] =
+{
+	ESC, UP, DOWN, RIGHT, LEFT, RETURN,
+	SPACE, BACK_SPACE, DEL,
+	CTRL_A, CTRL_W
+};
+
 
 void	key_selection(int key, t_global *input)
 {
