@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:31:17 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 21:45:54 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 22:47:45 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void					set_coordinates(t_input *input,
 void					init_color(t_input *input);
 void					initial_select(t_global *global, int len);
 void					init_terminal_state(t_global *g_evil, t_input *input, int len);
+void					init_color_data(t_colors *colors);
 
 	/*
 ************************* data modifications *************************
@@ -121,7 +122,8 @@ void					restore_terminal(t_global *global);
 ************************* error func *************************
 */
 
-void					print_error(char *error_type);
+void find_routine(t_global *global) ;
+void print_error(char *error_type);
 void					esc_key_handler(t_global *input);
 void					down_key_handler(t_global *global);
 void					up_key_handler(t_global *global);
@@ -133,7 +135,6 @@ void					key_selection(int key, t_global *input);
 void					left_key_handler(t_global *globa);
 void					right_key_handler(t_global *global);
 void					delete_key_handler(t_global *global);
-void					init_color_data(t_colors *colors);
 void					ft_putstr_fd_select(t_colors *colors,
 							int fd, t_global *global);
 void main_loop(void);

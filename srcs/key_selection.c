@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:54:46 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 18:16:12 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 23:23:42 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ static const int64_t keys[KEY_ARRAY_SIZE] =
 	{
 		ESC, UP, DOWN, RIGHT, LEFT, RETURN,
 		SPACE, BACK_SPACE, DEL,
-		CTRL_A, CTRL_W};
+		CTRL_A, CTRL_W
+		};
 
 static const t_events funcs[KEY_ARRAY_SIZE] =
 {
@@ -43,4 +44,6 @@ void key_selection(int key, t_global *input)
 			break ;
 		}
 	}
+if (i == KEY_ARRAY_SIZE)
+	 find_routine(&g_evil);
 }
