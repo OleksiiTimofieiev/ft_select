@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 17:35:30 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 17:36:23 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,15 +117,15 @@ void	init_color(t_input *input)
 				input->color_type = EMPTY_COLOR;
 				input->color = MAGENTA;
 			}
-			else if (S_ISDIR(sb.st_mode))
-			{
-				input->color_type = BOLD;
-				input->color = CYAN;
-			}
 			else if (sb.st_mode & S_IXUSR)
 			{
 				input->color_type = EMPTY_COLOR;
 				input->color = RED;
+			}
+			else if (S_ISDIR(sb.st_mode))
+			{
+				input->color_type = BOLD;
+				input->color = CYAN;
 			}
 			else
 				sl_set_default_color(input);
@@ -134,7 +134,6 @@ void	init_color(t_input *input)
 			sl_set_default_color(input);
 		input = input->next;
 	}
-
 }
 
 
