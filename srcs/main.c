@@ -18,7 +18,7 @@
 /* 1 */
 /* 2 */
 
-// TODO: finish with keys management
+// TODO: finish with keys management: up, down, del, backspace
 // TODO: + colors ls -G;
 // TODO: If the choices are files names, colorize the list according to the extensions (a bit like
 // ls -G on OSX).
@@ -84,7 +84,7 @@ void 	restore_terminal(t_global *global)
 
 t_global	global;
 
-void	initial_select(t_global *global)
+void	initial_select(t_global *global, int len)
 {
 	t_colors colors;
 
@@ -96,6 +96,8 @@ void	initial_select(t_global *global)
 					global->current->y), OUTPUT_FD);
 	
 	ft_putstr_fd_select(&colors, 0);
+
+	global->height = tgetnum("co") / (len + SPACES);
 
 }
 
@@ -136,7 +138,7 @@ int		main(int argc, char **argv)
 
 
 		print_to_terminal(input);
-		initial_select(&global);
+		initial_select(&global, len);
 
 		int key;
 		while (42)

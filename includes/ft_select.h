@@ -62,12 +62,12 @@ typedef struct s_colors
 	char *data;
 } t_colors;
 
-typedef struct 		s_global
+typedef struct 			s_global
 {
 	t_input 			*head;
 	t_input				*current;
 	t_input 			*end;
-
+	int					height;
 	struct termios 		initial_terminal_state;
 	struct termios 		new_terminal_state;
 	t_termcap_cmd 		terminal_state;
@@ -114,6 +114,8 @@ void				select_all_handler(t_global *global);
 void				deselect_all_handler(t_global *global);
 void				return_key_handler(t_global *global);
 void				key_selection(int key, t_global *input);
+void	left_key_handler(t_global *globa);
+void	right_key_handler(t_global *global);
 void init_color_data(t_colors *colors);
 void ft_putstr_fd_select(t_colors *colors, int fd);
 
