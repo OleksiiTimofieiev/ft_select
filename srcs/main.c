@@ -31,13 +31,11 @@
 
 // TODO: If the user presses either delete or backspace, the element the cursor is pointing to must be erased from the list.
 // If there are no more elements in the list, the behavior must be exactly the same as if the user had pressed esc.
-// TODO: If the user presses either delete or backspaceIf there are no more elements in the list, the behavior must be exactly the same as if the user had pressed esc.
 
 /* 3 */
 
 // TODO: check how the change size signal works; on every move = +;
 // TODO: We must be able to interrupt your program with ctrl+z and restore it with fg without seeing any changes in its behavior.
-// TODO: If the program is launched in an empty environment, you need to behave reasonably.
 
 
 /* 4 */

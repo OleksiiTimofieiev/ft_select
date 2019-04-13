@@ -108,11 +108,11 @@ typedef void (*t_events)(t_global *current);
 void				esc_key_handler(t_global *input);
 void				down_key_handler(t_global *global);
 void				up_key_handler(t_global *global);
-void	space_key_handler(t_global *global);
-void select_all_handler(t_global *global);
-void	deselect_all_handler(t_global *global);
+void				space_key_handler(t_global *global);
+void				select_all_handler(t_global *global);
+void				deselect_all_handler(t_global *global);
+int					key_selection(int key, t_global *input);
 
-	int key_selection(int key, t_global *input);
 void				restore_terminal(t_global *global);
 
 #endif
