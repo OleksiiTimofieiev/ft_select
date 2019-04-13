@@ -25,6 +25,7 @@
 
 // TODO: If the choices are files names, colorize the list according to the extensions (a bit like
 // ls -G on OSX).
+// https://github.com/prippa/ft_select/blob/master/source/init/sl_init_args.c
 
 // TODO: Whichever way your program ends, the default configuration of your terminal MUST be restored. This is true even after it received a signal (except for the signals that we cannot intercept, but this would mean that your program does not work).
 
@@ -127,16 +128,15 @@ int		main(int argc, char **argv)
 			key = 0;
 			if (read(0, &key, 8) == -1)
 				exit(0);
-			if((key_selection(key, &global)) == 0)
-				break ;
+			key_selection(key, &global);
 		}
 
 
-		restore_terminal(&global);
+
 		// ft_putstr_fd(global.terminal_state.cl, OUTPUT_FD); // clear window
 
 		// ft_putstr_fd("includes ", INPUT_FD);
-		print_selection(input);
+		
 
 
 		// ft_printf("\n");

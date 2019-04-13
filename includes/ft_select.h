@@ -111,7 +111,8 @@ void				up_key_handler(t_global *global);
 void				space_key_handler(t_global *global);
 void				select_all_handler(t_global *global);
 void				deselect_all_handler(t_global *global);
-int					key_selection(int key, t_global *input);
+void	return_key_handler(t_global *global);
+void					key_selection(int key, t_global *input);
 
 void				restore_terminal(t_global *global);
 

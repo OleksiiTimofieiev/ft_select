@@ -20,7 +20,6 @@ void ft_putstr_fd_select(t_colors *colors, int fd)
 	ft_putstr_fd(colors->color1, 0);
 	ft_putstr_fd(colors->color2, 0);
 	ft_putstr_fd(colors->color3, 0);
-
 	while (colors->data[i] != '\0')
 	{
 		write(fd, &colors->data[i], 1);
@@ -156,4 +155,11 @@ void	deselect_all_handler(t_global *global)
 		down_key_handler(global);
 		buf = buf->next;
 	}
+}
+
+void	return_key_handler(t_global *global)
+{
+			restore_terminal(global);
+print_selection(global->head);
+exit(0);
 }

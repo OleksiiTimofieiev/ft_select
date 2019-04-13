@@ -22,12 +22,12 @@ static const int	keys[KEY_ARRAY_SIZE] =
 static const t_events ke[KEY_ARRAY_SIZE] =
 {
 	esc_key_handler, up_key_handler, down_key_handler,
-	esc_key_handler, esc_key_handler, esc_key_handler,
+	esc_key_handler, esc_key_handler, return_key_handler,
 	space_key_handler, esc_key_handler, esc_key_handler,
 	select_all_handler, deselect_all_handler
 };
 
-int		key_selection(int key, t_global *input)
+void		key_selection(int key, t_global *input)
 {
 	int i;
 
@@ -36,11 +36,11 @@ int		key_selection(int key, t_global *input)
 	{
 		if (keys[i] == key)
 		{
-			if (key == RETURN)
-				return (0);
+			// if (key == RETURN)
+				// return (0);
 			ke[i](input);
 			break ;
 		}
 	}
-	return (1);
+	// return (1);
 }
