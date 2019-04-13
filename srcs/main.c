@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 18:44:49 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 18:45:10 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,13 +100,6 @@ int		main(int argc, char **argv)
 		print_to_terminal(input);
 		initial_select(&g_evil, len);
 		main_loop();
-
-			// ft_putstr_fd(global.terminal_state.cl, OUTPUT_FD); // clear window
-
-			// ft_putstr_fd("includes ", INPUT_FD);
-
-			// ft_printf("\n");
-			// ft_putstr_fd(terminal_state.cl, OUTPUT_FD); // clear window
 
 		return (0);
 }
