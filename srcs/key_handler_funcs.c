@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:32:11 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 23:27:42 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 23:28:40 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -299,7 +299,6 @@ void	delete_key_handler(t_global *global)
 
 void	find_routine(t_global *global)
 {
-(void)global;
 	char	read_str[256];
 	char key;
 	int i = 0x0;
@@ -309,8 +308,8 @@ void	find_routine(t_global *global)
 	while (i < 256)
 	{
 		read(INPUT_FD, &key, 8);
-if (key == RETURN)
-	break ;
+		if (key == RETURN)
+			break ;
 		read_str[i++] = key;
 	}
 	// ft_putstr_fd(read_str, INPUT_FD);
@@ -319,7 +318,6 @@ if (key == RETURN)
 	char *buf2;
 	while (buf)
 	{
-		// ft_putstr_fd(buf->data, INPUT_FD);
 		buf2 = ft_strstr(buf->data, read_str);
 
 		if ((buf2))
