@@ -31,6 +31,7 @@
 
 /* 3 */
 // TODO: large vs small window;
+// TODO: The cursor of selection must be repositioned in a reasonable manner after a resizing.
 // TODO: resize of the window => cursor behavioiur
 // TODO: # define NO_ROOM "Not enough space! Resize window."
 // TODO: not possible to show everithing; if size is ok -> show everithing;
