@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:31:17 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 17:45:21 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 18:28:04 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef	struct			s_global
 	struct termios		initial_terminal_state;
 	struct termios		new_terminal_state;
 	t_termcap_cmd		terminal_state;
+	int					longest;
 }						t_global;
 
 /*
@@ -99,7 +100,7 @@ void					set_coordinates(t_input *input,
 ************************* data modifications *************************
 */
 
-void					delete_node(t_input **head_ref, t_input *del, int len);
+void					delete_node(t_input **head_ref, t_input *del, int len, t_global *global);
 void					add_node(t_input **head_ref, char *data);
 
 /*
@@ -125,8 +126,11 @@ void					return_key_handler(t_global *global);
 void					key_selection(int key, t_global *input);
 void					left_key_handler(t_global *globa);
 void					right_key_handler(t_global *global);
+void					delete_key_handler(t_global *global);
 void					init_color_data(t_colors *colors);
 void					ft_putstr_fd_select(t_colors *colors,
 							int fd, t_global *global);
+
+t_global global;
 
 #endif

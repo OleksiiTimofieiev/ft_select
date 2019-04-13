@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 20:16:14 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 17:34:49 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 18:11:35 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	print_to_terminal(t_input *input)
 		ft_putstr_fd(input->color, OUTPUT_FD);
 		ft_putstr_fd(input->data, OUTPUT_FD);
 		ft_putstr_fd(RESET, OUTPUT_FD);
-
 		input = input->next;
 	}
 }

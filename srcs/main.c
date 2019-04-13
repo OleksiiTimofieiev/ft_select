@@ -6,24 +6,19 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 17:36:23 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 18:27:59 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
 
 // TODO: norminette in all directories;
-// TODO: leaks => enter / invalid case / esc;
 // TODO: check static ones;
 
 /* 1 */
 /* 2 */
 
 // TODO: arrows to the next // previous column;
-// TODO: finish with keys management: del, backspace
-
-// TODO: If the user presses either delete or backspace, the element the cursor is pointing to must be erased from the list.
-// If there are no more elements in the list, the behavior must be exactly the same as if the user had pressed esc.
 
 /* 3 */
 // TODO: large vs small window;
@@ -53,10 +48,6 @@
 // 		exit(0);
 // }
 
-
-
-
-
 void 	restore_terminal(t_global *global)
 {
 	tcsetattr(OUTPUT_FD, TCSANOW, &global->initial_terminal_state);
@@ -79,7 +70,7 @@ void 	restore_terminal(t_global *global)
 // ss()->
 // 	->asdads
 
-t_global	global;
+
 
 void sl_set_default_color(t_input *arg)
 {
@@ -117,15 +108,15 @@ void	init_color(t_input *input)
 				input->color_type = EMPTY_COLOR;
 				input->color = MAGENTA;
 			}
-			else if (sb.st_mode & S_IXUSR)
-			{
-				input->color_type = EMPTY_COLOR;
-				input->color = RED;
-			}
 			else if (S_ISDIR(sb.st_mode))
 			{
 				input->color_type = BOLD;
 				input->color = CYAN;
+			}
+			else if (sb.st_mode & S_IXUSR)
+			{
+				input->color_type = EMPTY_COLOR;
+				input->color = RED;
 			}
 			else
 				sl_set_default_color(input);
@@ -172,7 +163,7 @@ int		main(int argc, char **argv)
 		ft_putstr_fd(global.terminal_state.vi, OUTPUT_FD); // mask cursor
 		ft_putstr_fd(global.terminal_state.cl, OUTPUT_FD); // clear window
 
-
+		global.longest = len;
 		print_to_terminal(input);
 		initial_select(&global, len);
 
@@ -181,10 +172,11 @@ int		main(int argc, char **argv)
 		{
 			key = 0;
 			if (read(0, &key, 8) == -1)
-			{
-				ft_putstr_fd("asdfasdfasdfadsf", 0);	
+			// {
+				// ft_putstr_fd("asdfasdfasdfadsf", 0);	
 				exit(0);
-			}
+			// }
+			// ft_putstr_fd(ft_itoa(key), 0);
 			key_selection(key, &global);
 		}
 

@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:44:11 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 17:39:34 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 18:15:14 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 # define LEFT			4479771
 # define RETURN			10
 # define SPACE			32
-# define BACK_SPACE		27
-# define DEL			117294875
 # define CTRL_A			1
 # define CTRL_W			23
 # define KEY_ARRAY_SIZE	11
+# define BACK_SPACE		127
+# define DEL			2117294875
 
 #endif
