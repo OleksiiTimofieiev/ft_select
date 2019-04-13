@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 20:29:53 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 20:34:13 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,17 @@
 // TODO: Whichever way your program ends, the default configuration of your terminal MUST be restored. This is true even after it received a signal (except for the signals that we cannot intercept, but this would mean that your program does not work).
 // TODO: We must be able to interrupt your program with ctrl+z and restore it with fg without seeing any changes in its behavior.
 // TODO: correction form;
+
+// void sl_set_base_settings(void)
+// {
+// 	tcsetattr(STDIN_FILENO, TCSANOW, &sl()->base_attr);
+// 	tputs(tgetstr("ve", NULL), 1, sl_print_key);
+// 	tputs(tgetstr("te", NULL), 1, sl_print_key);
+// 	if (sl()->music)
+// 		sl_music_off();
+// }
+
+
 
 // void sl_init_signals(void)
 // {
