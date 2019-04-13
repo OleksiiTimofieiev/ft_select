@@ -145,7 +145,10 @@ int		main(int argc, char **argv)
 		{
 			key = 0;
 			if (read(0, &key, 8) == -1)
+			{
+				ft_putstr_fd("asdfasdfasdfadsf", 0);	
 				exit(0);
+			}
 			key_selection(key, &global);
 		}
 

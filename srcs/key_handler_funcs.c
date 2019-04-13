@@ -42,6 +42,34 @@ void	esc_key_handler(t_global *global)
 	restore_terminal(global);
 	exit(0);
 }
+void	right_key_handler(t_global *global)
+{
+	t_colors colors;
+	
+	init_color_data(&colors);
+	colors.data = global->current->data;
+	ft_putstr_fd(tgoto(tgetstr("cm", NULL), global->current->x,
+					global->current->y), OUTPUT_FD);
+	if (global->current->selection == 0)
+		ft_putstr_fd_select(&colors, 0);
+	else
+	{
+		colors.color1 = BACK;
+		ft_putstr_fd_select(&colors, 0);
+	}
+	if (global->current->next == NULL)
+		global->current = global->head;
+	else
+		global->current = global->current->next;
+	ft_putstr_fd(tgoto(tgetstr("cm", NULL), global->current->x,
+					global->current->y), OUTPUT_FD);
+	colors.color1 = (global->current->selection) ? BACK : EMPTY_COLOR;
+	colors.color2 = UNDERLINED;
+	colors.color3 = ITALIC;
+	colors.data = global->current->data;
+	ft_putstr_fd_select(&colors, 0);
+
+}
 
 void down_key_handler(t_global *global)
 {
@@ -65,13 +93,25 @@ void down_key_handler(t_global *global)
 		colors.color1 = BACK;
 		ft_putstr_fd_select(&colors, 0);
 	}
-
-	while (i--)
+	if (global->current->next == NULL)
 	{
-		global->current = global->current->next;
-		if (global->current == NULL)
-			global->current = global->head;
+		global->current = global->head;
 	}
+	else
+	{
+	i = 3;
+
+	while (i--) // move backwards;
+	{
+		if (global->current->next == NULL)
+		{
+			// right_key_handler(global);
+			global->current = global->head;
+			break;
+		}
+		global->current = global->current->next;
+	}
+}
 	ft_putstr_fd(tgoto(tgetstr("cm", NULL), global->current->x,
 					global->current->y), OUTPUT_FD);
 	colors.color1 = (global->current->selection) ? BACK : EMPTY_COLOR;
@@ -83,7 +123,48 @@ void down_key_handler(t_global *global)
 
 void	up_key_handler(t_global *global)
 {
-	(void)global;
+		
+	t_input *end; /* implement a func for end */
+	t_colors colors;
+
+	end = global->current;
+	while (end->next)
+		end = end->next;
+	int i;
+
+	i = global->height; //delet height
+
+
+	init_color_data(&colors);
+	colors.data = global->current->data;
+	
+	ft_putstr_fd(tgoto(tgetstr("cm", NULL),
+			global->current->x, global->current->y), OUTPUT_FD);
+
+	if (global->current->selection == 0)
+		ft_putstr_fd_select(&colors, 0);
+	else
+	{
+		colors.color1 = BACK;
+		ft_putstr_fd_select(&colors, 0);
+	}
+	i = 3;
+	while (i--)
+	{
+		if (global->current->prev == NULL)
+		{
+			global->current = end;
+			break;
+		}
+		global->current = global->current->prev;
+	}
+	ft_putstr_fd(tgoto(tgetstr("cm", NULL), global->current->x,
+					global->current->y), OUTPUT_FD);
+	colors.color1 = (global->current->selection) ? BACK : EMPTY_COLOR;
+	colors.color2 = UNDERLINED;
+	colors.color3 = ITALIC;
+	colors.data = global->current->data;
+	ft_putstr_fd_select(&colors, 0);
 }
 
 void	space_key_handler(t_global *global)
@@ -148,34 +229,6 @@ void	return_key_handler(t_global *global)
 	exit(0);
 }
 
-void	right_key_handler(t_global *global)
-{
-	t_colors colors;
-	
-	init_color_data(&colors);
-	colors.data = global->current->data;
-	ft_putstr_fd(tgoto(tgetstr("cm", NULL), global->current->x,
-					global->current->y), OUTPUT_FD);
-	if (global->current->selection == 0)
-		ft_putstr_fd_select(&colors, 0);
-	else
-	{
-		colors.color1 = BACK;
-		ft_putstr_fd_select(&colors, 0);
-	}
-	if (global->current->next == NULL)
-		global->current = global->head;
-	else
-		global->current = global->current->next;
-	ft_putstr_fd(tgoto(tgetstr("cm", NULL), global->current->x,
-					global->current->y), OUTPUT_FD);
-	colors.color1 = (global->current->selection) ? BACK : EMPTY_COLOR;
-	colors.color2 = UNDERLINED;
-	colors.color3 = ITALIC;
-	colors.data = global->current->data;
-	ft_putstr_fd_select(&colors, 0);
-
-}
 
 void	left_key_handler(t_global *global)
 {
