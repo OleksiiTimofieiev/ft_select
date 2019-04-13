@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 18:47:53 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 20:20:25 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,11 @@
 /* 3 */
 // TODO: large vs small window;
 // TODO: The cursor of selection must be repositioned in a reasonable manner after a resizing.
-// TODO: resize of the window => cursor behavioiur
 // TODO: # define NO_ROOM "Not enough space! Resize window."
 // TODO: not possible to show everithing; if size is ok -> show everithing;
 // TODO: check how the change size signal works; on every move = +;
 // TODO: Whichever way your program ends, the default configuration of your terminal MUST be restored. This is true even after it received a signal (except for the signals that we cannot intercept, but this would mean that your program does not work).
 // TODO: We must be able to interrupt your program with ctrl+z and restore it with fg without seeing any changes in its behavior.
-
-
 
 // void sl_sig_hendler(int sig)
 // {
@@ -77,7 +74,7 @@ int		main(int argc, char **argv)
 		init_terminal(termtype);
 		init_data(--argc, argv, &input, &len);
 		init_coordinates(&input, len);
-		init_termcap(&g_evil.terminal_state); // init_global
+		init_termcap(&g_evil.terminal_state);
 		init_color(input);
 		init_terminal_state(&g_evil, input, len);
 		print_to_terminal(input);
