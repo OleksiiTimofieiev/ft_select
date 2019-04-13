@@ -14,7 +14,7 @@
 
 void	print_error(char *error_type)
 {
-	ft_printf("%s\n", error_type);
-	ft_printf("Process will be terminated.\n");
+	ft_putstr_fd(error_type, 0);
+	ft_putstr_fd("\nProcess will be terminated.\n", 0);
 	exit(0);
 }

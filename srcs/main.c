@@ -24,16 +24,13 @@
 // TODO: # define NO_ROOM "Not enough space! Resize window."
 // TODO: not possible to show everithing; if size is ok -> show everithing;
 
-// • If the choices are files names, colorize the list according to the extensions (a bit like
+// TODO: If the choices are files names, colorize the list according to the extensions (a bit like
 // ls -G on OSX).
 
 // TODO: Whichever way your program ends, the default configuration of your terminal MUST be restored. This is true even after it received a signal (except for the signals that we cannot intercept, but this would mean that your program does not work).
 
 // TODO: If the user presses either delete or backspace, the element the cursor is pointing to must be erased from the list.
 // If there are no more elements in the list, the behavior must be exactly the same as if the user had pressed esc.
-// TODO: When the user validates the selection with the return key, the list of choices will be sent back to shell.
-// The latter (i.e. list of choices sent back) will be separated by a space. This will allow you to use your program ft_select inside a shell script (to create a “set” for example).
-// TODO: sample of commands as in the subject; ls `...`
 // TODO: If the user presses either delete or backspaceIf there are no more elements in the list, the behavior must be exactly the same as if the user had pressed esc.
 
 /* 3 */
