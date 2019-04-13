@@ -114,6 +114,7 @@ void				select_all_handler(t_global *global);
 void				deselect_all_handler(t_global *global);
 void				return_key_handler(t_global *global);
 void				key_selection(int key, t_global *input);
-
+void init_color_data(t_colors *colors);
+void ft_putstr_fd_select(t_colors *colors, int fd);
 
 #endif

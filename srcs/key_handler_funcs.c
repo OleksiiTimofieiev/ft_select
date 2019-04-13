@@ -12,6 +12,14 @@
 
 #include "ft_select.h"
 
+
+void init_color_data(t_colors *colors)
+{
+	colors->color1 = EMPTY_COLOR;
+	colors->color2 = EMPTY_COLOR;
+	colors->color3 = EMPTY_COLOR;
+	colors->color4 = RESET;
+}
 void ft_putstr_fd_select(t_colors *colors, int fd)
 {
 	int i;
@@ -32,14 +40,6 @@ void	esc_key_handler(t_global *global)
 {
 	restore_terminal(global);
 	exit(0);
-}
-
-void init_color_data(t_colors *colors)
-{
-	colors->color1 = EMPTY_COLOR;
-	colors->color2 = EMPTY_COLOR;
-	colors->color3 = EMPTY_COLOR;
-	colors->color4 = RESET;
 }
 
 void down_key_handler(t_global *global)
@@ -65,7 +65,7 @@ void down_key_handler(t_global *global)
 					global->current->y), OUTPUT_FD);
 	colors.color1 = (global->current->selection) ? BACK : EMPTY_COLOR;
 	colors.color2 = UNDERLINED;
-	colors.color3 = ITALIC,
+	colors.color3 = ITALIC;
 	colors.data = global->current->data;
 	ft_putstr_fd_select(&colors, 0);
 }

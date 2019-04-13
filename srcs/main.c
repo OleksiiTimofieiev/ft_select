@@ -85,6 +85,22 @@ void 	restore_terminal(t_global *global)
 
 t_global	global;
 
+void	initial_select(t_global *global)
+{
+	t_colors colors;
+
+	init_color_data(&colors);
+	colors.color2 = UNDERLINED;
+	colors.color3 = ITALIC;
+	colors.data = global->current->data;
+	ft_putstr_fd(tgoto(tgetstr("cm", NULL), global->current->x,
+					global->current->y), OUTPUT_FD);
+	
+	ft_putstr_fd_select(&colors, 0);
+
+}
+
+
 int		main(int argc, char **argv)
 {
 		
@@ -121,6 +137,7 @@ int		main(int argc, char **argv)
 
 
 		print_to_terminal(input);
+		initial_select(&global);
 
 		int key;
 		while (42)
