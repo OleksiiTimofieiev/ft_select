@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 20:34:13 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 20:36:05 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@
 // 	if (sl()->music)
 // 		sl_music_off();
 // }
-
-
 
 // void sl_init_signals(void)
 // {
@@ -68,7 +66,7 @@
 // 		// sl_print_all();
 // 	}
 // 	else
-// 		exit(0);
+// 		exit(-1);
 // }
 
 int		main(int argc, char **argv)
