@@ -14,31 +14,27 @@
 
 // TODO: norminette in all directories;
 // TODO: leaks => enter / invalid case / esc;
-// TODO: finish with keys management;
 
 /* 1 */
 /* 2 */
 
+// TODO: finish with keys management + colors ls -G;
+// TODO: If the choices are files names, colorize the list according to the extensions (a bit like
+// ls -G on OSX).
+// https://github.com/prippa/ft_select/blob/master/source/init/sl_init_args.c
+// TODO: If the user presses either delete or backspace, the element the cursor is pointing to must be erased from the list.
+// If there are no more elements in the list, the behavior must be exactly the same as if the user had pressed esc.
+// TODO: norminette;
+
+/* 3 */
 // TODO: large vs small window;
 // TODO: resize of the window => cursor behavioiur
 // TODO: # define NO_ROOM "Not enough space! Resize window."
 // TODO: not possible to show everithing; if size is ok -> show everithing;
 // TODO: check how the change size signal works; on every move = +;
-
-// TODO: If the choices are files names, colorize the list according to the extensions (a bit like
-// ls -G on OSX).
-// https://github.com/prippa/ft_select/blob/master/source/init/sl_init_args.c
-
 // TODO: Whichever way your program ends, the default configuration of your terminal MUST be restored. This is true even after it received a signal (except for the signals that we cannot intercept, but this would mean that your program does not work).
-
-// TODO: If the user presses either delete or backspace, the element the cursor is pointing to must be erased from the list.
-// If there are no more elements in the list, the behavior must be exactly the same as if the user had pressed esc.
-
-/* 3 */
-
 // TODO: We must be able to interrupt your program with ctrl+z and restore it with fg without seeing any changes in its behavior.
 
-/* 4 */
 // void sl_sig_hendler(int sig)
 // {
 // 	// if (sig == SIGWINCH)
