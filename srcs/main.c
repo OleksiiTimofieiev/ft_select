@@ -18,12 +18,15 @@
 /* 1 */
 /* 2 */
 
-// TODO: finish with keys management + colors ls -G;
+// TODO: finish with keys management
+// TODO: + colors ls -G;
 // TODO: If the choices are files names, colorize the list according to the extensions (a bit like
 // ls -G on OSX).
 // https://github.com/prippa/ft_select/blob/master/source/init/sl_init_args.c
 // TODO: If the user presses either delete or backspace, the element the cursor is pointing to must be erased from the list.
 // If there are no more elements in the list, the behavior must be exactly the same as if the user had pressed esc.
+// select -> next element -> mark it;
+// TODO: clear main;
 // TODO: norminette;
 
 /* 3 */
