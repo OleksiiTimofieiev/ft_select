@@ -6,13 +6,13 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:54:46 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 23:42:39 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 23:43:29 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
 
-static const t_events g_funcs[KEY_ARRAY_SIZE] =
+static t_events g_funcs[KEY_ARRAY_SIZE] =
 {
 	esc_key_handler, up_key_handler, down_key_handler,
 	right_key_handler, left_key_handler, return_key_handler,
@@ -20,7 +20,7 @@ static const t_events g_funcs[KEY_ARRAY_SIZE] =
 	select_all_handler, deselect_all_handler
 };
 
-static const long int g_keys[KEY_ARRAY_SIZE] =
+static long int g_keys[KEY_ARRAY_SIZE] =
 {
 	ESC, UP, DOWN, RIGHT, LEFT, RETURN,
 	SPACE, BACK_SPACE, DEL,
