@@ -95,7 +95,8 @@ void				add_node(t_input **head_ref, char *data);
 */
 
 void				print_to_terminal(t_input *input);
-void	print_selection(t_input *input);
+void				print_selection(t_input *input);
+void				restore_terminal(t_global *global);
 
 /*
 ************************* error func *************************
@@ -111,9 +112,8 @@ void				up_key_handler(t_global *global);
 void				space_key_handler(t_global *global);
 void				select_all_handler(t_global *global);
 void				deselect_all_handler(t_global *global);
-void	return_key_handler(t_global *global);
-void					key_selection(int key, t_global *input);
+void				return_key_handler(t_global *global);
+void				key_selection(int key, t_global *input);
 
-void				restore_terminal(t_global *global);
 
 #endif

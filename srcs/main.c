@@ -14,6 +14,7 @@
 
 // TODO: norminette in all directories;
 // TODO: leaks => delete all data before exit => OS will clean it;
+// TODO: finish with keys management;
 
 /* 1 */
 /* 2 */
@@ -22,6 +23,7 @@
 // TODO: resize of the window => cursor behavioiur
 // TODO: # define NO_ROOM "Not enough space! Resize window."
 // TODO: not possible to show everithing; if size is ok -> show everithing;
+// TODO: check how the change size signal works; on every move = +;
 
 // TODO: If the choices are files names, colorize the list according to the extensions (a bit like
 // ls -G on OSX).
@@ -34,9 +36,7 @@
 
 /* 3 */
 
-// TODO: check how the change size signal works; on every move = +;
 // TODO: We must be able to interrupt your program with ctrl+z and restore it with fg without seeing any changes in its behavior.
-
 
 /* 4 */
 // void sl_sig_hendler(int sig)

@@ -22,8 +22,8 @@ static const int	keys[KEY_ARRAY_SIZE] =
 static const t_events ke[KEY_ARRAY_SIZE] =
 {
 	esc_key_handler, up_key_handler, down_key_handler,
-	esc_key_handler, esc_key_handler, return_key_handler,
-	space_key_handler, esc_key_handler, esc_key_handler,
+	NULL, NULL, return_key_handler,
+	space_key_handler, NULL, NULL,
 	select_all_handler, deselect_all_handler
 };
 

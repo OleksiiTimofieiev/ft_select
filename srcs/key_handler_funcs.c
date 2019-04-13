@@ -159,7 +159,7 @@ void	deselect_all_handler(t_global *global)
 
 void	return_key_handler(t_global *global)
 {
-			restore_terminal(global);
-print_selection(global->head);
-exit(0);
+	restore_terminal(global);
+	print_selection(global->head);
+	exit(0);
 }
