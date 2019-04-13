@@ -95,6 +95,7 @@ void				add_node(t_input **head_ref, char *data);
 */
 
 void				print_to_terminal(t_input *input);
+void	print_selection(t_input *input);
 
 /*
 ************************* error func *************************

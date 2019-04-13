@@ -21,3 +21,26 @@ void	print_to_terminal(t_input *input)
 		input = input->next;
 	}
 }
+
+void	print_selection(t_input *input)
+{
+	char *buf;
+	int len;
+
+	buf = NULL;
+	while (input)
+	{
+		if (input->selection == 1)
+		{
+			len = ft_strlen(input->data);
+			buf = (char *)malloc(sizeof(char) * (len + 2));
+			ft_strcpy(buf, input->data);
+			buf[len] = 32;
+			buf[len + 1] ='\0';
+			ft_putstr_fd(buf, INPUT_FD);
+			free(buf);
+			buf = NULL;
+		}
+			input = input->next;
+	}
+}

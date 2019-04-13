@@ -146,7 +146,8 @@ int		main(int argc, char **argv)
 		restore_terminal(&global);
 		// ft_putstr_fd(global.terminal_state.cl, OUTPUT_FD); // clear window
 
-			ft_putstr_fd("includes ", INPUT_FD);
+		// ft_putstr_fd("includes ", INPUT_FD);
+		print_selection(input);
 
 
 		// ft_printf("\n");
