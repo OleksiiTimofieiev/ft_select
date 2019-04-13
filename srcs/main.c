@@ -14,7 +14,6 @@
 
 // TODO: norminette in all directories;
 // TODO: leaks => delete all data before exit => OS will clean it;
-// TOOO: logic when deleting global end;
 
 /* 1 */
 /* 2 */

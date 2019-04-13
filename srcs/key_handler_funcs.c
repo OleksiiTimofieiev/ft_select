@@ -73,7 +73,7 @@ void down_key_handler(t_global *global)
 
 void	up_key_handler(t_global *global)
 {
-	t_input *end;
+	t_input *end; /* implement a func for end */
 	t_colors colors;
 
 	init_color_data(&colors);
