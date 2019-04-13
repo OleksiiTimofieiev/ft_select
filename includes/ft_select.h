@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:31:17 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 22:47:45 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 23:35:14 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ void					restore_terminal(t_global *global);
 ************************* error func *************************
 */
 
-void find_routine(t_global *global) ;
+void find_routine(t_global *global, char c) ;
 void print_error(char *error_type);
 void					esc_key_handler(t_global *input);
 void					down_key_handler(t_global *global);

@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 18:46:08 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 23:20:42 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 23:29:18 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	main_loop(void)
 		key = 0;
 		if (read(0, &key, 8) == -1)
 			exit(0);
-		// ft_putstr_fd(ft_itoa(key), 0);
 		key_selection(key, &g_evil);
 	}
 }
