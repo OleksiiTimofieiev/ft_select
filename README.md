@@ -9,3 +9,17 @@ Terminal visualization via termcaps
 - file descriptors
 - dprintf
 - 0 / 1 file descriptors
+
+// t_some_struct *ss(void)
+// {
+// 	static t_some_struct ss;
+
+// 	return (&ss);
+// }
+
+// t_some_struct *ss;
+
+// ss = ss(ksdjfhg);
+// ss->
+// ss()->
+// 	->asdads

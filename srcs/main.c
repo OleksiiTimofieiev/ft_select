@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 20:21:57 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 20:22:21 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,22 +46,6 @@
 // 	else
 // 		exit(0);
 // }
-
-
-
-// t_some_struct *ss(void)
-// {
-// 	static t_some_struct ss;
-
-// 	return (&ss);
-// }
-
-// t_some_struct *ss;
-
-// ss = ss(ksdjfhg);
-// ss->
-// ss()->
-// 	->asdads
 
 int		main(int argc, char **argv)
 {
