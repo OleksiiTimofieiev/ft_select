@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:31:17 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 18:33:27 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 18:36:23 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,13 +95,15 @@ void					init_terminal(char *termtype);
 void					init_coordinates(t_input **input, int len);
 void					set_coordinates(t_input *input,
 						int word_per_line, int len);
+void					init_color(t_input *input);
+void initial_select(t_global *global, int len);
 
-/*
+	/*
 ************************* data modifications *************************
 */
 
-void					delete_node(t_input **head_ref, t_input *del,
-									int len, t_global *global);
+	void delete_node(t_input **head_ref, t_input *del,
+					 int len, t_global *global);
 void					add_node(t_input **head_ref, char *data);
 
 /*
