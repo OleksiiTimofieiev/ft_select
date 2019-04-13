@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:54:46 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 23:23:42 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 23:25:09 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ void key_selection(int key, t_global *input)
 			break ;
 		}
 	}
-if (i == KEY_ARRAY_SIZE)
-	 find_routine(&g_evil);
+	if (i == KEY_ARRAY_SIZE)
+		find_routine(&g_evil);
 }

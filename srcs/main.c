@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 22:04:14 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 23:25:31 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,3 +101,6 @@ int		main(int argc, char **argv)
 	main_loop();
 	return (0);
 }
+
+
+// bonus: colors, dynamic search;

@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:32:11 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 23:22:05 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/13 23:27:42 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -346,6 +346,7 @@ if (key == RETURN)
 			colors.color3 = ITALIC;
 			ft_putstr_fd(tgoto(tgetstr("cm", NULL), global->current->x,
 			global->current->y), INPUT_FD);
+
 			ft_putstr_fd_select(&colors, INPUT_FD, global);
 			break;
 		}
