@@ -18,7 +18,7 @@
 /* 1 */
 /* 2 */
 
-// TODO: arrows to the nex // previous column;
+// TODO: arrows to the next // previous column;
 // TODO: finish with keys management: del, backspace
 
 // TODO: + colors ls -G;
@@ -115,7 +115,7 @@ int		main(int argc, char **argv)
 		init_terminal(termtype);
 		init_data(--argc, argv, &input, &len);
 		init_coordinates(&input, len);
-		init_termcap(&global.terminal_state);
+		init_termcap(&global.terminal_state); // init_global
 
 		global.head = input;
 		global.current = input;
