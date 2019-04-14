@@ -96,6 +96,7 @@ void init_terminal_state(t_global *g_evil, t_input *input, int len)
 	g_evil->current = input;
 	g_evil->input = input;
 
+	init_termcap(&g_evil->terminal_state);
 	
 	tcgetattr(INPUT_FD, &g_evil->initial_terminal_state);
 	tcgetattr(INPUT_FD, &g_evil->new_terminal_state);
@@ -105,7 +106,6 @@ void init_terminal_state(t_global *g_evil, t_input *input, int len)
 	g_evil->new_terminal_state.c_cc[VMIN] = 1;
 	g_evil->new_terminal_state.c_cc[VTIME] = 0;
 
-	init_termcap(&g_evil->terminal_state);
 
 	ft_putstr_fd(g_evil->terminal_state.ti, INPUT_FD); //
 	ft_putstr_fd(g_evil->terminal_state.vi, INPUT_FD); // mask cursor
