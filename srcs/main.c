@@ -32,13 +32,14 @@ int		print_key(int n)
 	signal(SIGTSTP, SIG_DFL);
 	ioctl(STDIN_FILENO, TIOCSTI, "\x1A");
 }
+
 void	signals_routines(int type_of_signal)
 {
 	if (type_of_signal == SIGWINCH)
 	{
 		init_coordinates(&g_evil.head, g_evil.longest);
 		print_to_terminal(g_evil.input);
-		initial_select(&g_evil, g_evil.longest);
+		// initial_select(&g_evil, g_evil.longest);
 	}
 	else if (type_of_signal == SIGTSTP)
 		ctrl_z_handler();
@@ -51,7 +52,6 @@ void	signals_routines(int type_of_signal)
 		init_terminal_state(&g_evil, g_evil.input, g_evil.longest);
 		// init_signals();
 		print_to_terminal(g_evil.input);
-		initial_select(&g_evil, g_evil.longest);
 		main_loop();
 
 	}
@@ -127,7 +127,7 @@ int		main(int argc, char **argv)
 	init_terminal_state(&g_evil, input, len);
 	init_signals();
 	print_to_terminal(input);
-	initial_select(&g_evil, len);
+	// initial_select(&g_evil, len);
 	main_loop();
 	return (0);
 }
