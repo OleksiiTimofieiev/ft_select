@@ -20,7 +20,6 @@
 /* 3 */
 // TODO: # define NO_ROOM "Not enough space! Resize window."
 // TODO: not possible to show everithing; if size is ok -> show everithing;
-// TODO: Whichever way your program ends, the default configuration of your terminal MUST be restored. This is true even after it received a signal (except for the signals that we cannot intercept, but this would mean that your program does not work).
 // TODO: We must be able to interrupt your program with ctrl+z and restore it with fg without seeing any changes in its behavior.
 // TODO: correction form;
 
@@ -39,14 +38,10 @@
 // 		signal(SIGWINCH, SIG_DFL);
 // 	else
 // 		signal(SIGWINCH, sl_sig_hendler);
-// 	signal(SIGINT, sl_sig_hendler);
+
 // 	signal(SIGCONT, sl_sig_hendler);
 // 	signal(SIGTSTP, sl_sig_hendler);
 
-// 	signal(SIGABRT, sl_sig_hendler);
-// 	signal(SIGSTOP, sl_sig_hendler);
-// 	signal(SIGKILL, sl_sig_hendler);
-// 	signal(SIGQUIT, sl_sig_hendler);
 // }
 
 // TODO: change of longest upon deletion;
@@ -58,7 +53,6 @@ void	signals_routines(int type_of_signal)
 		init_coordinates(&g_evil.head, g_evil.longest);
 		print_to_terminal(g_evil.input);
 		initial_select(&g_evil, g_evil.longest);
-		// ft_putstr_fd("adadf", 0);
 	}
 	else
 	{
@@ -102,15 +96,19 @@ void	signals_routines(int type_of_signal)
 // 		exit(-1);
 // }
 
-int		main(int argc, char **argv)
+void	init_signals(void)
 {
+
 	signal(SIGWINCH, signals_routines);
 	signal(SIGINT, signals_routines);
-	// 
 	signal(SIGABRT, signals_routines);
 	signal(SIGSTOP, signals_routines);
 	signal(SIGKILL, signals_routines);
 	signal(SIGQUIT, signals_routines);
+}
+
+int		main(int argc, char **argv)
+{
 	int				len;
 	t_input 		*input;
 
@@ -119,6 +117,7 @@ int		main(int argc, char **argv)
 	init_coordinates(&input, len);
 	init_color(input);
 	init_terminal_state(&g_evil, input, len);
+	init_signals();
 	print_to_terminal(input);
 	initial_select(&g_evil, len);
 	main_loop();
