@@ -20,38 +20,7 @@
 /* 3 */
 // TODO: # define NO_ROOM "Not enough space! Resize window."
 // TODO: not possible to show everithing; if size is ok -> show everithing;
-// TODO: We must be able to interrupt your program with ctrl+z and restore it with fg without seeing any changes in its behavior.
-// TODO: correction form;
 
-// static void	sl_set_new_attr(void)
-// {
-// 	if ((tcgetattr(STDIN_FILENO, &sl()->base_attr)) == ERR)
-// 		sl_init_fatal_err_exit("tcgetattr() failed");
-// 	if ((tcgetattr(STDIN_FILENO, &sl()->new_attr)) == ERR)
-// 		sl_init_fatal_err_exit("tcgetattr() failed");
-// 	sl()->new_attr.c_lflag &= ~(ICANON | ECHO);
-// 	sl()->new_attr.c_cc[VMIN] = 1;
-// 	sl()->new_attr.c_cc[VTIME] = 0;
-// 	if ((tcsetattr(STDIN_FILENO, TCSANOW, &sl()->new_attr)) == ERR)
-// 		sl_init_fatal_err_exit("tcsetattr() failed");
-// }
-
-// void		sl_init_term(void)
-// {
-// 	int32_t	res;
-
-// 	if (!isatty(STDIN_FILENO))
-// 		sl_init_fatal_err_exit(NOT_A_TERM);
-// 	if (!(sl()->termtype = getenv("TERM")))
-// 		sl_init_fatal_err_exit(MSG(NO_TERM, NULL));
-// 	if ((res = tgetent(NULL, sl()->termtype)) == ERR)
-// 		sl_init_fatal_err_exit(NO_ACCESS_TO_DB);
-// 	else if (res == 0)
-// 		sl_init_fatal_err_exit(MSG(NO_SUCH_ENTRY, sl()->termtype));
-// 	sl_set_new_attr();
-// 	tputs(tgetstr("ti", NULL), 1, sl_print_key);
-// 	tputs(tgetstr("vi", NULL), 1, sl_print_key);
-// }
 int		print_key(int n)
 {
 	return (write(INPUT_FD, &n, 1));
@@ -60,7 +29,7 @@ int		print_key(int n)
  void	ctrl_z_handler(void)
 {
 	restore_terminal(&g_evil);
-	// signal(SIGTSTP, signals_routines);
+	signal(SIGTSTP, SIG_DFL);
 	ioctl(STDIN_FILENO, TIOCSTI, "\x1A");
 }
 void	signals_routines(int type_of_signal)
