@@ -116,7 +116,7 @@ void init_terminal_state(t_global *g_evil, t_input *input, int len)
 	// ft_putstr_fd(g_evil->terminal_state.ti, INPUT_FD); //
 	// ft_putstr_fd(g_evil->terminal_state.vi, INPUT_FD); // mask cursor
 
-		tputs(tgetstr("ti", NULL), 1, print_key);
+	tputs(tgetstr("ti", NULL), 1, print_key);
 	tputs(tgetstr("vi", NULL), 1, print_key);
 	// ft_putstr_fd(g_evil->terminal_state.cl, INPUT_FD); // clear window
 
