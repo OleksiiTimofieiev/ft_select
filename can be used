@@ -1,16 +1,16 @@
 + isatty, 
 - ttyname, 
-- ttyslot 
-- ioctl
+- ttyslot, 
++ ioctl -> to get the correct coordinates;
 + getenv
-- tcsetattr, 
-- tcgetattr
+- tcsetattr -> set the terminal configuration, 
+- tcgetattr -> get the terminal configuration
 + tgetent,
 - getflag, 
 + tgetnum, 
 + tgetstr,
-- tgoto, 
-- tputs 
+- tgoto -> move the cursor, 
+- tputs -> print to the terminal
 + open, close, write
 + malloc, free
 + read, exit
