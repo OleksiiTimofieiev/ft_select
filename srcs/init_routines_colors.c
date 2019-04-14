@@ -90,11 +90,6 @@ void	init_color(t_input *input)
 	}
 }
 
-int32_t		sl_print_key(int32_t n)
-{
-	return (write(INPUT_FD, &n, 1));
-}
-
 void init_terminal_state(t_global *g_evil, t_input *input, int len)
 {
 	g_evil->head = input;

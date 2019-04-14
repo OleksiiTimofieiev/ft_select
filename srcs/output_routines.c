@@ -85,3 +85,8 @@ void	print_selection(t_input *input)
 		input = input->next;
 	}
 }
+
+int		print_key(int n)
+{
+	return (write(INPUT_FD, &n, 1));
+}

@@ -28,7 +28,6 @@
 # define INPUT_FD 0
 # define OUTPUT_FD 1
 
-int		print_key(int n);
 
 /*
 ************************ ADT for data **********************************
@@ -94,24 +93,24 @@ typedef	void			(*t_events)(t_global *current);
 */
 
 void					init_data(int argc, char **argv,
-						t_input **input, int *len);
+							t_input **input, int *len);
 void					init_termcap(t_termcap_cmd *tc_cmd);
 void					init_terminal(char *termtype);
 void					init_coordinates(t_input **input, int len);
 void					set_coordinates(t_input *input,
-						int word_per_line, int len);
+							int word_per_line, int len);
 void					init_color(t_input *input);
 void					initial_select(t_global *global, int len);
 void					init_terminal_state(t_global *g_evil, t_input *input, int len);
 void					init_color_data(t_colors *colors);
-void	init_signals(void);
+void					init_signals(void);
 
-	/*
+/*
 ************************* data modifications *************************
 */
 
-	void delete_node(t_input **head_ref, t_input *del,
-					 int len, t_global *global);
+void					delete_node(t_input **head_ref, t_input *del,
+							int len, t_global *global);
 void					add_node(t_input **head_ref, char *data);
 
 /*
@@ -120,14 +119,15 @@ void					add_node(t_input **head_ref, char *data);
 
 void					print_to_terminal(t_input *input);
 void					print_selection(t_input *input);
+int						print_key(int n);
 void					restore_terminal(t_global *global);
 
 /*
 ************************* error func *************************
 */
 
-void find_routine(t_global *global, char c) ;
-void print_error(char *error_type);
+void					find_routine(t_global *global, char c) ;
+void					print_error(char *error_type);
 void					esc_key_handler(t_global *input);
 void					down_key_handler(t_global *global);
 void					up_key_handler(t_global *global);
@@ -141,9 +141,9 @@ void					right_key_handler(t_global *global);
 void					delete_key_handler(t_global *global);
 void					ft_putstr_fd_select(t_colors *colors,
 							int fd, t_global *global);
+// void					signals_routines(int type_of_signal);
+void					main_loop(void);
 
-void	signals_routines(int type_of_signal);
-void main_loop(void);
-	t_global g_evil;
+t_global				g_evil;
 
 #endif
