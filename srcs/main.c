@@ -13,7 +13,7 @@
 #include "ft_select.h"
 
 // TODO: norminette in all directories;
-// TODO: check static ones;
+// TODO: check static ones to local funcs;
 
 // TODO: arrows to the next // previous column;
 
