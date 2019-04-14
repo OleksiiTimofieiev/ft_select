@@ -49,7 +49,6 @@ void	print_to_terminal(t_input *input)
 		return ;
 	}
 
-
 	while (input)
 	{
 		ft_putstr_fd(tgoto(tgetstr("cm", NULL), input->x, input->y), INPUT_FD);
