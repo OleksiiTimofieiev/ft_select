@@ -34,7 +34,7 @@ int		validata_screen_size(void)
 	int word_per_line = w.ws_col / (g_evil.longest + SPACES);
 	int necessary_quantity_of_rows = i / word_per_line;
 
-	if (necessary_quantity_of_rows > w.ws_row)
+	if (necessary_quantity_of_rows >= w.ws_row)
 		return (0);
 	else
 		return (1);
@@ -46,7 +46,6 @@ void	print_to_terminal(t_input *input)
 	if (!validata_screen_size())
 	{
 		ft_putstr_fd("Window size is too small.", INPUT_FD);
-
 		return ;
 	}
 
