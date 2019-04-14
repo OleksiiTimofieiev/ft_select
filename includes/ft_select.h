@@ -19,6 +19,7 @@
 # include <fcntl.h>
 # include <sys/stat.h>
 # include <sys/xattr.h>
+# include <sys/ioctl.h>
 
 # include "../libft/libft.h"
 # include "keys.h"

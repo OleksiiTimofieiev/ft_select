@@ -15,6 +15,7 @@
 void	restore_terminal(t_global *global)
 {
 	tcsetattr(INPUT_FD, TCSANOW, &global->initial_terminal_state);
+
 	ft_putstr_fd(global->terminal_state.te, INPUT_FD);
 	ft_putstr_fd(global->terminal_state.ve, INPUT_FD);
 	ft_putstr_fd(global->terminal_state.cl, INPUT_FD);
@@ -29,7 +30,6 @@ void	main_loop(void)
 		key = 0;
 		if (read(0, &key, 8) == -1)
 			exit(0);
-// ft_putstr_fd(ft_itoa(key), 0);
 		key_selection(key, &g_evil);
 	}
 }

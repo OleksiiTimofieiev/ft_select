@@ -261,6 +261,22 @@ void	left_key_handler(t_global *global)
 	ft_putstr_fd_select(&colors, 0, global);
 }
 
+void	change_of_longest(t_input *input)
+{
+	int	max;
+	int len;
+
+	max = 0;
+	len = 0;
+	while (input)
+	{
+		len = ft_strlen(input->data);
+		if (len > max)
+			max = len;
+		input = input->next;
+	}
+	g_evil.longest = max;
+}
 void	delete_key_handler(t_global *global)
 {
 	delete_node(&global->head, global->current, global->longest, global);
@@ -285,7 +301,9 @@ void	delete_key_handler(t_global *global)
 	colors.color3 = ITALIC;
 	colors.data = global->current->data;
 	ft_putstr_fd_select(&colors, 0, global);
+	change_of_longest(g_evil.head);
 }
+
 
 void	find_routine(t_global *global, char c) // separate file;
 {

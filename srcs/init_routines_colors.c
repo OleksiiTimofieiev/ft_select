@@ -32,7 +32,30 @@ void initial_select(t_global *global, int len)
 
 	ft_putstr_fd_select(&colors, 0, global);
 
-	global->words_per_line = tgetnum("co") / (len + SPACES);
+	struct winsize	w;
+	// int height = tgetnum("li");
+	ioctl(STDIN_FILENO, TIOCGWINSZ, &w);
+
+	// ft_putstr_fd(ft_itoa(w.ws_row), INPUT_FD);
+	// ft_putstr_fd("<- height **** width ->", INPUT_FD);
+
+// 
+	// ft_putstr_fd(ft_itoa(w.ws_col), INPUT_FD);
+
+
+
+
+	
+
+
+	// ft_putstr_fd("ft_itoa(width)", INPUT_FD);
+
+	// int width = tgetnum("co");
+	// ft_putstr_fd(ft_itoa(width), INPUT_FD);
+
+	// int word_per_line = 
+
+	global->words_per_line = w.ws_col / (len + SPACES);
 }
 
 void	init_color(t_input *input)
@@ -77,18 +100,16 @@ void init_terminal_state(t_global *g_evil, t_input *input, int len)
 	tcgetattr(INPUT_FD, &g_evil->initial_terminal_state);
 	tcgetattr(INPUT_FD, &g_evil->new_terminal_state);
 
-
-
 	g_evil->new_terminal_state.c_lflag &= ~(ICANON | ECHO); /* Перевести терминал в канонический режим. Функция чтения будет получать ввод с клавиатуры без ожидания ввода */
 	// g_evil->initial_terminal_state.c_lflag &= ~(ECHO);   /* Клавиши, набранные на клавиатуре, больше не будут появляться в терминале */
 	g_evil->initial_terminal_state.c_cc[VMIN] = 1;
 	g_evil->initial_terminal_state.c_cc[VTIME] = 0;
 
-	tcsetattr(INPUT_FD, TCSANOW, &g_evil->new_terminal_state);
 
 	ft_putstr_fd(g_evil->terminal_state.ti, INPUT_FD); //
 	ft_putstr_fd(g_evil->terminal_state.vi, INPUT_FD); // mask cursor
-	ft_putstr_fd(g_evil->terminal_state.cl, INPUT_FD); // clear window
+	tcsetattr(INPUT_FD, TCSANOW, &g_evil->new_terminal_state);
+	// ft_putstr_fd(g_evil->terminal_state.cl, INPUT_FD); // clear window
 
 	g_evil->longest = len;
 }

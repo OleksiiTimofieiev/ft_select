@@ -18,11 +18,8 @@
 // TODO: arrows to the next // previous column;
 
 /* 3 */
-// TODO: large vs small window; set_coordinates(*input = g_head, g_word_per_line = tgetnum("co") / (g->longest + SPACES), longets);
-// TODO: The cursor of selection must be repositioned in a reasonable manner after a resizing.
 // TODO: # define NO_ROOM "Not enough space! Resize window."
 // TODO: not possible to show everithing; if size is ok -> show everithing;
-// TODO: check how the change size signal works; on every move = +;
 // TODO: Whichever way your program ends, the default configuration of your terminal MUST be restored. This is true even after it received a signal (except for the signals that we cannot intercept, but this would mean that your program does not work).
 // TODO: We must be able to interrupt your program with ctrl+z and restore it with fg without seeing any changes in its behavior.
 // TODO: correction form;
@@ -45,11 +42,30 @@
 // 	signal(SIGINT, sl_sig_hendler);
 // 	signal(SIGCONT, sl_sig_hendler);
 // 	signal(SIGTSTP, sl_sig_hendler);
+
 // 	signal(SIGABRT, sl_sig_hendler);
 // 	signal(SIGSTOP, sl_sig_hendler);
 // 	signal(SIGKILL, sl_sig_hendler);
 // 	signal(SIGQUIT, sl_sig_hendler);
 // }
+
+// TODO: change of longest upon deletion;
+
+void	signals_routines(int type_of_signal)
+{
+	if (type_of_signal == SIGWINCH)
+	{
+		init_coordinates(&g_evil.head, g_evil.longest);
+		print_to_terminal(g_evil.input);
+		initial_select(&g_evil, g_evil.longest);
+		// ft_putstr_fd("adadf", 0);
+	}
+	else
+	{
+		restore_terminal(&g_evil);
+		exit(-1);
+	}
+}
 
 // void sl_init_term(void)
 // {
@@ -88,6 +104,13 @@
 
 int		main(int argc, char **argv)
 {
+	signal(SIGWINCH, signals_routines);
+	signal(SIGINT, signals_routines);
+	// 
+	signal(SIGABRT, signals_routines);
+	signal(SIGSTOP, signals_routines);
+	signal(SIGKILL, signals_routines);
+	signal(SIGQUIT, signals_routines);
 	int				len;
 	t_input 		*input;
 

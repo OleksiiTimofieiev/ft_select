@@ -90,13 +90,28 @@ void init_coordinates(t_input **input, int len)
 {
 	// ft_printf("len -> %d\n", len);
 
+	struct winsize	w;
 	// int height = tgetnum("li");
-	// ft_printf("height -> %d\n", height);
+	ioctl(STDIN_FILENO, TIOCGWINSZ, &w);
+
+	// ft_putstr_fd(ft_itoa(w.ws_row), INPUT_FD);
+	// ft_putstr_fd("<- height **** width ->", INPUT_FD);
+
+// 
+	// ft_putstr_fd(ft_itoa(w.ws_col), INPUT_FD);
+
+
+
+
+	
+
+
+	// ft_putstr_fd("ft_itoa(width)", INPUT_FD);
 
 	// int width = tgetnum("co");
-	// ft_printf("width -> %d\n", width);
+	// ft_putstr_fd(ft_itoa(width), INPUT_FD);
 
-	int word_per_line = tgetnum("co") / (len + SPACES);
+	int word_per_line = w.ws_col / (len + SPACES);
 
 	// ft_printf("words_per_line -> %d\n", word_per_line);
 	set_coordinates(*input, word_per_line, len);
