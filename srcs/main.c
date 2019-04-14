@@ -52,7 +52,10 @@
 // 	tputs(tgetstr("ti", NULL), 1, sl_print_key);
 // 	tputs(tgetstr("vi", NULL), 1, sl_print_key);
 // }
-
+int		print_key(int n)
+{
+	return (write(INPUT_FD, &n, 1));
+}
 
  void	ctrl_z_handler(void)
 {

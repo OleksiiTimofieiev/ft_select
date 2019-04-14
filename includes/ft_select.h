@@ -28,6 +28,8 @@
 # define INPUT_FD 0
 # define OUTPUT_FD 1
 
+int		print_key(int n);
+
 /*
 ************************ ADT for data **********************************
 */

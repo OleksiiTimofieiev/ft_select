@@ -90,13 +90,17 @@ void	init_color(t_input *input)
 	}
 }
 
+int32_t		sl_print_key(int32_t n)
+{
+	return (write(INPUT_FD, &n, 1));
+}
+
 void init_terminal_state(t_global *g_evil, t_input *input, int len)
 {
 	g_evil->head = input;
 	g_evil->current = input;
 	g_evil->input = input;
 
-	init_termcap(&g_evil->terminal_state);
 	
 	tcgetattr(INPUT_FD, &g_evil->initial_terminal_state);
 	tcgetattr(INPUT_FD, &g_evil->new_terminal_state);
@@ -107,9 +111,13 @@ void init_terminal_state(t_global *g_evil, t_input *input, int len)
 	g_evil->new_terminal_state.c_cc[VTIME] = 0;
 
 
-	ft_putstr_fd(g_evil->terminal_state.ti, INPUT_FD); //
-	ft_putstr_fd(g_evil->terminal_state.vi, INPUT_FD); // mask cursor
 	tcsetattr(INPUT_FD, TCSANOW, &g_evil->new_terminal_state);
+	init_termcap(&g_evil->terminal_state);
+	// ft_putstr_fd(g_evil->terminal_state.ti, INPUT_FD); //
+	// ft_putstr_fd(g_evil->terminal_state.vi, INPUT_FD); // mask cursor
+
+		tputs(tgetstr("ti", NULL), 1, print_key);
+	tputs(tgetstr("vi", NULL), 1, print_key);
 	// ft_putstr_fd(g_evil->terminal_state.cl, INPUT_FD); // clear window
 
 	g_evil->longest = len;

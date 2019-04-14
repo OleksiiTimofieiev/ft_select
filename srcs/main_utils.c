@@ -12,6 +12,8 @@
 
 #include "ft_select.h"
 
+
+
 void	restore_terminal(t_global *global)
 {
 	tcsetattr(INPUT_FD, TCSANOW, &global->initial_terminal_state);
@@ -19,9 +21,16 @@ void	restore_terminal(t_global *global)
 // 
 	// init_termcap(&global->terminal_state);
 
-	ft_putstr_fd(global->terminal_state.te, INPUT_FD);
-	ft_putstr_fd(global->terminal_state.ve, INPUT_FD);
+	// ft_putstr_fd(global->terminal_state.ve, INPUT_FD);
 	ft_putstr_fd(global->terminal_state.cl, INPUT_FD);
+	// ft_putstr_fd(global->terminal_state.te, INPUT_FD);
+
+			tputs(tgetstr("te", NULL), 1, print_key);
+	tputs(tgetstr("ve", NULL), 1, print_key);
+
+	// ioctl(STDERR_FILENO, TIOCSTI, "\x1A");
+
+
 }
 
 void	main_loop(void)
