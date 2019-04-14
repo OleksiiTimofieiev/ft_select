@@ -120,14 +120,14 @@ void					add_node(t_input **head_ref, char *data);
 void					print_to_terminal(t_input *input);
 void					print_selection(t_input *input);
 int						print_key(int n);
-void					restore_terminal(t_global *global);
+void					print_error(char *error_type);
 
 /*
-************************* error func *************************
+************************* event handling funcs *************************
 */
 
+void					restore_terminal(t_global *global);
 void					find_routine(t_global *global, char c) ;
-void					print_error(char *error_type);
 void					esc_key_handler(t_global *input);
 void					down_key_handler(t_global *global);
 void					up_key_handler(t_global *global);
@@ -141,7 +141,6 @@ void					right_key_handler(t_global *global);
 void					delete_key_handler(t_global *global);
 void					ft_putstr_fd_select(t_colors *colors,
 							int fd, t_global *global);
-// void					signals_routines(int type_of_signal);
 void					main_loop(void);
 
 t_global				g_evil;
