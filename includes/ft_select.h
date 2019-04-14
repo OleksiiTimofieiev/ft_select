@@ -102,6 +102,7 @@ void					init_color(t_input *input);
 void					initial_select(t_global *global, int len);
 void					init_terminal_state(t_global *g_evil, t_input *input, int len);
 void					init_color_data(t_colors *colors);
+void	init_signals(void);
 
 	/*
 ************************* data modifications *************************
@@ -138,6 +139,8 @@ void					right_key_handler(t_global *global);
 void					delete_key_handler(t_global *global);
 void					ft_putstr_fd_select(t_colors *colors,
 							int fd, t_global *global);
+
+void	signals_routines(int type_of_signal);
 void main_loop(void);
 	t_global g_evil;
 

@@ -96,15 +96,16 @@ void init_terminal_state(t_global *g_evil, t_input *input, int len)
 	g_evil->current = input;
 	g_evil->input = input;
 
-	init_termcap(&g_evil->terminal_state);
+	
 	tcgetattr(INPUT_FD, &g_evil->initial_terminal_state);
 	tcgetattr(INPUT_FD, &g_evil->new_terminal_state);
 
 	g_evil->new_terminal_state.c_lflag &= ~(ICANON | ECHO); /* Перевести терминал в канонический режим. Функция чтения будет получать ввод с клавиатуры без ожидания ввода */
 	// g_evil->initial_terminal_state.c_lflag &= ~(ECHO);   /* Клавиши, набранные на клавиатуре, больше не будут появляться в терминале */
-	g_evil->initial_terminal_state.c_cc[VMIN] = 1;
-	g_evil->initial_terminal_state.c_cc[VTIME] = 0;
+	g_evil->new_terminal_state.c_cc[VMIN] = 1;
+	g_evil->new_terminal_state.c_cc[VTIME] = 0;
 
+	init_termcap(&g_evil->terminal_state);
 
 	ft_putstr_fd(g_evil->terminal_state.ti, INPUT_FD); //
 	ft_putstr_fd(g_evil->terminal_state.vi, INPUT_FD); // mask cursor

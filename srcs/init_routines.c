@@ -81,8 +81,8 @@ void	init_termcap(t_termcap_cmd *tc_cmd)
 	tc_cmd->cl = tgetstr("cl", NULL); // window
 	tc_cmd->cm = tgetstr("cm", NULL); // cursor;
 	tc_cmd->vi = tgetstr("vi", NULL);
-	tc_cmd->ve = tgetstr("ve", NULL);
 	tc_cmd->ti = tgetstr("ti", NULL);
+	tc_cmd->ve = tgetstr("ve", NULL);
 	tc_cmd->ti = tgetstr("te", NULL);
 }
 

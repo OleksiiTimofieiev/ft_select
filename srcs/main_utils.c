@@ -15,10 +15,13 @@
 void	restore_terminal(t_global *global)
 {
 	tcsetattr(INPUT_FD, TCSANOW, &global->initial_terminal_state);
+	ft_putstr_fd(tgoto(tgetstr("cm", NULL), 0, 0), INPUT_FD);
 
-	ft_putstr_fd(global->terminal_state.te, INPUT_FD);
-	ft_putstr_fd(global->terminal_state.ve, INPUT_FD);
-	ft_putstr_fd(global->terminal_state.cl, INPUT_FD);
+	// init_termcap(&global->terminal_state);
+
+	ft_putstr_fd(global->terminal_state.ti, INPUT_FD);
+	ft_putstr_fd(global->terminal_state.vi, INPUT_FD);
+	// ft_putstr_fd(global->terminal_state.cl, INPUT_FD);
 }
 
 void	main_loop(void)
