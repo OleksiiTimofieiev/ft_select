@@ -22,6 +22,7 @@ CORE			=	main.c \
 					key_selection.c \
 					key_handler_funcs.c \
 					main_utils.c \
+					find_routine.c \
 			
 SRCS        	= 	$(addprefix srcs/, $(CORE))
 

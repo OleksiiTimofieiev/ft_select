@@ -38,7 +38,6 @@ static void	signals_routines(int type_of_signal)
 
 void	init_signals(void)
 {
-
 	signal(SIGSTOP, signals_routines);
 	signal(SIGCONT, signals_routines);
 	signal(SIGWINCH, signals_routines);
@@ -47,6 +46,4 @@ void	init_signals(void)
 	signal(SIGKILL, signals_routines);
 	signal(SIGQUIT, signals_routines);
 	signal(SIGTERM, signals_routines);
-
-
 }
