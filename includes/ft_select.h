@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:31:17 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 23:40:45 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/15 16:50:17 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ typedef struct			s_input
 	int					selection;
 	char				*color;
 	char				*color_type;
+	struct s_input		*pointer_up;
+	struct s_input 		*pointer_down;
 	struct s_input		*next;
 	struct s_input		*prev;
 }						t_input;
@@ -144,5 +146,7 @@ void					ft_putstr_fd_select(t_colors *colors,
 void					main_loop(void);
 
 t_global				g_evil;
+
+void init_up_down(t_global *global);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 23:41:08 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/15 16:51:53 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int		main(int argc, char **argv)
 	init_signals();
 	print_to_terminal(input);
 	// initial_select(&g_evil, len);
+	init_up_down(&g_evil);
+
 	main_loop();
 	return (0);
 }
