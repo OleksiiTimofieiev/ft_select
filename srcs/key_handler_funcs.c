@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:32:11 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/16 18:23:24 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/16 18:37:58 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,10 @@ void    down_key_handler(t_global *global)
 		ft_putstr_fd_select(&colors, 0, global);
 	}
 	if (global->current->next == NULL && !global->current->pointer_down)
+	{
+			ft_putstr_fd("********************",0);
 		global->current = global->head;
+	}
 	else
 	{
 		i = global->words_per_line;
@@ -106,10 +109,15 @@ void    down_key_handler(t_global *global)
 			}
 			global->current = global->current->next;
 		}
-	if (null_detected)
-	
-		global->current = buf->pointer_down;
-		// ft_putstr_fd("Null",0);
+		if (null_detected)
+		{
+
+			if (buf->pointer_down)
+				global->current = buf->pointer_down;
+			else
+				global->current = global->head;
+				
+		}
 	}
 	ft_putstr_fd(tgoto(tgetstr("cm", NULL), global->current->x,
 					global->current->y), INPUT_FD);

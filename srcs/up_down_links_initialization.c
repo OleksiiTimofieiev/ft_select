@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 16:45:30 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/16 18:20:36 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/16 18:38:35 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,7 @@ else
 		end->pointer_down = head_start;
 
 // 		ft_putstr_fd(end->data, 0);
-		ft_putstr_fd(" ->", 0);
+		// ft_putstr_fd(" ->", 0);
 // 		ft_putstr_fd(head_start->data, 0);
 // // 
 		head_start->pointer_up = end;
@@ -193,7 +193,6 @@ int j = 0;
 	}
 
 	end = previous_to_last_row;
-	// ft_putstr_fd(ft_itoa(buf), 0);
 	// ft_putstr_fd(end->data, 0);
 
 
@@ -203,7 +202,7 @@ int j = 0;
 
 	// head_start = head_start->next;
 
-	while (quantity--)
+	while (quantity-- && head_start->next && end->next)
 	{
 		end->pointer_down = head_start;
 		head_start->pointer_up = end;
@@ -213,8 +212,11 @@ int j = 0;
 		
 	}
 
+	// ft_putstr_fd(ft_itoa(1), 0);
 
-	// ft_putstr_fd(previous_to_last_row->data, 0);
+	// ft_putstr_fd(end->data, 0);
+
+	// ft_putstr_fd(head_start->data, 0);
 
 	// 	t_input *last_row_start_pointer = last_row_start_not(words_per_line, quantity_of_words);
 
