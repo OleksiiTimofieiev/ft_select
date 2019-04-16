@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:32:11 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/16 14:07:46 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/16 16:01:11 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ void	right_key_handler(t_global *global)
 	colors.color3 = ITALIC;
 	colors.data = global->current->data;
 	ft_putstr_fd_select(&colors, 0, global);
-
 }
 
 void    down_key_handler(t_global *global)
@@ -241,7 +240,7 @@ void	left_key_handler(t_global *global)
 
 	init_color_data(&colors);
 	colors.data = global->current->data;
-	end = global->current;
+	end = global->current; // use end func;
 	while (end->next)
 		end = end->next;
 	ft_putstr_fd(tgoto(tgetstr("cm", NULL),

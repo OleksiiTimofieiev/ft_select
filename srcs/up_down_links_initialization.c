@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 16:45:30 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/16 15:56:11 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/16 15:59:39 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,9 +163,6 @@ else
 		ft_putstr_fd(end->data, 0);
 		end = end->next;
 	}
-
-
-
 
 	// 	t_input *last_row_start_pointer = last_row_start_not(words_per_line, quantity_of_words);
 
