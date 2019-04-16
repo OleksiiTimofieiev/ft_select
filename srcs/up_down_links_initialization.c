@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 16:45:30 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/16 15:15:55 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/16 15:33:42 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	null_the_pointers(t_input *input)
 	{
 		input->pointer_down = NULL;
 		input->pointer_up = NULL;
-		// input->row_detect = 0;
+		input->row_detect = 0;
 		input = input->next;
 	}
 }
@@ -140,34 +140,48 @@ void	init_up_down(t_global *global)
 		}
 	}
 else
-// {
-// 	t_input *last_row_start_pointer = last_row_start_not(words_per_line, quantity_of_words);
-// 	// ft_putstr_fd(last_row_start_pointer->data, 0);
+{
+int last_row_words_quantity = 0;
+t_input *end = get_end_ptr(g_evil.head);
 
-// last_row_start_pointer = last_row_start_pointer->next;
+while (end)
+{
+last_row_words_quantity++;
+if (end->row_detect == 1)
+	break ;
+// ft_putstr_fd(end->data, 0);
+end = end->prev;
+}
 
-// t_input *head_start = g_evil.head->next;
-// t_input *end = get_end_ptr(g_evil.head);
+	// ft_putstr_fd(end->data, 0);
+	ft_putstr_fd(ft_itoa(last_row_words_quantity), 0);
 
-// end->pointer_up = head_start;
-// head_start = head_start->next;
+	// 	t_input *last_row_start_pointer = last_row_start_not(words_per_line, quantity_of_words);
 
-// t_input *end_start = last_row_start_pointer;
+	// last_row_start_pointer = last_row_start_pointer->next;
 
-// int j = words_per_line - 2;
+	// t_input *head_start = g_evil.head->next;
+	// t_input *end = get_end_ptr(g_evil.head);
 
-// while (j != 0)
-// {
-// 	end_start->pointer_down = head_start;
+	// end->pointer_up = head_start;
+	// head_start = head_start->next;
 
-// 	head_start->pointer_up = end_start;
+	// t_input *end_start = last_row_start_pointer;
 
-// 	j--;
-// 	end_start = end_start->next;
-// 	head_start = head_start->next;
-// }
-// }
-;
+	// int j = words_per_line - 2;
+
+	// while (j != 0)
+	// {
+	// 	end_start->pointer_down = head_start;
+
+	// 	head_start->pointer_up = end_start;
+
+	// 	j--;
+	// 	end_start = end_start->next;
+	// 	head_start = head_start->next;
+	// }
+}
+
 
 
 }
