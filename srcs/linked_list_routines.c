@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 14:43:47 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/16 19:49:39 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/16 19:55:42 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,19 @@
 
 void	delete_node(t_input **head_ref, t_input *del, int len, t_global *global)
 {
-	// int word_per_line;
+	int				word_per_line;
+	struct winsize	w;
 
 	if (del->next == NULL)
 		global->current = global->head;
 	else
-	{
 		global->current = del->next;
-		// global->head = del->next;
-		// global->input = del->next;
-	}
 	if (*head_ref == NULL || del == NULL)
 		esc_key_handler(global);
 	if (*head_ref == del)
 	{
 		global->head = del->next;
 		global->input = del->next;
-
 		*head_ref = del->next;
 	}
 	if (del->next != NULL)
@@ -39,33 +35,9 @@ void	delete_node(t_input **head_ref, t_input *del, int len, t_global *global)
 		del->prev->next = del->next;
 	free(del->data);
 	free(del);
-	del = NULL;
-
-	struct winsize	w;
-	// int height = tgetnum("li");
 	ioctl(STDIN_FILENO, TIOCGWINSZ, &w);
-
-	// ft_putstr_fd(ft_itoa(w.ws_row), INPUT_FD);
-	// ft_putstr_fd("<- height **** width ->", INPUT_FD);
-
-// 
-	// ft_putstr_fd(ft_itoa(w.ws_col), INPUT_FD);
-
-
-
-
-	
-
-
-	// ft_putstr_fd("ft_itoa(width)", INPUT_FD);
-
-	// int width = tgetnum("co");
-	// ft_putstr_fd(ft_itoa(width), INPUT_FD);
-
-	int word_per_line = w.ws_col / (len + SPACES);
+	word_per_line = w.ws_col / (len + SPACES);
 	set_coordinates(*head_ref, word_per_line, len);
-	// ft_putstr_fd(g_evil.terminal_state.cl, INPUT_FD);
-
 	print_to_terminal(*head_ref);
 }
 

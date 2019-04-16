@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:54:46 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 23:43:29 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/16 19:53:29 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ static long int g_keys[KEY_ARRAY_SIZE] =
 	SPACE, BACK_SPACE, DEL,
 	CTRL_A, CTRL_W
 };
-
 
 void	key_selection(int key, t_global *input)
 {

@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 20:16:14 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 21:54:14 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/16 19:58:30 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,27 @@
 int		validata_screen_size(void)
 {
 	struct winsize	w;
+	t_input			*buf;
+	int				i;
+	int				word_per_line;
+	int				necessary_quantity_of_rows;
 
+	i = 0;
 	ioctl(STDIN_FILENO, TIOCGWINSZ, &w);
-
-	// int rows = w.ws_col;
-
-	t_input *buf;
-
 	buf = g_evil.head;
-
-	int i = 0;
 	while (buf)
 	{
 		buf = buf->next;
 		i++;
 	}
 	i++;
-	int word_per_line = w.ws_col / (g_evil.longest + SPACES);
-	int necessary_quantity_of_rows = i / word_per_line;
-
+	word_per_line = w.ws_col / (g_evil.longest + SPACES);
+	necessary_quantity_of_rows = i / word_per_line;
 	if (necessary_quantity_of_rows >= w.ws_row)
 		return (0);
 	else
 		return (1);
-}	
+}
 
 void	print_to_terminal(t_input *input)
 {
@@ -48,7 +45,6 @@ void	print_to_terminal(t_input *input)
 		ft_putstr_fd("Window size is too small.", INPUT_FD);
 		return ;
 	}
-
 	while (input)
 	{
 		ft_putstr_fd(tgoto(tgetstr("cm", NULL), input->x, input->y), INPUT_FD);
@@ -60,13 +56,13 @@ void	print_to_terminal(t_input *input)
 		ft_putstr_fd(RESET, INPUT_FD);
 		input = input->next;
 	}
-		initial_select(&g_evil, g_evil.longest);
+	initial_select(&g_evil, g_evil.longest);
 }
 
 void	print_selection(t_input *input)
 {
-	char *buf;
-	int len;
+	char	*buf;
+	int		len;
 
 	buf = NULL;
 	while (input)
@@ -77,7 +73,7 @@ void	print_selection(t_input *input)
 			buf = (char *)malloc(sizeof(char) * (len + 2));
 			ft_strcpy(buf, input->data);
 			buf[len] = 32;
-			buf[len + 1] ='\0';
+			buf[len + 1] = '\0';
 			ft_putstr_fd(buf, OUTPUT_FD);
 			free(buf);
 			buf = NULL;

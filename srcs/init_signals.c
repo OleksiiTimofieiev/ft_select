@@ -1,21 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_signals.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/04/16 19:52:44 by otimofie          #+#    #+#             */
+/*   Updated: 2019/04/16 19:53:04 by otimofie         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_select.h"
 
-static void	ctrl_z_handler(void)
+static void		ctrl_z_handler(void)
 {
 	restore_terminal(&g_evil);
 	signal(SIGTSTP, SIG_DFL);
 	ioctl(STDIN_FILENO, TIOCSTI, "\x1A");
 }
 
-static void	signals_routines(int type_of_signal)
+static void		signals_routines(int type_of_signal)
 {
 	if (type_of_signal == SIGWINCH)
 	{
 		init_coordinates(&g_evil.head, g_evil.longest);
 		print_to_terminal(g_evil.input);
 		init_up_down(&g_evil);
-
-		// initial_select(&g_evil, g_evil.longest);
 	}
 	else if (type_of_signal == SIGTSTP)
 		ctrl_z_handler();
@@ -23,14 +33,9 @@ static void	signals_routines(int type_of_signal)
 	{
 		init_terminal(g_evil.termtype);
 		init_signals();
-		// init_coordinates(&input, len);
-		// init_color(input);
 		init_terminal_state(&g_evil, g_evil.input, g_evil.longest);
-		// init_signals();
 		print_to_terminal(g_evil.input);
-		
 		init_up_down(&g_evil);
-
 		main_loop();
 	}
 	else
@@ -40,7 +45,7 @@ static void	signals_routines(int type_of_signal)
 	}
 }
 
-void	init_signals(void)
+void			init_signals(void)
 {
 	signal(SIGSTOP, signals_routines);
 	signal(SIGCONT, signals_routines);
