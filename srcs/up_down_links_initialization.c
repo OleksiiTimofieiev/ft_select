@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 16:45:30 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/16 15:59:39 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/16 18:20:36 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,20 +149,72 @@ else
 		last_row_words_quantity++;
 		if (end->row_detect == 1)
 			break ;
-		// ft_putstr_fd(end->data, 0);
 		end = end->prev;
 	}
+		// ft_putstr_fd(end->data, 0);
 
-	// ft_putstr_fd(end->data, 0);
 	// ft_putstr_fd(ft_itoa(last_row_words_quantity), 0);
 
 // separate func
 
-	while (last_row_words_quantity--)
+	t_input *head_start = g_evil.head->next;
+
+	// ft_putstr_fd(head_start->data, 0);
+	// t_input *end_start = end;
+	int buf = last_row_words_quantity;
+	while (last_row_words_quantity)
 	{
-		ft_putstr_fd(end->data, 0);
+
+		end->pointer_down = head_start;
+
+// 		ft_putstr_fd(end->data, 0);
+		ft_putstr_fd(" ->", 0);
+// 		ft_putstr_fd(head_start->data, 0);
+// // 
+		head_start->pointer_up = end;
+
+		head_start = head_start->next;
+
 		end = end->next;
+		last_row_words_quantity--;
 	}
+
+	// if not two lines;
+
+	t_input *previous_to_last_row = last_row_start_not(words_per_line, quantity_of_words);
+
+	// ft_putstr_fd(ft_itoa(buf), 0);
+int j = 0;
+	while (buf && previous_to_last_row->next)
+	{
+		previous_to_last_row = previous_to_last_row->next;
+		buf--;
+		j++;
+	}
+
+	end = previous_to_last_row;
+	// ft_putstr_fd(ft_itoa(buf), 0);
+	// ft_putstr_fd(end->data, 0);
+
+
+	// ft_putstr_fd(head_start->data, 0);
+	int quantity = words_per_line - j;
+	// ft_putstr_fd(ft_itoa(quantity), 0);
+
+	// head_start = head_start->next;
+
+	while (quantity--)
+	{
+		end->pointer_down = head_start;
+		head_start->pointer_up = end;
+
+		head_start = head_start->next;
+		end = end->next;
+		
+	}
+
+
+	// ft_putstr_fd(previous_to_last_row->data, 0);
 
 	// 	t_input *last_row_start_pointer = last_row_start_not(words_per_line, quantity_of_words);
 
