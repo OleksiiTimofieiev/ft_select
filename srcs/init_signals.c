@@ -13,6 +13,8 @@ static void	signals_routines(int type_of_signal)
 	{
 		init_coordinates(&g_evil.head, g_evil.longest);
 		print_to_terminal(g_evil.input);
+		init_up_down(&g_evil);
+
 		// initial_select(&g_evil, g_evil.longest);
 	}
 	else if (type_of_signal == SIGTSTP)
@@ -26,8 +28,10 @@ static void	signals_routines(int type_of_signal)
 		init_terminal_state(&g_evil, g_evil.input, g_evil.longest);
 		// init_signals();
 		print_to_terminal(g_evil.input);
-		main_loop();
+		
+		init_up_down(&g_evil);
 
+		main_loop();
 	}
 	else
 	{

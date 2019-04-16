@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:32:11 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/16 14:01:26 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/16 14:07:46 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -307,4 +307,5 @@ void	delete_key_handler(t_global *global)
 	colors.data = global->current->data;
 	ft_putstr_fd_select(&colors, 0, global);
 	change_of_longest(g_evil.head);
+	init_up_down(&g_evil);
 }

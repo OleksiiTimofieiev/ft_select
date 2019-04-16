@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 16:45:30 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/16 13:57:55 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/16 14:13:06 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,26 @@ t_input *last_row_start(int words_per_line, int quantity_of_words)
 
 }
 
+void	null_the_pointers(t_input *input)
+{
+while(input)
+{
+input->pointer_down = NULL;
+input->pointer_up = NULL;
+
+input = input->next;
+}
+
+}
+
 void	init_up_down(t_global *global)
 {
+
 	struct winsize w;
 	// int height = tgetnum("li");
 	ioctl(STDIN_FILENO, TIOCGWINSZ, &w);
+
+	null_the_pointers(global->head);
 
 	int quantity_of_words = quantity_words(global->head);
 	int words_per_line  = w.ws_col / (global->longest + SPACES);
