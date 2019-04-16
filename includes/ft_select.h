@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:31:17 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/16 19:45:35 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/16 20:03:16 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,10 @@ typedef struct			s_colors
 	char				*color4;
 	char				*data;
 }						t_colors;
+
+/*
+************************ ADT to handle signals ********************************
+*/
 
 typedef	struct			s_global
 {
