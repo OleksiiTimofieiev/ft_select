@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 16:45:30 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/16 18:38:35 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/16 19:06:47 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,22 +102,32 @@ t_input *get_end_ptr(t_input *input)
 
 void	init_up_down(t_global *global)
 {
-
 	struct winsize w;
-	// int height = tgetnum("li");
-	ioctl(STDIN_FILENO, TIOCGWINSZ, &w);
 
-	null_the_pointers(global->head);
-	init_row_ends(global->head);
+	ioctl(STDIN_FILENO, TIOCGWINSZ, &w);
 
 	int quantity_of_words = quantity_words(global->head);
 	int words_per_line  = w.ws_col / (global->longest + SPACES);
 
-	// ft_putstr_fd(ft_itoa(quantity_of_words), 0);
-	// ft_putstr_fd(ft_itoa(words_per_line), 0);
 
-	if (quantity_of_words % words_per_line == 0)
-	{
+	// ft_putstr_fd(ft_itoa(quantity_of_words), 0);
+	// ft_putstr_fd("->", 0);
+
+		// ft_putstr_fd(ft_itoa(words_per_line), 0);
+
+	if (quantity_of_words <= words_per_line)
+		return ;
+
+	// int height = tgetnum("li");
+
+	null_the_pointers(global->head);
+	init_row_ends(global->head);
+
+		// ft_putstr_fd(ft_itoa(quantity_of_words), 0);
+		// ft_putstr_fd(ft_itoa(words_per_line), 0);
+
+		if (quantity_of_words % words_per_line == 0)
+		{
 			t_input *last_row_start_pointer = last_row_start(words_per_line, quantity_of_words);
 
 			// ft_putstr_fd(last_row_start_pointer->data, 0);

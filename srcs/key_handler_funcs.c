@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:32:11 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/16 18:37:58 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/16 18:55:15 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void    down_key_handler(t_global *global)
 	}
 	if (global->current->next == NULL && !global->current->pointer_down)
 	{
-			ft_putstr_fd("********************",0);
+			// ft_putstr_fd("********************",0);
 		global->current = global->head;
 	}
 	else
