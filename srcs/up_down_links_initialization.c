@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 16:45:30 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/16 19:06:47 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/16 19:17:37 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,7 +194,7 @@ else
 	t_input *previous_to_last_row = last_row_start_not(words_per_line, quantity_of_words);
 
 	// ft_putstr_fd(ft_itoa(buf), 0);
-int j = 0;
+	int j = 0;
 	while (buf && previous_to_last_row->next)
 	{
 		previous_to_last_row = previous_to_last_row->next;
@@ -207,7 +207,7 @@ int j = 0;
 
 
 	// ft_putstr_fd(head_start->data, 0);
-	int quantity = words_per_line - j;
+	int quantity = words_per_line - j - 1;
 	// ft_putstr_fd(ft_itoa(quantity), 0);
 
 	// head_start = head_start->next;
