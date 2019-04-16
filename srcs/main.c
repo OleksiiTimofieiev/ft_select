@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/15 16:51:53 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/16 13:42:12 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,15 @@ int		main(int argc, char **argv)
 {
 	int				len;
 	t_input 		*input;
+
+// int i =1;
+
+// while(argv[i])
+// {
+// 	ft_putstr_fd(argv[i++], 0);
+// 	ft_putstr_fd("\n", 0);
+// }
+
 
 	init_terminal(g_evil.termtype);
 	init_data(--argc, argv, &input, &len);

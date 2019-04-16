@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 16:45:30 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/15 16:57:36 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/16 13:54:55 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,37 @@ int		quantity_words(t_input *input)
 	i = 0;
 	while (input)
 	{
-		i++;
+		++i;
 		input = input->next;
 	}
 	return (i);
 }
 
-t_input *last_row_start(t_input *input)
+t_input *last_row_start(int words_per_line, int quantity_of_words)
 {
-	int
+	int len = quantity_of_words;
+	t_input *res = g_evil.head;
+
+	// len -= 1;
+	--len;
+	while (len % words_per_line != 0)
+	{
+		--len;
+	}
+
+	// ft_putstr_fd(ft_itoa(len), 0);
+
+	// len -= 1;
+	while (len)
+	{
+		// ft_putstr_fd(res->data, 0);
+		// ft_putstr_fd("\n", 0);
+
+		res = res->next;
+		--len;
+	}
+	return (res);
+
 }
 
 void	init_up_down(t_global *global)
@@ -39,11 +61,30 @@ void	init_up_down(t_global *global)
 	int quantity_of_words = quantity_words(global->head);
 	int words_per_line  = w.ws_col / (global->longest + SPACES);
 
-	ft_putstr_fd(ft_itoa(quantity_of_words), 0);
-	ft_putstr_fd(ft_itoa(words_per_line), 0);
+	// ft_putstr_fd(ft_itoa(quantity_of_words), 0);
+	// ft_putstr_fd(ft_itoa(words_per_line), 0);
 
 	if (quantity_of_words % words_per_line == 0)
 	{
-		t_input *last_row_start = 
+		t_input *last_row_start_pointer = last_row_start(words_per_line, quantity_of_words);
+
+		ft_putstr_fd(last_row_start_pointer->data, 0);
+
+	t_input *head_start = g_evil.head->next;
+	t_input *end_start = last_row_start_pointer;
+
+	int j = words_per_line - 1;
+
+	while(j != 0)
+	{
+		end_start->pointer_down = head_start;
+
+		head_start->pointer_up = end_start;
+
+			j--;
+		end_start =end_start->next;
+		head_start = head_start->next;
+
+	}
 	}
 }
