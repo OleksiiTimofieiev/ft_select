@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 15:03:53 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/16 15:40:29 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/16 15:45:28 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	init_row_ends(t_input *input)
 		if (i == words_per_line)
 		{
 			input->row_detect = 1;
-ft_putstr_fd(input->data, 0);
-			i = 1;
+// ft_putstr_fd(input->data, 0);
+			i = 0;
 		}
 		input = input->next;
 		i++;
