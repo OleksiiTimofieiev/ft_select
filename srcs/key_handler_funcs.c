@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:32:11 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/16 18:55:15 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/16 19:12:53 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,39 @@ void	right_key_handler(t_global *global)
 	ft_putstr_fd_select(&colors, 0, global);
 }
 
+int quantity_words_local(t_input *input)
+{
+	int i;
+
+	i = 0;
+	while (input)
+	{
+		++i;
+		input = input->next;
+	}
+	return (i);
+}
 void    down_key_handler(t_global *global)
 {
+	struct winsize w;
+
+	ioctl(STDIN_FILENO, TIOCGWINSZ, &w);
+
+	int quantity_of_words = quantity_words_local(global->head);
+	int words_per_line = w.ws_col / (global->longest + SPACES);
+
+	// ft_putstr_fd(ft_itoa(quantity_of_words), 0);
+	// ft_putstr_fd("->", 0);
+
+	// ft_putstr_fd(ft_itoa(words_per_line), 0);
+
+	if (quantity_of_words <= words_per_line)
+	{
+		right_key_handler(global);
+		return ;
+	}
+
+
 	int i;
 	t_colors colors;
 
@@ -130,7 +161,24 @@ void    down_key_handler(t_global *global)
 
 void	up_key_handler(t_global *global)
 {
-		
+	struct winsize w;
+
+	ioctl(STDIN_FILENO, TIOCGWINSZ, &w);
+
+	int quantity_of_words = quantity_words_local(global->head);
+	int words_per_line = w.ws_col / (global->longest + SPACES);
+
+	// ft_putstr_fd(ft_itoa(quantity_of_words), 0);
+	// ft_putstr_fd("->", 0);
+
+	// ft_putstr_fd(ft_itoa(words_per_line), 0);
+
+	if (quantity_of_words <= words_per_line)
+	{
+		left_key_handler(global);
+		return;
+	}
+
 	t_input *end; /* implement a func for end */
 	t_colors colors;
 
