@@ -1,6 +1,6 @@
 #include "ft_select.h"
 
-void	find_routine(t_global *global, char c) // separate file;
+void	find_routine(t_global *global, char c)
 {
 	char	read_str[256];
 	int key;
