@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/16 19:04:54 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/16 19:09:34 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		main(int argc, char **argv)
 	init_coordinates(&input, len);
 	init_color(input);
 	init_terminal_state(&g_evil, input, len);
-	// init_signals();
+	init_signals();
 	print_to_terminal(input);
 
 	// initial_select(&g_evil, len);
