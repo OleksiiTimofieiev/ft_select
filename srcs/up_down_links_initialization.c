@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 16:45:30 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/16 13:54:55 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/16 13:57:55 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,25 +66,25 @@ void	init_up_down(t_global *global)
 
 	if (quantity_of_words % words_per_line == 0)
 	{
-		t_input *last_row_start_pointer = last_row_start(words_per_line, quantity_of_words);
+			t_input *last_row_start_pointer = last_row_start(words_per_line, quantity_of_words);
 
-		ft_putstr_fd(last_row_start_pointer->data, 0);
+			ft_putstr_fd(last_row_start_pointer->data, 0);
 
-	t_input *head_start = g_evil.head->next;
-	t_input *end_start = last_row_start_pointer;
+		t_input *head_start = g_evil.head->next;
+		t_input *end_start = last_row_start_pointer;
 
-	int j = words_per_line - 1;
+		int j = words_per_line - 1;
 
-	while(j != 0)
-	{
-		end_start->pointer_down = head_start;
+		while(j != 0)
+		{
+			end_start->pointer_down = head_start;
 
-		head_start->pointer_up = end_start;
+			head_start->pointer_up = end_start;
 
-			j--;
-		end_start =end_start->next;
-		head_start = head_start->next;
+				j--;
+			end_start =end_start->next;
+			head_start = head_start->next;
 
-	}
+		}
 	}
 }

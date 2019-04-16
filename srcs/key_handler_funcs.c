@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:32:11 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/16 13:56:26 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/16 14:01:26 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,12 @@ void	up_key_handler(t_global *global)
 		global->current = global->current->prev;
 	}
 	if (null_detected && buf->pointer_up)
-		global->current = buf->pointer_up;	
+		global->current = buf->pointer_up;
+		else if (null_detected)
+		{
+			global->current = end;
+		}
+		
 	ft_putstr_fd(tgoto(tgetstr("cm", NULL), global->current->x,
 					global->current->y), INPUT_FD);
 	colors.color1 = (global->current->selection) ? BACK : EMPTY_COLOR;
