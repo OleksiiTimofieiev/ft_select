@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:31:17 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/16 20:03:16 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/16 20:09:57 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,10 @@ typedef struct			s_termcap_cmd
 	char				*ti;
 	char				*te;
 }						t_termcap_cmd;
+
+/*
+************************ ADT for color data **********************************
+*/
 
 typedef struct			s_colors
 {
