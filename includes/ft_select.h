@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:31:17 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/16 15:07:14 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/16 19:45:35 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@
 # define INPUT_FD 0
 # define OUTPUT_FD 1
 
-
 /*
 ************************ ADT for data **********************************
 */
@@ -43,7 +42,7 @@ typedef struct			s_input
 	char				*color;
 	char				*color_type;
 	struct s_input		*pointer_up;
-	struct s_input 		*pointer_down;
+	struct s_input		*pointer_down;
 	struct s_input		*next;
 	struct s_input		*prev;
 }						t_input;
@@ -104,10 +103,12 @@ void					set_coordinates(t_input *input,
 							int word_per_line, int len);
 void					init_color(t_input *input);
 void					initial_select(t_global *global, int len);
-void					init_terminal_state(t_global *g_evil, t_input *input, int len);
+void					init_terminal_state(t_global *g_evil,
+							t_input *input, int len);
 void					init_color_data(t_colors *colors);
 void					init_signals(void);
-void	init_row_ends(t_input *input);
+void					init_row_ends(t_input *input);
+void					init_up_down(t_global *global);
 
 /*
 ************************* data modifications *************************
@@ -131,7 +132,7 @@ void					print_error(char *error_type);
 */
 
 void					restore_terminal(t_global *global);
-void					find_routine(t_global *global, char c) ;
+void					find_routine(t_global *global, char c);
 void					esc_key_handler(t_global *input);
 void					down_key_handler(t_global *global);
 void					up_key_handler(t_global *global);
@@ -148,7 +149,5 @@ void					ft_putstr_fd_select(t_colors *colors,
 void					main_loop(void);
 
 t_global				g_evil;
-
-void init_up_down(t_global *global);
 
 #endif

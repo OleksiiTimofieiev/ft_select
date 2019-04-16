@@ -6,14 +6,14 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 14:44:11 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/13 23:22:37 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/16 19:45:54 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef KEYS_H
 # define KEYS_H
 
-# define KEY_ARRAY_SIZE	11		
+# define KEY_ARRAY_SIZE	11
 # define ESC			27
 # define UP				4283163
 # define DOWN			4348699
