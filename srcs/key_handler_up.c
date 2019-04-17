@@ -6,13 +6,13 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:32:11 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/17 17:41:29 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/17 17:45:39 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
 
-static void	print_res(t_global *global, t_colors colors)
+static void		print_res(t_global *global, t_colors colors)
 {
 	ft_putstr_fd(tgoto(tgetstr("cm", NULL), global->current->x,
 		global->current->y), INPUT_FD);
@@ -23,7 +23,7 @@ static void	print_res(t_global *global, t_colors colors)
 	ft_putstr_fd_select(&colors, 0, global);
 }
 
-static void	null_logic(t_global *global, t_input *end)
+static void		null_logic(t_global *global, t_input *end)
 {
 	int		i;
 	int		null_detected;
@@ -47,7 +47,8 @@ static void	null_logic(t_global *global, t_input *end)
 		global->current = end;
 }
 
-static int check(int quantity_of_words, int words_per_line, t_global *global)
+static	int		check(int quantity_of_words, int words_per_line,
+				t_global *global)
 {
 	if (quantity_of_words <= words_per_line)
 	{
@@ -56,7 +57,18 @@ static int check(int quantity_of_words, int words_per_line, t_global *global)
 	}
 	return (1);
 }
-void		up_key_handler(t_global *global)
+
+static	t_input	*get_end_ptr_1(t_global *global)
+{
+	t_input *res;
+
+	res = global->current;
+	while (res->next)
+		res = res->next;
+	return (res);
+}
+
+void			up_key_handler(t_global *global)
 {
 	struct winsize	w;
 	int				quantity_of_words;
@@ -69,9 +81,7 @@ void		up_key_handler(t_global *global)
 	words_per_line = w.ws_col / (global->longest + SPACES);
 	if (!check(quantity_of_words, words_per_line, global))
 		return ;
-	end = global->current;
-	while (end->next)
-		end = end->next;
+	end = get_end_ptr_1(global);
 	init_color_data(&colors);
 	ft_putstr_fd(tgoto(tgetstr("cm", NULL),
 		global->current->x, global->current->y), INPUT_FD);
