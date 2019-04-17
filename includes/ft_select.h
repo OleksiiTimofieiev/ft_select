@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:31:17 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/17 14:42:44 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/17 16:30:16 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,37 +16,19 @@
 # include <stdlib.h>
 # include <termcap.h>
 # include <termios.h>
-// # include <fcntl.h>
 # include <sys/stat.h>
 # include <sys/xattr.h>
 # include <sys/ioctl.h>
 # include <signal.h>
 
 # include "../libft/libft.h"
+# include "t_input_struct.h"
 # include "keys.h"
+# include "up_down.h"
 
 # define SPACES	4
 # define INPUT_FD 0
 # define OUTPUT_FD 1
-
-/*
-************************ ADT for data **********************************
-*/
-
-typedef struct			s_input
-{
-	char				*data;
-	int					x;
-	int					y;
-	int					selection;
-	int					row_detect;
-	char				*color;
-	char				*color_type;
-	struct s_input		*pointer_up;
-	struct s_input		*pointer_down;
-	struct s_input		*next;
-	struct s_input		*prev;
-}						t_input;
 
 /*
 ************************ termcap settings **********************************
@@ -158,6 +140,5 @@ void					delete_key_handler(t_global *global);
 void					ft_putstr_fd_select(t_colors *colors,
 							int fd, t_global *global);
 void					main_loop(void);
-
 
 #endif

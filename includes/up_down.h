@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   up_down.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/11 13:57:01 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/17 16:07:16 by otimofie         ###   ########.fr       */
+/*   Created: 2019/04/17 16:18:55 by otimofie          #+#    #+#             */
+/*   Updated: 2019/04/17 16:29:44 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_select.h"
+#ifndef UP_DOWN_H
+# define UP_DOWN_H
 
-int		main(int argc, char **argv)
-{
-	int				len;
-	t_input			*input;
+# include "t_input_struct.h"
 
-	init_terminal(g_evil.termtype);
-	init_data(--argc, argv, &input, &len);
-	init_coordinates(&input, len);
-	init_color(input);
-	init_terminal_state(&g_evil, input, len);
-	init_signals();
-	print_to_terminal(input);
-	init_up_down(&g_evil);
-	main_loop();
-	return (0);
-}
+int		quantity_words(t_input *input);
+t_input	*last_row_start(int words_per_line, int quantity_of_words);
+t_input	*last_row_start_not(int words_per_line, int quantity_of_words);
+void	null_the_pointers(t_input *input);
+t_input *get_end_ptr(t_input *input);
+
+#endif

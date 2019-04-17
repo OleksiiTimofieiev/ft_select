@@ -6,99 +6,12 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 16:45:30 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/16 19:17:37 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/17 16:14:05 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
 
-int		quantity_words(t_input *input)
-{
-	int i;
-
-	i = 0;
-	while (input)
-	{
-		++i;
-		input = input->next;
-	}
-	return (i);
-}
-
-t_input *last_row_start(int words_per_line, int quantity_of_words)
-{
-	int len = quantity_of_words;
-	t_input *res = g_evil.head;
-
-	// len -= 1;
-	--len;
-	while (len % words_per_line != 0)
-	{
-		--len;
-	}
-
-	// ft_putstr_fd(ft_itoa(len), 0);
-
-	// len -= 1;
-	while (len)
-	{
-		// ft_putstr_fd(res->data, 0);
-		// ft_putstr_fd("\n", 0);
-
-		res = res->next;
-		--len;
-	}
-	return (res);
-
-}
-
-t_input *last_row_start_not(int words_per_line, int quantity_of_words)
-{
-	int len = quantity_of_words;
-	t_input *res = g_evil.head;
-
-	// len -= 1;
-	len -= words_per_line;
-	while (len % words_per_line != 0)
-	{
-		--len;
-	}
-
-	if (len <= 0)
-		len = words_per_line;
-	// ft_putstr_fd(ft_itoa(len), 0);
-
-	// len -= 1;
-	while (len)
-	{
-		// ft_putstr_fd(res->data, 0);
-		// ft_putstr_fd("\n", 0);
-
-		res = res->next;
-		--len;
-	}
-	return (res);
-}
-
-void	null_the_pointers(t_input *input)
-{
-	while(input)
-	{
-		input->pointer_down = NULL;
-		input->pointer_up = NULL;
-		input->row_detect = 0;
-		input = input->next;
-	}
-}
-
-t_input *get_end_ptr(t_input *input)
-{
-	while (input->next)
-	{
-		input = input->next;
-	}
-	return (input);
-}
 
 void	init_up_down(t_global *global)
 {
