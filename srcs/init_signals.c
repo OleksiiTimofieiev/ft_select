@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 19:52:44 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/16 19:53:04 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/17 13:45:22 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void		ctrl_z_handler(void)
 {
 	restore_terminal(&g_evil);
 	signal(SIGTSTP, SIG_DFL);
-	ioctl(STDIN_FILENO, TIOCSTI, "\x1A");
+	ioctl(INPUT_FD, TIOCSTI, "\x1A");
 }
 
 static void		signals_routines(int type_of_signal)
@@ -40,6 +40,7 @@ static void		signals_routines(int type_of_signal)
 	}
 	else
 	{
+		ft_putstr_fd("asdfasdfasdf", 0);
 		restore_terminal(&g_evil);
 		exit(-1);
 	}
@@ -47,6 +48,7 @@ static void		signals_routines(int type_of_signal)
 
 void			init_signals(void)
 {
+	signal(SIGTSTP, signals_routines);
 	signal(SIGSTOP, signals_routines);
 	signal(SIGCONT, signals_routines);
 	signal(SIGWINCH, signals_routines);
