@@ -6,84 +6,11 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:32:11 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/17 17:06:06 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/17 17:12:08 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
-
-void    down_key_handler(t_global *global)
-{
-	struct winsize w;
-
-	ioctl(STDIN_FILENO, TIOCGWINSZ, &w);
-
-	int quantity_of_words = quantity_words_local(global->head);
-	int words_per_line = w.ws_col / (global->longest + SPACES);
-
-	// ft_putstr_fd(ft_itoa(quantity_of_words), 0);
-	// ft_putstr_fd("->", 0);
-
-	// ft_putstr_fd(ft_itoa(words_per_line), 0);
-
-	if (quantity_of_words <= words_per_line)
-	{
-		right_key_handler(global);
-		return ;
-	}
-
-
-	int i;
-	t_colors colors;
-
-	init_color_data(&colors);
-	colors.data = global->current->data;
-	ft_putstr_fd(tgoto(tgetstr("cm", NULL),
-			global->current->x, global->current->y), INPUT_FD);
-	if (global->current->selection == 0)
-		ft_putstr_fd_select(&colors, 0, global);
-	else
-	{
-		colors.color1 = BACK;
-		ft_putstr_fd_select(&colors, 0, global);
-	}
-	if (global->current->next == NULL && !global->current->pointer_down)
-	{
-			// ft_putstr_fd("********************",0);
-		global->current = global->head;
-	}
-	else
-	{
-		i = global->words_per_line;
-		int null_detected = 0;
-		t_input *buf = global->current;
-		while (i--)
-		{
-			if (global->current->next == NULL)
-			{
-				null_detected = 1;
-				break;
-			}
-			global->current = global->current->next;
-		}
-		if (null_detected)
-		{
-
-			if (buf->pointer_down)
-				global->current = buf->pointer_down;
-			else
-				global->current = global->head;
-				
-		}
-	}
-	ft_putstr_fd(tgoto(tgetstr("cm", NULL), global->current->x,
-					global->current->y), INPUT_FD);
-	colors.color1 = (global->current->selection) ? BACK : EMPTY_COLOR;
-	colors.color2 = UNDERLINED;
-	colors.color3 = ITALIC;
-	colors.data = global->current->data;
-	ft_putstr_fd_select(&colors, 0, global);
-}
 
 void	up_key_handler(t_global *global)
 {
