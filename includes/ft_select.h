@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:31:17 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/17 13:42:07 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/17 14:42:44 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,11 @@
 # include <stdlib.h>
 # include <termcap.h>
 # include <termios.h>
-# include <fcntl.h>
+// # include <fcntl.h>
 # include <sys/stat.h>
 # include <sys/xattr.h>
 # include <sys/ioctl.h>
 # include <signal.h>
-#include <sys/signalvar.h>
 
 # include "../libft/libft.h"
 # include "keys.h"
@@ -141,6 +140,8 @@ void					print_error(char *error_type);
 ************************* event handling funcs *************************
 */
 
+t_global				g_evil;
+
 void					restore_terminal(t_global *global);
 void					find_routine(t_global *global, char c);
 void					esc_key_handler(t_global *input);
@@ -158,6 +159,5 @@ void					ft_putstr_fd_select(t_colors *colors,
 							int fd, t_global *global);
 void					main_loop(void);
 
-t_global				g_evil;
 
 #endif
