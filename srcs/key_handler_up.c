@@ -1,16 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_handler_funcs.c                                :+:      :+:    :+:   */
+/*   key_handler_up.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:32:11 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/17 17:28:09 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/17 17:36:53 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
+
+static void	print_res(t_global *global, t_colors colors)
+{
+	ft_putstr_fd(tgoto(tgetstr("cm", NULL), global->current->x,
+					   global->current->y),
+				 INPUT_FD);
+	colors.color1 = (global->current->selection) ? BACK : EMPTY_COLOR;
+	colors.color2 = UNDERLINED;
+	colors.color3 = ITALIC;
+	colors.data = global->current->data;
+	ft_putstr_fd_select(&colors, 0, global);
+}
+
+static void	null_logic(t_global *global, t_input *end)
+{
+	int		i;
+	int		null_detected;
+	t_input	*buf;
+	
+	null_detected = 0;
+	i = global->words_per_line;
+	buf = global->current;
+	while (i--)
+	{
+		if (global->current->prev == NULL)
+		{
+			null_detected = 1;
+			break;
+		}
+		global->current = global->current->prev;
+	}
+	if (null_detected && buf->pointer_up)
+		global->current = buf->pointer_up;
+	else if (null_detected)
+		global->current = end;
+}
 
 void	up_key_handler(t_global *global)
 {
@@ -45,30 +81,6 @@ void	up_key_handler(t_global *global)
 		colors.color1 = BACK;
 		ft_putstr_fd_select(&colors, 0, global);
 	}
-
-	int i = global->words_per_line;
-	int null_detected = 0;
-	t_input *buf = global->current;
-	while (i--)
-	{
-		if (global->current->prev == NULL)
-		{
-			// global->current = end;
-			null_detected = 1;
-			break;
-		}
-		global->current = global->current->prev;
-	}
-	if (null_detected && buf->pointer_up)
-		global->current = buf->pointer_up;
-	else if (null_detected)
-		global->current = end;
-		
-	ft_putstr_fd(tgoto(tgetstr("cm", NULL), global->current->x,
-					global->current->y), INPUT_FD);
-	colors.color1 = (global->current->selection) ? BACK : EMPTY_COLOR;
-	colors.color2 = UNDERLINED;
-	colors.color3 = ITALIC;
-	colors.data = global->current->data;
-	ft_putstr_fd_select(&colors, 0, global);
+	null_logic(global, end);
+	print_res(global, colors);
 }
