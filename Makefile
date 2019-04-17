@@ -6,7 +6,7 @@
 #    By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/22 12:27:52 by otimofie          #+#    #+#              #
-#    Updated: 2019/04/17 16:59:30 by otimofie         ###   ########.fr        #
+#    Updated: 2019/04/17 17:03:30 by otimofie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ CORE			=	main.c \
 					iteration_helpers.c \
 					key_handler_utils.c \
 					key_hadlers_with_small_code_size.c \
+					key_handlers_small_2.c \
 			
 SRCS        	= 	$(addprefix srcs/, $(CORE))
 
