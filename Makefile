@@ -6,7 +6,7 @@
 #    By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/22 12:27:52 by otimofie          #+#    #+#              #
-#    Updated: 2019/04/17 17:12:26 by otimofie         ###   ########.fr        #
+#    Updated: 2019/04/17 17:29:13 by otimofie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@ CORE			=	main.c \
 					error_management.c \
 					output_routines.c \
 					key_selection.c \
-					key_handler_funcs.c \
 					main_utils.c \
 					find_routine.c \
 					up_down_links_initialization.c \
@@ -32,6 +31,8 @@ CORE			=	main.c \
 					key_handlers_small_2.c \
 					left_key_handler.c \
 					down_key_handler.c \
+					key_handler_up.c \
+
 			
 SRCS        	= 	$(addprefix srcs/, $(CORE))
 
