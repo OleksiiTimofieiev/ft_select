@@ -6,12 +6,12 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 16:56:06 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/17 16:57:12 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/17 17:50:05 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KEY_HANDLER_SPECIFIC
-# define KEY_HANDLER_SPECIFIC
+#ifndef KEY_HANDLER_SPECIFIC_H
+# define KEY_HANDLER_SPECIFIC_H
 
 # include "t_input_struct.h"
 
