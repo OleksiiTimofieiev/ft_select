@@ -6,12 +6,36 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 16:45:30 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/17 16:14:05 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/17 16:34:40 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
 
+void	if_mod_equals_zero(int words_per_line, int quantity_of_words)
+{
+	t_input *last_row_start_pointer;
+	t_input *head_start;
+	t_input *end_start;
+	int j;
+
+		last_row_start_pointer = last_row_start(words_per_line, quantity_of_words);
+	head_start = g_evil.head->next;
+	end_start = last_row_start_pointer;
+
+	j = words_per_line - 1;
+
+	while (j != 0)
+	{
+		end_start->pointer_down = head_start;
+
+		head_start->pointer_up = end_start;
+
+		j--;
+		end_start = end_start->next;
+		head_start = head_start->next;
+	}
+}
 
 void	init_up_down(t_global *global)
 {
@@ -22,46 +46,14 @@ void	init_up_down(t_global *global)
 	int quantity_of_words = quantity_words(global->head);
 	int words_per_line  = w.ws_col / (global->longest + SPACES);
 
-
-	// ft_putstr_fd(ft_itoa(quantity_of_words), 0);
-	// ft_putstr_fd("->", 0);
-
-		// ft_putstr_fd(ft_itoa(words_per_line), 0);
-
 	if (quantity_of_words <= words_per_line)
 		return ;
-
-	// int height = tgetnum("li");
 
 	null_the_pointers(global->head);
 	init_row_ends(global->head);
 
-		// ft_putstr_fd(ft_itoa(quantity_of_words), 0);
-		// ft_putstr_fd(ft_itoa(words_per_line), 0);
-
-		if (quantity_of_words % words_per_line == 0)
-		{
-			t_input *last_row_start_pointer = last_row_start(words_per_line, quantity_of_words);
-
-			// ft_putstr_fd(last_row_start_pointer->data, 0);
-
-		t_input *head_start = g_evil.head->next;
-		t_input *end_start = last_row_start_pointer;
-
-		int j = words_per_line - 1;
-
-		while(j != 0)
-		{
-			end_start->pointer_down = head_start;
-
-			head_start->pointer_up = end_start;
-
-				j--;
-			end_start =end_start->next;
-			head_start = head_start->next;
-
-		}
-	}
+	if (quantity_of_words % words_per_line == 0)
+		if_mod_equals_zero(words_per_line, quantity_of_words);
 else
 {
 	int last_row_words_quantity = 0;
@@ -74,39 +66,24 @@ else
 			break ;
 		end = end->prev;
 	}
-		// ft_putstr_fd(end->data, 0);
-
-	// ft_putstr_fd(ft_itoa(last_row_words_quantity), 0);
-
-// separate func
 
 	t_input *head_start = g_evil.head->next;
 
-	// ft_putstr_fd(head_start->data, 0);
-	// t_input *end_start = end;
 	int buf = last_row_words_quantity;
+
 	while (last_row_words_quantity)
 	{
 
 		end->pointer_down = head_start;
-
-// 		ft_putstr_fd(end->data, 0);
-		// ft_putstr_fd(" ->", 0);
-// 		ft_putstr_fd(head_start->data, 0);
-// // 
 		head_start->pointer_up = end;
-
 		head_start = head_start->next;
-
 		end = end->next;
 		last_row_words_quantity--;
 	}
 
-	// if not two lines;
-
 	t_input *previous_to_last_row = last_row_start_not(words_per_line, quantity_of_words);
 
-	// ft_putstr_fd(ft_itoa(buf), 0);
+
 	int j = 0;
 	while (buf && previous_to_last_row->next)
 	{
@@ -116,14 +93,8 @@ else
 	}
 
 	end = previous_to_last_row;
-	// ft_putstr_fd(end->data, 0);
 
-
-	// ft_putstr_fd(head_start->data, 0);
 	int quantity = words_per_line - j - 1;
-	// ft_putstr_fd(ft_itoa(quantity), 0);
-
-	// head_start = head_start->next;
 
 	while (quantity-- && head_start->next && end->next)
 	{
@@ -134,37 +105,6 @@ else
 		end = end->next;
 		
 	}
-
-	// ft_putstr_fd(ft_itoa(1), 0);
-
-	// ft_putstr_fd(end->data, 0);
-
-	// ft_putstr_fd(head_start->data, 0);
-
-	// 	t_input *last_row_start_pointer = last_row_start_not(words_per_line, quantity_of_words);
-
-	// last_row_start_pointer = last_row_start_pointer->next;
-
-	// t_input *head_start = g_evil.head->next;
-	// t_input *end = get_end_ptr(g_evil.head);
-
-	// end->pointer_up = head_start;
-	// head_start = head_start->next;
-
-	// t_input *end_start = last_row_start_pointer;
-
-	// int j = words_per_line - 2;
-
-	// while (j != 0)
-	// {
-	// 	end_start->pointer_down = head_start;
-
-	// 	head_start->pointer_up = end_start;
-
-	// 	j--;
-	// 	end_start = end_start->next;
-	// 	head_start = head_start->next;
-	// }
 }
 
 
