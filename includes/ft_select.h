@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:31:17 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/17 16:30:16 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/17 16:41:38 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,7 @@ void					right_key_handler(t_global *global);
 void					delete_key_handler(t_global *global);
 void					ft_putstr_fd_select(t_colors *colors,
 							int fd, t_global *global);
+void					if_mod_not_equals_zero(int words_per_line, int quantity_of_words);
 void					main_loop(void);
 
 #endif
