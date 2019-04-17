@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/22 12:31:17 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/17 16:41:38 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/17 16:57:31 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include "t_input_struct.h"
 # include "keys.h"
 # include "up_down.h"
+# include "key_handler_specific.h"
 
 # define SPACES	4
 # define INPUT_FD 0

@@ -6,40 +6,13 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:32:11 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/16 19:12:53 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/17 16:54:57 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
 
-void 	init_color_data(t_colors *colors)
-{
-	colors->color1 = EMPTY_COLOR;
-	colors->color2 = EMPTY_COLOR;
-	colors->color3 = EMPTY_COLOR;
-	colors->color4 = RESET;
-}
 
-void 	ft_putstr_fd_select(t_colors *colors, int fd, t_global *global)
-{
-	int i;
-
-	i = 0;
-	ft_putstr_fd(colors->color1, 0);
-	ft_putstr_fd(colors->color2, 0);
-	ft_putstr_fd(colors->color3, 0);
-	ft_putstr_fd(global->current->color, 0);
-	ft_putstr_fd(global->current->color_type, 0);
-
-	ft_putstr_fd(colors->color3, 0);
-
-	while (colors->data[i] != '\0')
-	{
-		write(fd, &colors->data[i], 1);
-		i++;
-	}
-	ft_putstr_fd(colors->color4, 0);
-}
 
 void	esc_key_handler(t_global *global)
 {
@@ -74,18 +47,7 @@ void	right_key_handler(t_global *global)
 	ft_putstr_fd_select(&colors, 0, global);
 }
 
-int quantity_words_local(t_input *input)
-{
-	int i;
 
-	i = 0;
-	while (input)
-	{
-		++i;
-		input = input->next;
-	}
-	return (i);
-}
 void    down_key_handler(t_global *global)
 {
 	struct winsize w;
@@ -323,22 +285,7 @@ void	left_key_handler(t_global *global)
 	ft_putstr_fd_select(&colors, 0, global);
 }
 
-void	change_of_longest(t_input *input)
-{
-	int	max;
-	int len;
 
-	max = 0;
-	len = 0;
-	while (input)
-	{
-		len = ft_strlen(input->data);
-		if (len > max)
-			max = len;
-		input = input->next;
-	}
-	g_evil.longest = max;
-}
 void	delete_key_handler(t_global *global)
 {
 	delete_node(&global->head, global->current, global->longest, global);
