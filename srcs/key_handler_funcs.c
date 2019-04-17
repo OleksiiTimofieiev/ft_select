@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/12 15:32:11 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/17 17:03:57 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/17 17:06:06 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,37 +155,3 @@ void	up_key_handler(t_global *global)
 	colors.data = global->current->data;
 	ft_putstr_fd_select(&colors, 0, global);
 }
-
-void	left_key_handler(t_global *global)
-{
-	t_input *end; /* implement a func for end */
-	t_colors colors;
-
-	init_color_data(&colors);
-	colors.data = global->current->data;
-	end = global->current; // use end func;
-	while (end->next)
-		end = end->next;
-	ft_putstr_fd(tgoto(tgetstr("cm", NULL),
-			global->current->x, global->current->y), INPUT_FD);
-	if (global->current->selection == 0)
-		ft_putstr_fd_select(&colors, 0, global);
-	else
-	{
-		colors.color1 = BACK;
-		ft_putstr_fd_select(&colors, 0, global);
-	}
-	if (global->current->prev == NULL)
-		global->current = end;
-	else
-		global->current = global->current->prev;
-	ft_putstr_fd(tgoto(tgetstr("cm", NULL),
-		global->current->x, global->current->y), INPUT_FD);
-	colors.color1 = (global->current->selection) ? BACK : EMPTY_COLOR;
-	colors.color2 = UNDERLINED;
-	colors.color3 = ITALIC;
-	colors.data = global->current->data;
-	ft_putstr_fd_select(&colors, 0, global);
-}
-
-

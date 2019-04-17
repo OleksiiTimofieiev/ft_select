@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 16:54:07 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/17 16:58:12 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/17 17:10:53 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	init_color_data(t_colors *colors)
 	colors->color2 = EMPTY_COLOR;
 	colors->color3 = EMPTY_COLOR;
 	colors->color4 = RESET;
+	colors->data = g_evil.current->data;
 }
 
 void	ft_putstr_fd_select(t_colors *colors, int fd, t_global *global)
