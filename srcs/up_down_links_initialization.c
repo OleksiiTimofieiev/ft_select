@@ -6,7 +6,7 @@
 /*   By: otimofie <otimofie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 16:45:30 by otimofie          #+#    #+#             */
-/*   Updated: 2019/04/17 16:41:11 by otimofie         ###   ########.fr       */
+/*   Updated: 2019/04/17 16:53:06 by otimofie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,19 @@ static void	if_mod_equals_zero(int words_per_line, int quantity_of_words)
 	}
 }
 
-void	init_up_down(t_global *global)
+void		init_up_down(t_global *global)
 {
-	struct winsize w;
+	struct winsize	w;
+	int				quantity_of_words;
+	int				words_per_line;
 
 	ioctl(STDIN_FILENO, TIOCGWINSZ, &w);
-
-	int quantity_of_words = quantity_words(global->head);
-	int words_per_line  = w.ws_col / (global->longest + SPACES);
-
+	quantity_of_words = quantity_words(global->head);
+	words_per_line = w.ws_col / (global->longest + SPACES);
 	if (quantity_of_words <= words_per_line)
 		return ;
-
 	null_the_pointers(global->head);
 	init_row_ends(global->head);
-
 	if (quantity_of_words % words_per_line == 0)
 		if_mod_equals_zero(words_per_line, quantity_of_words);
 	else
